@@ -1,0 +1,39 @@
+.info_section ul {
+    padding: 0;
+  }
+  
+  .info_section ul li {
+    list-style-type: none;
+    margin: 3px 0;
+  
+  }
+  
+  .info_section h5 {
+    margin-bottom: 12px;
+    font-size: 22px;
+  }
+  
+  .info_section .social-box {
+    margin: 25px 0;
+  }
+  
+  .info_section .social-box img {
+    width: 35px;
+    margin-right: 10px;
+  }
+  
+  .info_section .form_container input {
+    width: 225px;
+    height: 30px;
+  }
+  
+  .info_section .form_container button {
+    background-color: #fc5d35;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 5px 30px;
+    margin-top: 15px;
+    font-size: 15px;
+  }
+  
