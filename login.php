@@ -7,8 +7,9 @@ if( isset($_POST['register']) ){
 
     $query = "INSERT INTO user_detail VALUES ('', '$userMail', '$userPass', '$userName', 2)";
     $result = mysqli_query($koneksi, $query);
-    header('Location: login.php');
+    header('Location: index.html');
 }
+
 ?>
 <!DOCTYPE html>
 <html>
