@@ -2,7 +2,7 @@ $('.loginBtn').click(function(){
 	$('.login').show();
 	$('.signUp').hide();
 	/* border bottom on button click */
-	$('.loginBtn').css({'border-bottom' : '2px solid #ff4141'});
+	$('.loginBtn').css({'border-bottom' : '2px solid #4E9F3D'});
 	/* remove border after click */
 	$('.signUpBtn').css({'border-style' : 'none'});
   });
@@ -14,7 +14,7 @@ $('.loginBtn').click(function(){
 	$('.login').hide();
 	$('.signUp').show();
 	/* border bottom on button click */
-	$('.signUpBtn').css({'border-bottom' : '2px solid #ff4141'});
+	$('.signUpBtn').css({'border-bottom' : '2px solid #4E9F3D'});
 	 /* remove border after click */
 	 $('.loginBtn').css({'border-style' : 'none'});
   });
