@@ -71,10 +71,10 @@
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="rent.html" class="nav-link">Rent</a>
+                        <a href="rent.php" class="nav-link">Rent</a>
                     </li>
                     <li class="nav-item">
                         <a href="#gallery" class="nav-link">Gallery</a>
@@ -83,7 +83,7 @@
                         <a href="#contact" class="nav-link scrollto">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link">Login</a>
+                        <a href="login.php" class="nav-link">Login</a>
                     </li>
                 </ul>
             </div>
