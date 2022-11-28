@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream:futsal/login.php
 <?php
 require('koneksi.php');
 if( isset($_POST['register']) ){
@@ -12,8 +11,6 @@ if( isset($_POST['register']) ){
 }
 
 ?>
-=======
->>>>>>> Stashed changes:login.php
 <!DOCTYPE html>
 <html>
     <head>
