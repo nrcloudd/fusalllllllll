@@ -174,6 +174,11 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4 pb-4">
+                    <div class="card position-relative no-border" style="background-color: #434242; border:none;" >
+                        
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
@@ -182,6 +187,11 @@
                                 mengecek.</p>
                             <a href="#" class="btn btn-primary">Go</a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
+                    <div class="card position-relative no-border" style="background-color: #434242; border:none;" >
+                        
                     </div>
                 </div>
             </div>
