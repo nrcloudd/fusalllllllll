@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4 pb-4">
+                <div class="col-12 col-md-6 col-lg-4 pb-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
@@ -173,7 +173,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative" style="">
                         <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap">
                         <div class="card-body">
