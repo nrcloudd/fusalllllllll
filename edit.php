@@ -9,29 +9,31 @@ if (!isset($_SESSION['id'])) {
 }
 
 $sesID = $_SESSION['id'];
-$sesName = $_SESSION['name'];
+$sesName = $_SESSION['nama'];
 $sesLvl = $_SESSION['level'];
 
 if( isset($_POST['update']) ){
     $userId     = $_POST['txt_id'];
+    $userName   = $_POST['txt_name'];
     $userMail   = $_POST['txt_email'];
-    $userPass   = $_POST['txt_pass'];
-    $userName   = $_POST['txt_nama'];
+    $userPhone   = $_POST['txt_phone_number'];
+    $userPass   = $_POST['txt_password'];
+    
 
-    $query = "UPDATE user_detail SET user_password='$userPass', user_fullname='$userName' WHERE id='$userId'";
+    $query = "UPDATE user_register SET email='$userMail', nama ='$userName', pass='$userPass', phone_number='$userPhone' WHERE id='$userId'";
     echo $query;
     $result = mysqli_query($koneksi, $query);
     header('Location: tables.php');
 }
 $id = $_GET['id'];
-$query = "SELECT * FROM user_detail WHERE id='$id'";
+$query = "SELECT * FROM user_register WHERE id='$id'";
 $result = mysqli_query($koneksi, $query) or die(mysql_error());
 //$nomor = 1;
 while ($row = mysqli_fetch_array($result)){
     $id = $row['id'];
-    $userMail = $row['user_email'];
-    $userPass = $row['user_password'];
-    $userName = $row['user_fullname'];
+    $userMail = $row['email'];
+    $userPass = $row['pass'];
+    $userName = $row['nama'];
 
 ?>
 
