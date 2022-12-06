@@ -286,19 +286,6 @@ $sesLvl = $_SESSION['level'];
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -337,7 +324,7 @@ $sesLvl = $_SESSION['level'];
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $query = "SELECT * FROM user_detail";
+                                            $query = "SELECT * FROM user_regiter";
                                             $result = mysqli_query($koneksi, $query); 
                                             $no = 1;      
                                             if ($sesLvl == 1) {
@@ -347,8 +334,10 @@ $sesLvl = $_SESSION['level'];
                                             }        
                                             while ($row = mysqli_fetch_array($result)){
                                                 $userId = $row['id'];
-                                                $userMail = $row['user_email'];
-                                                $userName = $row['user_fullname'];
+                                                $userMail = $row['email'];
+                                                $userName = $row['nama'];
+                                                $userpPhone = $row['phone_number'];
+                                                $userPass = $row['pass'];
                                                 $userLevel = $row['level'];
                                         ?>
                                         <tr>
@@ -356,6 +345,8 @@ $sesLvl = $_SESSION['level'];
                                             <td><?php echo $userId; ?></td>
                                             <td><?php echo $userMail; ?></td>
                                             <td><?php echo $userName; ?></td>
+                                            <td><?php echo $userPhone; ?></td>
+                                            <td><?php echo $userPass; ?></td>
                                             <td><?php echo $userLevel; ?></td>
                                             <td>
                                             <a href="edit.php?id= <?php echo $row['id']; ?>" class="btn btn-primary btn-circle <?php echo $dis; ?>"><i class="fas fa-pen"></i></a>
@@ -384,7 +375,7 @@ $sesLvl = $_SESSION['level'];
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; My Website 2022</span>
                     </div>
                 </div>
             </footer>
