@@ -63,6 +63,14 @@
       </div>
     </div>
   </section>
+
+  <!--map section-->
+  <section class="map_section">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.326611304893!2d113.72402611404246!3d-8.169812794119679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695cfe9894601%3A0xc9639ab1c93a874a!2sZona%20Futsal!5e0!3m2!1sid!2sid!4v1671513668154!5m2!1sid!2sid" width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+  <!--end map secton-->
+
+
   <section id="contact" class="w-100 info_section layout_padding content text-center" style="background-color: black;">
     <div class="container">
       <div class="social_container text-white">
