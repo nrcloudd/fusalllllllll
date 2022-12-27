@@ -1,5 +1,5 @@
 <?php
-      require('koneksi.php');
+require('koneksi.php');
 if (isset($_POST['login'])) {
     $email = $_POST['Email'];
     $pass = $_POST['Password'];
