@@ -234,11 +234,11 @@ require ("koneksi.php");
 
                                      while ($row = mysqli_fetch_array($result)){
                                             $id=$row['id'];
-                                            $nama = $row['name'];
-                                            $type = $row['type'];
+                                            $nama = $row['nama'];
+                                            $type = $row['tipe'];
                                             $siang = $row['price-siang'];
                                             $malam = $row['price-malam'];
-                                            $status = $row['Status'];
+                                            $status = $row['sts'];
                                         ?>
                                     <tr>
                                         <td><?php echo $id; ?></td>

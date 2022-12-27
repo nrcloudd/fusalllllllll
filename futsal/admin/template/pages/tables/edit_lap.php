@@ -8,23 +8,31 @@ if(isset($_POST['update'])){
   $malam  = $_POST['txt_malam'];
   $status  = $_POST['txt_status'];
 
-    $query = "UPDATE field SET name = '$name', type = '$type', price-siang ='$siang', price-malam='$malam', Status='$status' WHERE id = '$id'";
-    echo $query;
+    $query = "UPDATE field SET nama = '$name', tipe = '$type', price-siang ='$siang', price-malam='$malam', sts='$status' WHERE field.id = '$id'";
+     echo $query;
     $result = mysqli_query($koneksi, $query);
     //header('tabel_lapangan.php');
 }
-$ID = $_GET['id'];
-$kueri = "SELECT * FROM field where id = '$ID'";
-$result = mysqli_query($koneksi, $kueri) or die(mysqli_error());
+$id = '';
+$name   = '';
+$type  = '';
+$siang  = '';
+$malam  = '';
+$status  = '';
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+$kueri = "SELECT * FROM field where id = '$id'";
+$result = mysqli_query($koneksi, $kueri);
 
-while($row = mysqli_fetch_array($result)){
+$row = mysqli_fetch_assoc($result);
 $id = $row['id'];
-$name   = $row['name'];
-$type  = $row['type'];
+$name   = $row['nama'];
+$type  = $row['tipe'];
 $siang  = $row['price-siang'];
 $malam  = $row['price-malam'];
-$status  = $row['Status'];
-
+$status  = $row['sts'];
+echo $kueri;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -230,10 +238,10 @@ $status  = $row['Status'];
                 <h4 class="card-title">Field</h4>
 
                 <!-- ==================Form Add Table Lapangan================== -->
-<form method = "POST" action = "edit_lap.php">
+<form method = "POST" action = "tabel_lapangan.php">
     <div class="form-group">
     <label>Kode Lapangan</label>
-    <input type="number" class="form-control"placeholder="Enter Code Field" name="id" value="<?php echo $ID;?>">
+    <input type="hidden" class="form-control"placeholder="Enter Code Field" name="id" value="<?php echo $id;?>">
   </div>
   <div class="form-group">
     <label>Nama Lapangan</label>
@@ -316,4 +324,3 @@ $status  = $row['Status'];
 
 </html>
 
-<?php }
