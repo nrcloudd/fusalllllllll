@@ -237,7 +237,7 @@ if (isset($_POST['login'])) {
           <span class="text">Keep me signed in on this device</span>
         </div>
         <div class="formGroup">
-          <button type="button" name="login" class="btn2" href="index.html">Login</button>
+          <button type="button" name="login" class="btn2" href="home.html">Login</button>
         </div>
         
       </form>
