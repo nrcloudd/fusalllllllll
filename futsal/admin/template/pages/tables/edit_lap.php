@@ -14,7 +14,7 @@ if(isset($_POST['update'])){
     //header('tabel_lapangan.php');
 }
 $ID = $_GET['id'];
-$kueri = "SELECT * FROM field where field.id = '$ID'";
+$kueri = "SELECT * FROM field where id = '$ID'";
 $result = mysqli_query($koneksi, $kueri) or die(mysqli_error());
 
 while($row = mysqli_fetch_array($result)){
