@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
       $cookie_time = time() + (60 * 60 * 24 * 30);
       setcookie($cookie_name, $cookie_value, $cookie_time, "/");
     }
-    header("location:index.php");
+    header("location:login.php");
   
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
@@ -239,7 +239,7 @@ if (isset($_POST['login'])) {
           <span class="text">Keep me signed in on this device</span>
         </div>
         <div class="formGroup">
-          <a type="button" class="btn2" href="index.html">Login</a>
+          <a type="button" class="btn2" href="home.html">Login</a>
         </div>
         
       </form>
