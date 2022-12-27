@@ -1,3 +1,61 @@
+<?php
+      require('koneksi.php');
+if (isset($_POST['login'])) {
+    $email = $_POST['Email'];
+    $pass = $_POST['Password'];
+    $check = $_POST['checkbox'];
+
+        
+    if ($checkbox == 1) {
+      $cookie_name = "cookie_email";
+      $cookie_value = $email;
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+      $cookie_name = "cookie_password";
+      $cookie_value = md5($password);
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    }
+    header("location:index.php");
+  
+    
+    if (!empty(trim($email)) && !empty(trim($pass))) {
+        $query      = "SELECT * FROM member WHERE email = '$email'";
+        $result     = mysqli_query($koneksi, $query);
+        $num        = mysqli_num_rows($result);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row['id'];
+            $userName = $row['name'];
+            $userEmail = $row['email'];
+            $userTlp = $row['no_tlp'];
+            $passVal = $row['password'];
+
+        }
+
+        if ($num != 0) {
+            if ($userEmail==$email && $passVal==$pass) {
+                $_SESSION['id'] = $id;
+                $_SESSION['name'] = $userName;
+                $_SESSION['email'] = $UserEmail;
+                header('Location: home.html');
+            }else{
+                $error = 'user atau password salah!!';
+                echo "<script>alert('$error')</script>";
+                header('Location: login.php');
+            }
+        }else{
+            $error = 'user tidak ditemukan!!';
+            echo "<script>alert('$error')</script>";
+            header('Location: login.php');
+        }
+    }else{
+        $error = 'Data tidak boleh kosong!!';
+        echo "<script>alert('$error')</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,38 +217,19 @@
         <div class="formGroup">
           <button type="button" class="btn2" name="register">Register</button>
         </div>
-<?php
-      require('koneksi.php');
-      if(isset($_POST['register'])) {
-        $name = $_POST['username'];
-        $email = $_POST['Email'];
-        $telp = $_POST['Notelp'];
-        $pass = $_POST['Password'];
 
-        if($telp == "" || $pass == "" || $name == "" || $email == "") {
-            echo "All fields should be filled. Either one or many fields are empty.";
-            echo "<br/>";
-            echo "<a href='logins.php'>Go back</a>";
-        } else {
-            mysqli_query($mysqli, "INSERT INTO member (name, email, password, no_tlp) VALUES('$name', '$email', '$telp', md5('$pass'))")
-            or die("Could not execute the insert query.");
-			
-            echo "Registration successfully";
-            echo "<br/>";
-            echo "<a href='login.php'>Login</a>";
-        }
-    } else
-?>
-      </form>
       
+      </form>
+
       <!------ Login Form -------- -->
+
       <form class="login" action="" method="get">
 
         <div class="formGroup">
-          <input type="email" placeholder="Email ID" name="email" required autocomplete="off">
+          <input type="email"  placeholder="Email ID" name="Email" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
 
         </div>
         <div class="checkBox">
@@ -198,7 +237,7 @@
           <span class="text">Keep me signed in on this device</span>
         </div>
         <div class="formGroup">
-          <button type="button" class="btn2" href="index.html">Login</button>
+          <button type="button" name="login" class="btn2" href="index.html">Login</button>
         </div>
         
       </form>
