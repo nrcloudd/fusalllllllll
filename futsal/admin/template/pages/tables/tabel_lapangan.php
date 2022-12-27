@@ -249,7 +249,7 @@ require ("koneksi.php");
                                         <td><?php echo $status; ?></td>
                 
                                         <td>
-                                        <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
+                                        <a href="edit_lap.php?id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
                                             <i class="fas fa-pen">EDIT</i> 
                                         </a> 
                                         

@@ -1,17 +1,29 @@
 <?php
 require ('koneksi.php');
-if( isset($_POST['register'])){
-    $id   = $_POST['id'];
-    $name   = $_POST['txt_name'];
-    $type  = $_POST['txt_type'];
-    $siang  = $_POST['txt_siang'];
-    $malam  = $_POST['txt_malam'];
-    $status  = $_POST['txt_status'];
+if(isset($_POST['update'])){
+  $id   = $_POST['id'];
+  $name   = $_POST['txt_name'];
+  $type  = $_POST['txt_type'];
+  $siang  = $_POST['txt_siang'];
+  $malam  = $_POST['txt_malam'];
+  $status  = $_POST['txt_status'];
 
-    $query  = "INSERT INTO field VALUE ('$id','$name','$type','$siang','$malam','$status')";
-    $result = mysqli_query($koneksi,$query);
-    header('Location: tabel_lapangan.php');
+    $query = "UPDATE field SET name = '$name', type = '$type', price-siang='$siang', price-malam='$malam', Status='$status' WHERE field.id = '$id'";
+    $result = mysqli_query($koneksi, $query);
+    header('tabel_lapangan.php');
 }
+$ID = $_GET['id'];
+$kueri = "SELECT * FROM field where id = '$ID'";
+$result = mysqli_query($koneksi, $kueri) or die(mysql_error());
+
+while($row = mysqli_fetch_array($result)){
+$ID = $row['id'];
+$name   = $row['name'];
+$type  = $row['type'];
+$siang  = $row['price-siang'];
+$malam  = $row['price-malam'];
+$status  = $row['Status'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -217,47 +229,47 @@ if( isset($_POST['register'])){
                 <h4 class="card-title">Field</h4>
 
                 <!-- ==================Form Add Table Lapangan================== -->
-<form method = "POST" action = "add_lap.php">
+<form method = "POST" action = "tabel_lapangan.php">
     <div class="form-group">
     <label>Kode Lapangan</label>
-    <input type="number" class="form-control"placeholder="Enter Code Field" name="id">
+    <input type="number" class="form-control"placeholder="Enter Code Field" name="id" value="<?php echo $ID;?>" readonly>
   </div>
   <div class="form-group">
     <label>Nama Lapangan</label>
-    <input type="text" class="form-control"placeholder="Enter Field Name" name="txt_name">
+    <input type="text" class="form-control"placeholder="Enter Field Name" name="txt_name" value="<?php echo $name;?>">
   </div>
   <div class="form-group">
       <label>Type</label>
-      <select id="inputState" class="form-control" name="txt_type">
-        <option selected>Reguler</option>
+      <select id="inputState" class="form-control" name="txt_type" selected="<?php echo $type;?>">
+        <option>Reguler</option>
         <option>Jumbo</option>
         <option>Rumput</option>
       </select>
     </div>
     <div class="form-group">
     <label>Harga Siang</label>
-    <select id="inputState" class="form-control" name="txt_siang">
-        <option selected>80000</option>
+    <select id="inputState" class="form-control" name="txt_siang" value="<?php echo $siang;?>">
+        <option>80000</option>
         <option>110000</option>
         <option>125000</option>
       </select>
   </div>
   <div class="form-group">
     <label>Harga Malam</label>
-    <select id="inputState" class="form-control" name="txt_malam">
-        <option selected>100000</option>
+    <select id="inputState" class="form-control" name="txt_malam" value="<?php echo $malam;?>">
+        <option>100000</option>
         <option>130000</option>
         <option>145000</option>
       </select>
   </div>
   <div class="form-group">
     <label>Status</label>
-    <select id="inputState" class="form-control" name="txt_status">
-        <option selected>Tersedia</option>
+    <select id="inputState" class="form-control" name="txt_status" value="<?php echo $status;?>">
+        <option>Tersedia</option>
         <option>Disewa</option>
       </select>
   </div>
-  <button type="submit" class="btn btn-primary" name="register">Submit</button>
+  <button type="submit" class="btn btn-success" name="update">UPDATE</button>
 </form>
               </div>
             </div>
@@ -302,3 +314,4 @@ if( isset($_POST['register'])){
 </body>
 
 </html>
+<?php }
