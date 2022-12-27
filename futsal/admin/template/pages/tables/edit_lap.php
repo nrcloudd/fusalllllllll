@@ -8,16 +8,17 @@ if(isset($_POST['update'])){
   $malam  = $_POST['txt_malam'];
   $status  = $_POST['txt_status'];
 
-    $query = "UPDATE field SET name = '$name', type = '$type', price-siang='$siang', price-malam='$malam', Status='$status' WHERE id = '$id'";
+    $query = "UPDATE field SET name = '$name', type = '$type', price-siang ='$siang', price-malam='$malam', Status='$status' WHERE id = '$id'";
+    echo $query;
     $result = mysqli_query($koneksi, $query);
-    header('tabel_lapangan.php');
+    //header('tabel_lapangan.php');
 }
 $ID = $_GET['id'];
 $kueri = "SELECT * FROM field where id = '$ID'";
-$result = mysqli_query($koneksi, $kueri) or die(mysql_error());
+$result = mysqli_query($koneksi, $kueri) or die(mysqli_error());
 
 while($row = mysqli_fetch_array($result)){
-$ID = $row['id'];
+$id = $row['id'];
 $name   = $row['name'];
 $type  = $row['type'];
 $siang  = $row['price-siang'];
@@ -229,10 +230,10 @@ $status  = $row['Status'];
                 <h4 class="card-title">Field</h4>
 
                 <!-- ==================Form Add Table Lapangan================== -->
-<form method = "POST" action = "tabel_lapangan.php">
+<form method = "POST" action = "edit_lap.php">
     <div class="form-group">
     <label>Kode Lapangan</label>
-    <input type="number" class="form-control"placeholder="Enter Code Field" name="id" value="<?php echo $ID;?>" readonly>
+    <input type="number" class="form-control"placeholder="Enter Code Field" name="id" value="<?php echo $ID;?>">
   </div>
   <div class="form-group">
     <label>Nama Lapangan</label>
@@ -314,4 +315,5 @@ $status  = $row['Status'];
 </body>
 
 </html>
+
 <?php }
