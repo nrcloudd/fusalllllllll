@@ -18,7 +18,6 @@ require ("koneksi.php");
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -202,28 +201,24 @@ require ("koneksi.php");
           <div class="grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Field</h4>
-                <!-- <p class="card-description">
-                  Add class <code>.table-hover</code>
-                </p> -->
+                <h4 class="card-title">Tabel Transaksi</h4>
+                <p class="card-description">
+                 
+                </p>
                 <div class="table-responsive">
-                <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                               <thead>
-                               <tr>
-                                    <td>Kode</td>
-                                    <td>Nama</td>
-                                    <td>Type</td>
-                                    <td>Harga Siang</td>
-                                    <td>Harga Malam</td>
-                                    <td>Status</td>
-                                    <td>Kontrol</td>
-                                </tr>
-                               </thead>               
-                                <tbody>
-                                   <?php
-                                        $query = "SELECT * FROM field";
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nama Lapangan</th>
+                        <th>Time</th>
+                        <th>Expired</th>
+                        <th>Harga</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                                        $query = "SELECT * FROM transaksi";
                                         $result = mysqli_query($koneksi, $query);
                                         $no = 1;
                                         // if($sesLvl == 1){
@@ -234,38 +229,24 @@ require ("koneksi.php");
 
                                      while ($row = mysqli_fetch_array($result)){
                                             $id=$row['id'];
-                                            $nama = $row['name'];
-                                            $type = $row['type'];
-                                            $siang = $row['price-siang'];
-                                            $malam = $row['price-malam'];
-                                            $status = $row['Status'];
+                                            $nama = $row['field_name'];
+                                            $time = $row['time'];
+                                            $expired = $row['exp'];
+                                            $price = $row['price'];
                                         ?>
                                     <tr>
                                         <td><?php echo $id; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><?php echo $type; ?></td>
-                                        <td><?php echo $siang; ?></td>
-                                        <td><?php echo $malam; ?></td>
-                                        <td><?php echo $status; ?></td>
-                
-                                        <td>
-                                        <a href="edit_lap.php?op=edit&id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
-                                            <i class="fas fa-pen">EDIT</i> 
-                                        </a> 
-                                        
-                                        <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');">
-                                            <i class="fas fa-trash">HAPUS</i>
-                                        </a> 
-                                        </td>
+                                        <td><?php echo $time; ?></td>
+                                        <td><?php echo $expired; ?></td>
+                                        <td><?php echo $price; ?></td>
+                                       
                                     </tr>
                                     <?php
                                     $no++;        
                                     } ?>
-                                   </tbody>
-                                </table>
-                            </div>
-                        </div>
-                  <div><a href="add_lap.php" class="btn btn-secondary">Add Field</a></div>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -273,7 +254,6 @@ require ("koneksi.php");
         </div>
       </div>
     </div>
-    
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
