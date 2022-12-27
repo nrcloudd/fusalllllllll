@@ -132,6 +132,7 @@
 </head>
 
 <body>
+
   <div class="container">
     <div class="form">
       <div class="btn">
@@ -140,44 +141,48 @@
       </div>
       <form class="signUp" action="" method="get">
         <div class="formGroup">
-          <input type="text" id="userName" placeholder="User Name" autocomplete="off">
+          <input type="text" name="username" id="userName" placeholder="User Name" autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="email" placeholder="Email ID" name="email" required autocomplete="off">
+          <input type="email" name="Email" placeholder="Email ID" name="email" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="text" id="notelp" placeholder="No.Telp" required autocomplete="off">
+          <input type="text" name="Notelp" id="notelp" placeholder="No.Telp" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
         </div>
         <div class="checkBox">
           <input type="checkbox" name="checkbox" id="checkbox">
           <span class="text">I agree with term & conditions</span>
         </div>
         <div class="formGroup">
-          <button type="button" class="btn2">Register</button>
+          <button type="button" class="btn2" name="register">Register</button>
         </div>
-
-      </form>
-      <?php
+<?php
       require('koneksi.php');
-      $username = $_POST["username"];
-      $email = $_POST["email"];
-      $password = $_POST["password"];
-      $cpassword = $_POST["cpassword"];
+      if(isset($_POST['register'])) {
+        $name = $_POST['username'];
+        $email = $_POST['Email'];
+        $telp = $_POST['Notelp'];
+        $pass = $_POST['Password'];
 
-      $query_sql = "INSERT INTO tbl_pendaftaran (username, password, email) 
-                                    VALUES ('$username', '$password', '$email')";
-
-      if (mysqli_query($conn, $query_sql)) {
-        echo "<h1>Username $username berhasil terdaftar</h1>
-            <a href='pages/login.php'>Kembali Login</h1>
-         ";
-      } else {
-        echo "Pendaftaran Gagal : " . mysqli_error($conn);
-      }
-      ?>
+        if($telp == "" || $pass == "" || $name == "" || $email == "") {
+            echo "All fields should be filled. Either one or many fields are empty.";
+            echo "<br/>";
+            echo "<a href='logins.php'>Go back</a>";
+        } else {
+            mysqli_query($mysqli, "INSERT INTO member (name, email, password, no_tlp) VALUES('$name', '$email', '$telp', md5('$pass'))")
+            or die("Could not execute the insert query.");
+			
+            echo "Registration successfully";
+            echo "<br/>";
+            echo "<a href='login.php'>Login</a>";
+        }
+    } else
+?>
+      </form>
+      
       <!------ Login Form -------- -->
       <form class="login" action="" method="get">
 
@@ -195,12 +200,12 @@
         <div class="formGroup">
           <button type="button" class="btn2" href="index.html">Login</button>
         </div>
-
+        
       </form>
 
     </div>
   </div>
-
+  
   <script src="login.js"></script>
 </body>
 
