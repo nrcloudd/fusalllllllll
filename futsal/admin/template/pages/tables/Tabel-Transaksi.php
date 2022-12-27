@@ -1,3 +1,6 @@
+<?php
+require ("koneksi.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +17,7 @@
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -166,7 +170,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="../../index.html">
+            <a class="nav-link" href="../../dashboard.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -174,13 +178,19 @@
           <li class="nav-item">
             <a class="nav-link" href="../tables/basic-table.html">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Tabel Lapangan</span>
+              <span class="menu-title">Tables</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../tables/tabel_lapangan.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Lapangan</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../tables/Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Tabel Transaksi</span>
+              <span class="menu-title">Transaksi</span>
             </a>
           </li>
         </ul>
@@ -191,51 +201,50 @@
           <div class="grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Admin and Employee</h4>
+                <h4 class="card-title">Tabel Transaksi</h4>
                 <p class="card-description">
-                  Add class <code>.table-hover</code>
+                 
                 </p>
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>User</th>
-                        <th>Product</th>
-                        <th>Sale</th>
-                        <th>Status</th>
+                        <th>ID</th>
+                        <th>Nama Lapangan</th>
+                        <th>Time</th>
+                        <th>Expired</th>
+                        <th>Harga</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Photoshop</td>
-                        <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
-                        <td><label class="badge badge-danger">Pending</label></td>
-                      </tr>
-                      <tr>
-                        <td>Messsy</td>
-                        <td>Flash</td>
-                        <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
-                        <td><label class="badge badge-warning">In progress</label></td>
-                      </tr>
-                      <tr>
-                        <td>John</td>
-                        <td>Premier</td>
-                        <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
-                        <td><label class="badge badge-info">Fixed</label></td>
-                      </tr>
-                      <tr>
-                        <td>Peter</td>
-                        <td>After effects</td>
-                        <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
-                        <td><label class="badge badge-success">Completed</label></td>
-                      </tr>
-                      <tr>
-                        <td>Dave</td>
-                        <td>53275535</td>
-                        <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
-                        <td><label class="badge badge-warning">In progress</label></td>
-                      </tr>
+                    <?php
+                                        $query = "SELECT * FROM transaksi";
+                                        $result = mysqli_query($koneksi, $query);
+                                        $no = 1;
+                                        // if($sesLvl == 1){
+                                        //     $dis = "";
+                                        // }else{
+                                        //     $dis = "disabled";
+                                        // }
+
+                                     while ($row = mysqli_fetch_array($result)){
+                                            $id=$row['id'];
+                                            $nama = $row['field_name'];
+                                            $time = $row['time'];
+                                            $expired = $row['exp'];
+                                            $price = $row['price'];
+                                        ?>
+                                    <tr>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $time; ?></td>
+                                        <td><?php echo $expired; ?></td>
+                                        <td><?php echo $price; ?></td>
+                                       
+                                    </tr>
+                                    <?php
+                                    $no++;        
+                                    } ?>
                     </tbody>
                   </table>
                 </div>
@@ -275,6 +284,9 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

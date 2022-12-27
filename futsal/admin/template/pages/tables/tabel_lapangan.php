@@ -189,7 +189,7 @@ require ("koneksi.php");
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables-rent/tables-rent.html">
+            <a class="nav-link" href="../tables/Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Transaksi</span>
             </a>
