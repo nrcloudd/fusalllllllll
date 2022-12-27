@@ -156,10 +156,12 @@ if (isset($_POST['login'])) {
     }
 
     .btn2 {
+      text-decoration: none;
+      text-align: center;
       padding: 10px;
       width: 150px;
       border-radius: 20px;
-      background-color: #444444;
+      background-color: #444444;  
       border-style: none;
       color: white;
       font-weight: 600;
@@ -215,7 +217,7 @@ if (isset($_POST['login'])) {
           <span class="text">I agree with term & conditions</span>
         </div>
         <div class="formGroup">
-          <button type="button" class="btn2" name="register">Register</button>
+          <a type="button" class="btn2" name="register" href="home.html">Register</a>
         </div>
 
       
@@ -237,7 +239,7 @@ if (isset($_POST['login'])) {
           <span class="text">Keep me signed in on this device</span>
         </div>
         <div class="formGroup">
-          <button type="button" name="login" class="btn2" href="home.html">Login</button>
+          <a type="button" class="btn2" href="index.html">Login</a>
         </div>
         
       </form>
