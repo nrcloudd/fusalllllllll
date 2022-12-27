@@ -8,7 +8,7 @@ if(isset($_POST['update'])){
   $malam  = $_POST['txt_malam'];
   $status  = $_POST['txt_status'];
 
-    $query = "UPDATE field SET name = '$name', type = '$type', price-siang='$siang', price-malam='$malam', Status='$status' WHERE field.id = '$id'";
+    $query = "UPDATE field SET name = '$name', type = '$type', price-siang='$siang', price-malam='$malam', Status='$status' WHERE id = '$id'";
     $result = mysqli_query($koneksi, $query);
     header('tabel_lapangan.php');
 }
@@ -240,7 +240,7 @@ $status  = $row['Status'];
   </div>
   <div class="form-group">
       <label>Type</label>
-      <select id="inputState" class="form-control" name="txt_type" selected="<?php echo $type;?>">
+      <select id="inputState" class="form-control" name="txt_type">
         <option>Reguler</option>
         <option>Jumbo</option>
         <option>Rumput</option>
@@ -248,7 +248,7 @@ $status  = $row['Status'];
     </div>
     <div class="form-group">
     <label>Harga Siang</label>
-    <select id="inputState" class="form-control" name="txt_siang" value="<?php echo $siang;?>">
+    <select id="inputState" class="form-control" name="txt_siang">
         <option>80000</option>
         <option>110000</option>
         <option>125000</option>
@@ -256,7 +256,7 @@ $status  = $row['Status'];
   </div>
   <div class="form-group">
     <label>Harga Malam</label>
-    <select id="inputState" class="form-control" name="txt_malam" value="<?php echo $malam;?>">
+    <select id="inputState" class="form-control" name="txt_malam">
         <option>100000</option>
         <option>130000</option>
         <option>145000</option>
@@ -264,7 +264,7 @@ $status  = $row['Status'];
   </div>
   <div class="form-group">
     <label>Status</label>
-    <select id="inputState" class="form-control" name="txt_status" value="<?php echo $status;?>">
+    <select id="inputState" class="form-control" name="txt_status">
         <option>Tersedia</option>
         <option>Disewa</option>
       </select>
