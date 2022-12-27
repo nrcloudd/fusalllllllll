@@ -1,5 +1,7 @@
 <?php
 require('koneksi.php');
+?>
+<?php
 if (isset($_POST['login'])) {
     $email = $_POST['Email'];
     $pass = $_POST['Password'];
@@ -217,11 +219,41 @@ if (isset($_POST['login'])) {
           <span class="text">I agree with term & conditions</span>
         </div>
         <div class="formGroup">
-          <a type="button" class="btn2" name="register" href="home.html">Register</a>
+          <a type="button" class="btn2" name="register" href="login.php">Register</a>
         </div>
 
       
       </form>
+
+<?php
+if( isset($_POST['register']) ){
+    $userName = $_POST['username'];
+    $userMail = $_POST['Email'];
+    $userTlp = $_POST['Notelp'];
+    $userPass = $_POST['Password'];
+    $check = $_POST['checkbox'];
+
+        
+    if ($checkbox == 1) {
+      $cookie_name = "cookie_email";
+      $cookie_value = $email;
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+      $cookie_name = "cookie_password";
+      $cookie_value = md5($password);
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    }
+    header("location:login.php");
+  
+
+
+    $query = "INSERT INTO member VALUES ('', '$userName', '$userMail','$userTlp', '$userPass')";
+    $result = mysqli_query($koneksi, $query);
+    header('Location: login.php');
+}
+?>
 
       <!------ Login Form -------- -->
 
