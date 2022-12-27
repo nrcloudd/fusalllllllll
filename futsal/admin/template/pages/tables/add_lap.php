@@ -201,6 +201,10 @@
               <div class="card-body">
                 <h4 class="card-title">Field</h4>
                 <form>
+    <div class="form-group">
+    <label>Kode Lapangan</label>
+    <input type="number" class="form-control"placeholder="Enter Code Field">
+  </div>
   <div class="form-group">
     <label>Nama Lapangan</label>
     <input type="text" class="form-control"placeholder="Enter Field Name">

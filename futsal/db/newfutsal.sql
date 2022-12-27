@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Des 2022 pada 05.09
+-- Waktu pembuatan: 27 Des 2022 pada 06.07
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.12
 
@@ -45,8 +45,16 @@ CREATE TABLE `field` (
   `name` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
   `price-siang` int(50) NOT NULL,
-  `price-malam` int(50) NOT NULL
+  `price-malam` int(50) NOT NULL,
+  `Status` enum('Tersedia','Disewa') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `field`
+--
+
+INSERT INTO `field` (`id`, `name`, `type`, `price-siang`, `price-malam`, `Status`) VALUES
+(1001, 'Lap 1', 'rumput', 125000, 145000, 'Tersedia');
 
 -- --------------------------------------------------------
 
@@ -129,12 +137,6 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `field`
---
-ALTER TABLE `field`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

@@ -1,5 +1,5 @@
 <?php
-require ("../../koneksi.php");
+require ("koneksi.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -212,10 +212,13 @@ require ("../../koneksi.php");
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                <thead>
                                <tr>
-                                    <td>No</td>
-                                    <td>Email</td>
+                                    <td>Kode</td>
                                     <td>Nama</td>
-                                    <td>Aksi</td>
+                                    <td>Type</td>
+                                    <td>Harga Siang</td>
+                                    <td>Harga Malam</td>
+                                    <td>Status</td>
+                                    <td>Kontrol</td>
                                 </tr>
                                </thead>               
                                 <tbody>
@@ -223,28 +226,35 @@ require ("../../koneksi.php");
                                         $query = "SELECT * FROM field";
                                         $result = mysqli_query($koneksi, $query);
                                         $no = 1;
-                                        if($sesLvl == 1){
-                                            $dis = "";
-                                        }else{
-                                            $dis = "disabled";
-                                        }
+                                        // if($sesLvl == 1){
+                                        //     $dis = "";
+                                        // }else{
+                                        //     $dis = "disabled";
+                                        // }
 
                                      while ($row = mysqli_fetch_array($result)){
-                                            $userMail = $row['user_email'];
-                                            $userName = $row['user_fullname'];
+                                            $id=$row['id'];
+                                            $nama = $row['name'];
+                                            $type = $row['type'];
+                                            $siang = $row['price-siang'];
+                                            $malam = $row['price-malam'];
+                                            $status = $row['Status'];
                                         ?>
                                     <tr>
-                                        <td><?php echo $no; ?></td>
-                                        <td><?php echo $userMail; ?></td>
-                                        <td><?php echo $userName; ?></td>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $type; ?></td>
+                                        <td><?php echo $siang; ?></td>
+                                        <td><?php echo $malam; ?></td>
+                                        <td><?php echo $status; ?></td>
                 
                                         <td>
-                                        <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle <?php echo $dis;?>">
-                                            <i class="fas fa-pen"></i>
+                                        <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
+                                            <i class="fas fa-pen">EDIT</i> 
                                         </a> 
                                         
                                         <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');">
-                                            <i class="fas fa-trash"></i>
+                                            <i class="fas fa-trash">HAPUS</i>
                                         </a> 
                                         </td>
                                     </tr>
