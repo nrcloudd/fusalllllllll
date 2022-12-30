@@ -17,7 +17,15 @@ require ("koneksi.php");
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script> -->
+
 
 </head>
 
@@ -197,7 +205,7 @@ require ("koneksi.php");
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <!-- <div class="main-panel">
         <div class="content-wrapper">
           <div class="grid-margin stretch-card">
             <div class="card">
@@ -206,10 +214,10 @@ require ("koneksi.php");
                 <!-- <p class="card-description">
                   Add class <code>.table-hover</code>
                 </p> -->
-                <div class="table-responsive">
+              <!-- <div class="table-responsive">
                 <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table id="example" class="table table-bordered table-striped"  width="100%" cellspacing="0">
                                <thead>
                                <tr>
                                     <td>Kode</td>
@@ -267,12 +275,74 @@ require ("koneksi.php");
                         </div>
                   <div><a href="add_lap.php" class="btn btn-secondary">Add Field</a></div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="container"> 
+
+        <div class="table-responsive"> 
+            
+        <table id="example" class="table table-bordered table-striped"  width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>Kode</td>
+                    <td>Nama</td>
+                    <td>Type</td>
+                    <td>Harga Siang</td>
+                    <td>Harga Malam</td>
+                    <td>Status</td>
+                    <td>Kontrol</td>
+                </tr>   
+                                </thead>
+        <tbody>
+                                   <?php
+                                        $query = "SELECT * FROM field";
+                                        $result = mysqli_query($koneksi, $query);
+                                        $no = 1;
+                                        // if($sesLvl == 1){
+                                        //     $dis = "";
+                                        // }else{
+                                        //     $dis = "disabled";
+                                        // }
+                                        
+                                        while ($row = mysqli_fetch_array($result)){
+                                            $id=$row['id'];
+                                            $nama = $row['nama'];
+                                            $type = $row['tipe'];
+                                            $siang = $row['price-siang'];
+                                            $malam = $row['price-malam'];
+                                            $status = $row['sts'];
+                                            ?>
+                                    <tr>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $type; ?></td>
+                                        <td><?php echo $siang; ?></td>
+                                        <td><?php echo $malam; ?></td>
+                                        <td><?php echo $status; ?></td>
+                                        
+                                        <td>
+                                            <a href="edit_lap.php?op=edit&id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
+                                                <i class="fas fa-pen">EDIT</i> 
+                                            </a> 
+                                            
+                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');">
+                                                <i class="fas fa-trash">HAPUS</i>
+                                            </a> 
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $no++;        
+                                } ?>
+                                   </tbody>
+                                   
+                                </table>
+                            </div>
+                    </div>
     </div>
+  </div>
     
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->
@@ -307,6 +377,11 @@ require ("koneksi.php");
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 
 </html>
