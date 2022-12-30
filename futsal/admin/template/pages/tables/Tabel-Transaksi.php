@@ -210,15 +210,16 @@ require ("koneksi.php");
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Nama Lapangan</th>
-                        <th>Time</th>
-                        <th>Expired</th>
-                        <th>Harga</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>No.Telp</th>
+                        <th>Password</th>
+                        <th>Level</th>
                       </tr>
                     </thead>
                     <tbody>
                     <?php
-                                        $query = "SELECT * FROM transaksi";
+                                        $query = "SELECT * FROM member";
                                         $result = mysqli_query($koneksi, $query);
                                         $no = 1;
                                         // if($sesLvl == 1){
@@ -229,17 +230,19 @@ require ("koneksi.php");
 
                                      while ($row = mysqli_fetch_array($result)){
                                             $id=$row['id'];
-                                            $nama = $row['field_name'];
-                                            $time = $row['time'];
-                                            $expired = $row['exp'];
-                                            $price = $row['price'];
+                                            $name = $row['name'];
+                                            $email = $row['email'];
+                                            $notlp = $row['no_tlp'];
+                                            $password = $row['password'];
+                                            $level = $row['level'];
                                         ?>
                                     <tr>
                                         <td><?php echo $id; ?></td>
-                                        <td><?php echo $nama; ?></td>
-                                        <td><?php echo $time; ?></td>
-                                        <td><?php echo $expired; ?></td>
-                                        <td><?php echo $price; ?></td>
+                                        <td><?php echo $name; ?></td>
+                                        <td><?php echo $email; ?></td>
+                                        <td><?php echo $notlp; ?></td>
+                                        <td><?php echo $password; ?></td>
+                                        <td><?php echo $level; ?></td>
                                        
                                     </tr>
                                     <?php
