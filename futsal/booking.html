@@ -50,7 +50,7 @@
             <h1>Booking Form</h1>
             <div class="row pt-5">
               <div class="col-8">
-                <form>
+                <form class="card px-5 py-5">
                   <div class="form-group row pb-2">
                     <label for="staticlapangan" class="col-sm-2 col-form-label">Lapangan</label>
                     <div class="col-sm-10">
@@ -63,28 +63,74 @@
                       <input type="text" class="form-control" id="inputnama" placeholder="......................">
                     </div>
                   </div>
-                  <div class="form-group row pb-2">
-                    <label for="inputwaktu" class="col-sm-2 col-form-label">Waktu</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputnama" placeholder="......................">
+                  <div class="row mt-4">
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">07.00</a>
                     </div>
-                  </div>
-                  <div class="form-group row pb-2">
-                    <label for="inputexp" class="col-sm-2 col-form-label">Exp</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputnama" placeholder="......................">
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">08.00</a>
                     </div>
-                  </div>
-                  <div class="form-group row pb-2">
-                    <label for="inputprice" class="col-sm-2 col-form-label">Harga</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputnama" placeholder="......................">
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">09.00</a>
                     </div>
-                  </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">10.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">11.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">12.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">13.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">14.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">15.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">16.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">17.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">18.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">19.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">20.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">21.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">22.00</a>
+                    </div>
+                    <div class="col-3 p-xs-0 mb-1 pb-2">
+                        <a href="#" class="btn button-6">23.00</a>
+                    </div>
+                    <a href="" class="btn">Konfirmasi</a>
+                </div>
                 </form> 
               </div>
               <div class="col-4">
-
+                <div class="card px-4 py-4">
+                  <img class="card-img-top" src="../uploaded_img/<?= $fetch_products['gambar']; ?>" alt="Card image cap">
+                  <p>Nama Lapangan</p>
+                  <p class="card-text">
+                    <li><span>Rp. </span><?php echo " " . number_format($fetch_products['price-siang'],0,',','.'); ?><span></span></li>
+                    <li><span>Rp. </span><?php echo " " . number_format($fetch_products['price-malam'],0,',','.'); ?><span></span></li>
+                    <p class="card-text"><?= $fetch_products['type'];?>
+                    </p>
+                  <p>waktu</p>
+                  <a href="" class="btn">Konfimasi Pembayaran</a>
+                </div>
               </div>
             </div>
             
