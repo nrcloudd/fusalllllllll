@@ -39,22 +39,21 @@
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="home.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="rent.php" class="nav-link">Rent</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link">Gallery</a>
+                        <a href="home.html" class="nav-link scrollto">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#login" class="nav-link scrollto">Contact</a>
+                        <a href="home.html" class="nav-link scrollto">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a href="login.php" class="nav-link">Login</a>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
