@@ -1,3 +1,63 @@
+<?php
+require('koneksi.php');
+?>
+<?php
+if (isset($_POST['login'])) {
+    $email = $_POST['Email'];
+    $pass = $_POST['Password'];
+    $check = $_POST['checkbox'];
+
+        
+    if ($checkbox == 1) {
+      $cookie_name = "cookie_email";
+      $cookie_value = $email;
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+      $cookie_name = "cookie_password";
+      $cookie_value = md5($password);
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    }
+    header("location:login.php");
+  
+    
+    if (!empty(trim($email)) && !empty(trim($pass))) {
+        $query      = "SELECT * FROM member WHERE email = '$email'";
+        $result     = mysqli_query($koneksi, $query);
+        $num        = mysqli_num_rows($result);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row['id'];
+            $userName = $row['name'];
+            $userEmail = $row['email'];
+            $userTlp = $row['no_tlp'];
+            $passVal = $row['password'];
+
+        }
+
+        if ($num != 0) {
+            if ($userEmail==$email && $passVal==$pass) {
+                $_SESSION['id'] = $id;
+                $_SESSION['name'] = $userName;
+                $_SESSION['email'] = $UserEmail;
+                header('Location: home.html');
+            }else{
+                $error = 'user atau password salah!!';
+                echo "<script>alert('$error')</script>";
+                header('Location: login.php');
+            }
+        }else{
+            $error = 'user tidak ditemukan!!';
+            echo "<script>alert('$error')</script>";
+            header('Location: login.php');
+        }
+    }else{
+        $error = 'Data tidak boleh kosong!!';
+        echo "<script>alert('$error')</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,10 +158,12 @@
     }
 
     .btn2 {
+      text-decoration: none;
+      text-align: center;
       padding: 10px;
       width: 150px;
       border-radius: 20px;
-      background-color: #444444;
+      background-color: #444444;  
       border-style: none;
       color: white;
       font-weight: 600;
@@ -132,6 +194,7 @@
 </head>
 
 <body>
+
   <div class="container">
     <div class="form">
       <div class="btn">
@@ -140,52 +203,67 @@
       </div>
       <form class="signUp" action="" method="get">
         <div class="formGroup">
-          <input type="text" id="userName" placeholder="User Name" autocomplete="off">
+          <input type="text" name="username" id="userName" placeholder="User Name" autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="email" placeholder="Email ID" name="email" required autocomplete="off">
+          <input type="email" name="Email" placeholder="Email ID" name="email" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="text" id="notelp" placeholder="No.Telp" required autocomplete="off">
+          <input type="text" name="Notelp" id="notelp" placeholder="No.Telp" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
         </div>
         <div class="checkBox">
           <input type="checkbox" name="checkbox" id="checkbox">
           <span class="text">I agree with term & conditions</span>
         </div>
         <div class="formGroup">
-          <button type="button" class="btn2">Register</button>
+          <a type="button" class="btn2" name="register" href="login.php">Register</a>
         </div>
 
+      
       </form>
-      <?php
-      require('koneksi.php');
-      $username = $_POST["username"];
-      $email = $_POST["email"];
-      $password = $_POST["password"];
-      $cpassword = $_POST["cpassword"];
 
-      $query_sql = "INSERT INTO tbl_pendaftaran (username, password, email) 
-                                    VALUES ('$username', '$password', '$email')";
+<?php
+if( isset($_POST['register']) ){
+    $userName = $_POST['username'];
+    $userMail = $_POST['Email'];
+    $userTlp = $_POST['Notelp'];
+    $userPass = $_POST['Password'];
+    $check = $_POST['checkbox'];
 
-      if (mysqli_query($conn, $query_sql)) {
-        echo "<h1>Username $username berhasil terdaftar</h1>
-            <a href='pages/login.php'>Kembali Login</h1>
-         ";
-      } else {
-        echo "Pendaftaran Gagal : " . mysqli_error($conn);
-      }
-      ?>
+        
+    if ($checkbox == 1) {
+      $cookie_name = "cookie_email";
+      $cookie_value = $email;
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+      $cookie_name = "cookie_password";
+      $cookie_value = md5($password);
+      $cookie_time = time() + (60 * 60 * 24 * 30);
+      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    }
+    header("location:login.php");
+  
+
+
+    $query = "INSERT INTO member VALUES ('', '$userName', '$userMail','$userTlp', '$userPass')";
+    $result = mysqli_query($koneksi, $query);
+    header('Location: login.php');
+}
+?>
+
       <!------ Login Form -------- -->
+
       <form class="login" action="" method="get">
 
         <div class="formGroup">
-          <input type="email" placeholder="Email ID" name="email" required autocomplete="off">
+          <input type="email"  placeholder="Email ID" name="Email" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
 
         </div>
         <div class="checkBox">
@@ -193,14 +271,14 @@
           <span class="text">Keep me signed in on this device</span>
         </div>
         <div class="formGroup">
-          <button type="button" class="btn2" href="index.html">Login</button>
+          <a type="button" class="btn2" href="home.html">Login</a>
         </div>
-
+        
       </form>
 
     </div>
   </div>
-
+  
   <script src="login.js"></script>
 </body>
 

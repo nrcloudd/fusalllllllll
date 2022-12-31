@@ -1,5 +1,5 @@
 <?php
-require ("../../koneksi.php");
+require ("koneksi.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,15 @@ require ("../../koneksi.php");
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script> -->
+
 
 </head>
 
@@ -170,34 +178,40 @@ require ("../../koneksi.php");
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../../dashboard.html">
+        <li class="nav-item">
+        <a class="nav-link" href="../../dashboard.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/basic-table.html">
+            <a class="nav-link" href="Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Data Register</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/tabel_lapangan.php">
+            <a class="nav-link" href="Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Lapangan</span>
+              <span class="menu-title">Data Transaksi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables-rent/tables-rent.html">
+            <a class="nav-link" href="Tabel-Detailtransaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Transaksi</span>
+              <span class="menu-title">Data Detail Transaksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tabel_lapangan.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Lapangan</span>
             </a>
           </li>
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+      <!-- <div class="main-panel">
         <div class="content-wrapper">
           <div class="grid-margin stretch-card">
             <div class="card">
@@ -206,16 +220,19 @@ require ("../../koneksi.php");
                 <!-- <p class="card-description">
                   Add class <code>.table-hover</code>
                 </p> -->
-                <div class="table-responsive">
+              <!-- <div class="table-responsive">
                 <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table id="example" class="table table-bordered table-striped"  width="100%" cellspacing="0">
                                <thead>
                                <tr>
-                                    <td>No</td>
-                                    <td>Email</td>
+                                    <td>Kode</td>
                                     <td>Nama</td>
-                                    <td>Aksi</td>
+                                    <td>Type</td>
+                                    <td>Harga Siang</td>
+                                    <td>Harga Malam</td>
+                                    <td>Status</td>
+                                    <td>Kontrol</td>
                                 </tr>
                                </thead>               
                                 <tbody>
@@ -223,28 +240,35 @@ require ("../../koneksi.php");
                                         $query = "SELECT * FROM field";
                                         $result = mysqli_query($koneksi, $query);
                                         $no = 1;
-                                        if($sesLvl == 1){
-                                            $dis = "";
-                                        }else{
-                                            $dis = "disabled";
-                                        }
+                                        // if($sesLvl == 1){
+                                        //     $dis = "";
+                                        // }else{
+                                        //     $dis = "disabled";
+                                        // }
 
                                      while ($row = mysqli_fetch_array($result)){
-                                            $userMail = $row['user_email'];
-                                            $userName = $row['user_fullname'];
+                                            $id=$row['id'];
+                                            $nama = $row['nama'];
+                                            $type = $row['tipe'];
+                                            $siang = $row['price-siang'];
+                                            $malam = $row['price-malam'];
+                                            $status = $row['sts'];
                                         ?>
                                     <tr>
-                                        <td><?php echo $no; ?></td>
-                                        <td><?php echo $userMail; ?></td>
-                                        <td><?php echo $userName; ?></td>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $type; ?></td>
+                                        <td><?php echo $siang; ?></td>
+                                        <td><?php echo $malam; ?></td>
+                                        <td><?php echo $status; ?></td>
                 
                                         <td>
-                                        <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle <?php echo $dis;?>">
-                                            <i class="fas fa-pen"></i>
+                                        <a href="edit_lap.php?op=edit&id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
+                                            <i class="fas fa-pen">EDIT</i> 
                                         </a> 
                                         
                                         <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');">
-                                            <i class="fas fa-trash"></i>
+                                            <i class="fas fa-trash">HAPUS</i>
                                         </a> 
                                         </td>
                                     </tr>
@@ -257,12 +281,74 @@ require ("../../koneksi.php");
                         </div>
                   <div><a href="add_lap.php" class="btn btn-secondary">Add Field</a></div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="container"> 
+
+        <div class="table-responsive"> 
+            
+        <table id="example" class="table table-bordered table-striped"  width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>Kode</td>
+                    <td>Nama</td>
+                    <td>Type</td>
+                    <td>Harga Siang</td>
+                    <td>Harga Malam</td>
+                    <td>Status</td>
+                    <td>Kontrol</td>
+                </tr>   
+                                </thead>
+        <tbody>
+                                   <?php
+                                        $query = "SELECT * FROM field";
+                                        $result = mysqli_query($koneksi, $query);
+                                        $no = 1;
+                                        // if($sesLvl == 1){
+                                        //     $dis = "";
+                                        // }else{
+                                        //     $dis = "disabled";
+                                        // }
+                                        
+                                        while ($row = mysqli_fetch_array($result)){
+                                            $id=$row['id'];
+                                            $nama = $row['nama'];
+                                            $type = $row['tipe'];
+                                            $siang = $row['price-siang'];
+                                            $malam = $row['price-malam'];
+                                            $status = $row['sts'];
+                                            ?>
+                                    <tr>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $type; ?></td>
+                                        <td><?php echo $siang; ?></td>
+                                        <td><?php echo $malam; ?></td>
+                                        <td><?php echo $status; ?></td>
+                                        
+                                        <td>
+                                            <a href="edit_lap.php?op=edit&id=<?php echo $row['id'];?>" class="btn btn-primary btn-circle">
+                                                <i class="fas fa-pen">EDIT</i> 
+                                            </a> 
+                                            
+                                            <a href="#" class="btn btn-danger btn-circle <?php echo $dis;?>" onClick="confirmModal('hapus.php?&id=<?php echo $row['id']; ?>');">
+                                                <i class="fas fa-trash">HAPUS</i>
+                                            </a> 
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $no++;        
+                                } ?>
+                                   </tbody>
+                                   
+                                </table>
+                            </div>
+                    </div>
     </div>
+  </div>
     
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->
@@ -297,6 +383,11 @@ require ("../../koneksi.php");
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 
 </html>

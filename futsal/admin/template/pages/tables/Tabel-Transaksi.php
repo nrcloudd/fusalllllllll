@@ -1,17 +1,5 @@
 <?php
-require ('koneksi.php');
-if( isset($_POST['register'])){
-    $id   = $_POST['id'];
-    $name   = $_POST['txt_name'];
-    $type  = $_POST['txt_type'];
-    $siang  = $_POST['txt_siang'];
-    $malam  = $_POST['txt_malam'];
-    $status  = $_POST['txt_status'];
-
-    $query  = "INSERT INTO field VALUE ('$id','$name','$type','$siang','$malam','$status')";
-    $result = mysqli_query($koneksi,$query);
-    header('Location: tabel_lapangan.php');
-}
+require ("koneksi.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +18,6 @@ if( isset($_POST['register'])){
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -182,28 +169,34 @@ if( isset($_POST['register'])){
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../../dashboard.html">
+        <li class="nav-item">
+        <a class="nav-link" href="../../dashboard.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/basic-table.html">
+            <a class="nav-link" href="Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Data Register</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/tabel_lapangan.php">
+            <a class="nav-link" href="Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Lapangan</span>
+              <span class="menu-title">Data Transaksi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables-rent/tables-rent.html">
+            <a class="nav-link" href="Tabel-Detailtransaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Transaksi</span>
+              <span class="menu-title">Data Detail Transaksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tabel_lapangan.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Lapangan</span>
             </a>
           </li>
         </ul>
@@ -214,58 +207,62 @@ if( isset($_POST['register'])){
           <div class="grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Field</h4>
+                <h4 class="card-title">Tabel Transaksi</h4>
+                <p class="card-description">
+                 
+                </p>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nama Field</th>
+                        <th>Time</th>
+                        <th>Exp</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                                        $query = "SELECT * FROM transaksi";
+                                        $result = mysqli_query($koneksi, $query);
+                                        $no = 1;
+                                        // if($sesLvl == 1){
+                                        //     $dis = "";
+                                        // }else{
+                                        //     $dis = "disabled";
+                                        // }
 
-                <!-- ==================Form Add Table Lapangan================== -->
-<form method = "POST" action = "add_lap.php">
-    <div class="form-group">
-    <label>Kode Lapangan</label>
-    <input type="number" class="form-control"placeholder="Enter Code Field" name="id">
-  </div>
-  <div class="form-group">
-    <label>Nama Lapangan</label>
-    <input type="text" class="form-control"placeholder="Enter Field Name" name="txt_name">
-  </div>
-  <div class="form-group">
-      <label>Type</label>
-      <select id="inputState" class="form-control" name="txt_type">
-        <option selected>Reguler</option>
-        <option>Jumbo</option>
-        <option>Rumput</option>
-      </select>
-    </div>
-    <div class="form-group">
-    <label>Harga Siang</label>
-    <select id="inputState" class="form-control" name="txt_siang">
-        <option selected>80000</option>
-        <option>110000</option>
-        <option>125000</option>
-      </select>
-  </div>
-  <div class="form-group">
-    <label>Harga Malam</label>
-    <select id="inputState" class="form-control" name="txt_malam">
-        <option selected>100000</option>
-        <option>130000</option>
-        <option>145000</option>
-      </select>
-  </div>
-  <div class="form-group">
-    <label>Status</label>
-    <select id="inputState" class="form-control" name="txt_status">
-        <option selected>Tersedia</option>
-        <option>Disewa</option>
-      </select>
-  </div>
-  <button type="submit" class="btn btn-primary" name="register">Submit</button>
-</form>
+                                     while ($row = mysqli_fetch_array($result)){
+                                            $id=$row['id'];
+                                            $name = $row['field_name'];
+                                            $time = $row['time'];
+                                            $exp = $row['exp'];
+                                            $price = $row['price'];
+                                        ?>
+                                    <tr>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $name; ?></td>
+                                        <td><?php echo $time; ?></td>
+                                        <td><?php echo $exp; ?></td>
+                                        <td><?php echo $price; ?></td>
+                                        <td><?php echo $level; ?></td>
+                                       
+                                    </tr>
+                                    <?php
+                                    $no++;        
+                                    } ?>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
