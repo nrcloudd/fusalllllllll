@@ -178,28 +178,34 @@ require ("koneksi.php");
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../../dashboard.html">
+        <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/basic-table.html">
+            <a class="nav-link" href="pages/tables/Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Data Register</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/tabel_lapangan.php">
+            <a class="nav-link" href="pages/tables/Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Lapangan</span>
+              <span class="menu-title">Data Transaksi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/Tabel-Transaksi.php">
+            <a class="nav-link" href="pages/tables/Tabel-Detailtransaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Transaksi</span>
+              <span class="menu-title">Data Detail Transksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/tables/Tabel-Detailtransaksi.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Lapangan</span>
             </a>
           </li>
         </ul>
