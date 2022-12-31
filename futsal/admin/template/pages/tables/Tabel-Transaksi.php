@@ -169,28 +169,34 @@ require ("koneksi.php");
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../../dashboard.html">
+        <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/basic-table.html">
+            <a class="nav-link" href="pages/tables/Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Data Register</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/tabel_lapangan.php">
+            <a class="nav-link" href="pages/tables/Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Lapangan</span>
+              <span class="menu-title">Data Transaksi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/Tabel-Transaksi.php">
+            <a class="nav-link" href="pages/tables/Tabel-Detailtransaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Transaksi</span>
+              <span class="menu-title">Data Detail Transaksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/tables/tabel_lapangan.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Lapangan</span>
             </a>
           </li>
         </ul>
@@ -210,16 +216,17 @@ require ("koneksi.php");
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>No.Telp</th>
-                        <th>Password</th>
-                        <th>Level</th>
+                        <th>Nama Field</th>
+                        <th>Time</th>
+                        <th>Exp</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                     <?php
-                                        $query = "SELECT * FROM member";
+                                        $query = "SELECT * FROM transaksi";
                                         $result = mysqli_query($koneksi, $query);
                                         $no = 1;
                                         // if($sesLvl == 1){
@@ -230,18 +237,17 @@ require ("koneksi.php");
 
                                      while ($row = mysqli_fetch_array($result)){
                                             $id=$row['id'];
-                                            $name = $row['name'];
-                                            $email = $row['email'];
-                                            $notlp = $row['no_tlp'];
-                                            $password = $row['password'];
-                                            $level = $row['level'];
+                                            $name = $row['field_name'];
+                                            $time = $row['time'];
+                                            $exp = $row['exp'];
+                                            $price = $row['price'];
                                         ?>
                                     <tr>
                                         <td><?php echo $id; ?></td>
                                         <td><?php echo $name; ?></td>
-                                        <td><?php echo $email; ?></td>
-                                        <td><?php echo $notlp; ?></td>
-                                        <td><?php echo $password; ?></td>
+                                        <td><?php echo $time; ?></td>
+                                        <td><?php echo $exp; ?></td>
+                                        <td><?php echo $price; ?></td>
                                         <td><?php echo $level; ?></td>
                                        
                                     </tr>
