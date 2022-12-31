@@ -175,6 +175,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../tables/employe.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Karyawan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../tables/basic-table.php">
                             <i class="ti-view-list-alt menu-icon"></i>
                             <span class="menu-title">Member</span>

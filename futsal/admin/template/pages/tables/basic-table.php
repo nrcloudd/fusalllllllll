@@ -175,6 +175,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../tables/employe.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Karyawan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../tables/basic-table.php">
                             <i class="ti-view-list-alt menu-icon"></i>
                             <span class="menu-title">Member</span>
@@ -198,6 +204,62 @@
                                 <p class="card-description">
                                     Add class <code>.table-hover</code>
                                 </p>
+                                <div class="modal fade" id="modalTambah" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Member
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="" method="POST">
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Nama</label>
+                                                        <input type="text" class="form-control"
+                                                            id="exampleFormControlInput1" placeholder="Masukkan Nama"
+                                                            name="nama" required>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlTextarea1"
+                                                            class="form-label">Email</label>
+                                                        <input type="email" class="form-control"
+                                                            id="exampleFormControlInput1" placeholder="Masukkan Email"
+                                                            name="email" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlTextarea1"
+                                                            class="form-label">Password</label>
+                                                        <input type="password" class="form-control"
+                                                            id="exampleFormControlInput1"
+                                                            placeholder="Masukkan Password" name="password" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlTextarea1" class="form-label">No
+                                                            Telepon</label>
+                                                        <input type="tel" class="form-control"
+                                                            id="exampleFormControlInput1"
+                                                            placeholder="Masukkan No Telepon" name="no_telepon"
+                                                            required>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary"
+                                                        name="bsimpan">Simpan</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-dismiss="modal">Batal</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
