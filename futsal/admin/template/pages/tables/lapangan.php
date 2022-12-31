@@ -28,12 +28,14 @@
 include 'connect.php';
 
 if (isset($_POST['bsimpan'])) {
+    $kode = $_POST['id'];
+    $name = $_POST['nama'];
+    $tipe = $_POST['tipe'];
+    $siang = $_POST['siang'];
+    $malam = $_POST['malam'];
+    $status = $_POST['status'];
 
-    $nama_lengkap = $_POST['nama'];
-    $email = $_POST['email'];
-    $level = $_POST['level'];
-
-    $queryy = "INSERT INTO admin (nama,email,level) VALUES ('$nama_lengkap','$email','$level')";
+    $queryy = "INSERT INTO field VALUES ('$kode','$name','$tipe','$siang','$malam','$status')";
 
     $result = mysqli_query($koneksi, $queryy);
     $success = "Data Berhasil Ditambahkan";
@@ -44,7 +46,7 @@ if (isset($_POST['bsimpan'])) {
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'lapangan.php';
         })
               </script>";
     } else {
@@ -53,7 +55,7 @@ if (isset($_POST['bsimpan'])) {
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'lapangan.php';
         })
               </script>";
     }
@@ -61,10 +63,12 @@ if (isset($_POST['bsimpan'])) {
 
 if (isset($_POST['bUbah'])) {
 
-    $ubah = mysqli_query($koneksi, "UPDATE admin SET 
+    $ubah = mysqli_query($koneksi, "UPDATE field SET 
         nama = '$_POST[nama]',
-        email = '$_POST[email]',
-        level = '$_POST[level]'
+        tipe = '$_POST[tipe]',
+        priceSiang = '$_POST[siang]',
+        priceMalam = '$_POST[malam]',        
+        sts = '$_POST[status]'
         WHERE id = '$_POST[id]'
     ");
     // header('location: member.php');
@@ -80,7 +84,7 @@ if (isset($_POST['bUbah'])) {
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'lapangan.php';
         })
               </script>";
     } else {
@@ -89,7 +93,7 @@ if (isset($_POST['bUbah'])) {
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'lapangan.php';
         })
               </script>";
     }
@@ -98,7 +102,7 @@ if (isset($_POST['bUbah'])) {
 
 if (isset($_POST['bhapus'])) {
 
-    $hapus = mysqli_query($koneksi, "DELETE FROM admin
+    $hapus = mysqli_query($koneksi, "DELETE FROM field
                 WHERE id = '$_POST[id]'
             ");
 
@@ -112,7 +116,7 @@ if (isset($_POST['bhapus'])) {
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'lapangan.php';
         })
               </script>";
     } else {
@@ -121,11 +125,13 @@ if (isset($_POST['bhapus'])) {
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'lapangan.php';
         })
               </script>";
     }
 }
+
+
 ?>
 
     <div class="container-scroller">
@@ -338,37 +344,51 @@ if (isset($_POST['bhapus'])) {
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <form action="" method="POST">
-                                                    <div class="modal-body">
-                                                        <div class="mb-3">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label">Nama</label>
-                                                            <input type="text" class="form-control"
-                                                                id="exampleFormControlInput1"
-                                                                placeholder="Masukkan Nama" name="nama" required>
-                                                        </div>
-
-                                                        <div class="mb-3">
-                                                            <label for="exampleFormControlTextarea1"
-                                                                class="form-label">Email</label>
-                                                            <input type="email" class="form-control"
-                                                                id="exampleFormControlInput1"
-                                                                placeholder="Masukkan Email" name="email" required>
-                                                        </div>
-
-                                                        <div class="mb-3">
-                                                            <label for="exampleFormControlTextarea1"
-                                                                class="form-label">Level</label>
-                                                            <input type="number" class="form-control"
-                                                                id="exampleFormControlInput1"
-                                                                placeholder="Masukkan Level" name="level" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary"
-                                                            name="bsimpan">Simpan</button>
-                                                        <button type="button" class="btn btn-danger"
-                                                            data-bs-dismiss="modal">Batal</button>
-                                                    </div>
+                                                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Kode</label>
+                        <input type="text" placeholder="Masukkan Kode Lapangan" name="id" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Nama Lapangan</label>
+                        <input type="text" placeholder="Masukkan Nama Lapangan" name="nama" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Tipe</label>
+                        <select name="tipe" id="" class='form-select'>
+                            <option value="reguler" selected>Reguler</option>
+                            <option value="jumbo">Jumbo</option>
+                            <option value="rumput">Rumput</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Harga Siang</label>
+                        <select name="siang" id="" class='form-select'>
+                            <option value="80000" selected>Rp 80.000</option>
+                            <option value="110000">Rp 110.000</option>
+                            <option value="125000">Rp 125.000</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Harga Malam</label>
+                        <select name="malam" id="" class='form-select'>
+                            <option value="100000" selected>Rp 100.000</option>
+                            <option value="130000">Rp 130.000</option>
+                            <option value="145000">Rp 145.000</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Status</label>
+                        <select name="status" id="" class='custom-select'>
+                            <option value="Tersedia" selected>Tersedia</option>
+                            <option value="Disewa">Disewa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class ='modal-footer'>
+                    <button type="submit" class="btn btn-primary" name="bsimpan">Simpan</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -378,28 +398,39 @@ if (isset($_POST['bhapus'])) {
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="karyawan">
                                         <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Email</th>
-                                                <th>Level</th>
-                                                <th>Action</th>
-
-                                            </tr>
+                                        <tr>
+                                            <td>No</td>
+                                            <td>Kode</td>
+                                            <td>Nama</td>
+                                            <td>Type</td>
+                                            <td>Harga Siang</td>
+                                            <td>Harga Malam</td>
+                                            <td>Status</td>
+                                            <td>Kontrol</td>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                                             $no =  1;
                                             require 'connect.php';
-                                            $query = mysqli_query($koneksi, "SELECT * FROM admin ");
-                                           while( $ambil = mysqli_fetch_array($query)) {
+                                            $query = mysqli_query($koneksi, "SELECT * FROM field ");
+                                           while( $row = mysqli_fetch_array($query)) {
+                                            $id=$row['id'];
+                                            $nama = $row['nama'];
+                                            $type = $row['tipe'];
+                                            $siang = $row['priceSiang'];
+                                            $malam = $row['priceMalam'];
+                                            $status = $row['sts'];
                                         
                                             ?>
                                             <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $ambil['nama'] ?></td>
-                                                <td><?php echo $ambil['email'] ?></td>
-                                                <td><?php echo $ambil['level'] ?></td>
+                                            <td><?php echo $no++;?></td>
+                                        <td><?php echo $id; ?></td>
+                                        <td><?php echo $nama; ?></td>
+                                        <td><?php echo $type; ?></td>
+                                        <td><?php echo $siang; ?></td>
+                                        <td><?php echo $malam; ?></td>
+                                        <td><?php echo $status; ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"
@@ -423,37 +454,51 @@ if (isset($_POST['bhapus'])) {
                                                         <form action="" method="POST">
 
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="id" id="id"
-                                                                    value="<?= $ambil['id'];  ?>">
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label">Nama</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan Nama" name="nama"
-                                                                        value="<?= $ambil['nama'] ?>" required>
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlTextarea1"
-                                                                        class="form-label">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan Email" name="email"
-                                                                        value="<?= $ambil['email']; ?>" required>
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlTextarea1"
-                                                                        class="form-label">Password</label>
-                                                                    <input type="number" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan level" name="level"
-                                                                        value="<?= $ambil['level'] ?>" required>
-                                                                </div>
-
-
+                                                            <div class="mb-3">
+                                                                <!-- <label for="" class='form-label'>Kode</label> -->
+                                                                <input type="hidden" placeholder="Masukkan Kode Lapangan" name="id" class="form-control" value="<?=$id?>" id="id" readonly>
                                                             </div>
+                    
+                                                            <div class="mb-3">
+                                                                <label for="" class='form-label'>Nama Lapangan</label>
+                                                                <input type="text" placeholder="Masukkan Nama Lapangan" value="<?=$nama?>" name="nama" class="form-control" value required>
+                                                            </div>
+                    
+                                                            <div class="mb-3">
+                                                                <label for="" class='form-label'>Tipe</label>
+                                                                <select name="tipe" value="<?=$type?>" id="" class='form-select'>
+                                                                    <option <?php if($type == 'reguler'){echo "selected";}?>value="reguler">Reguler</option>
+                                                                    <option <?php if($type == 'jumbo'){echo "selected";}?> value="jumbo">Jumbo</option>
+                                                                    <option <?php if($type == 'rumput'){echo "selected";}?>value="rumput">Rumput</option>
+                                                                </select>
+                                                            </div>
+                    
+                                                            <div class="mb-3">
+                                                                <label for="" class='form-label'>Harga Siang</label>
+                                                                <select name="siang" id="" class='form-select'>
+                                                                    <option <?php if($siang == '80000'){echo "selected";}?> value="80000">Rp 80.000</option>
+                                                                    <option <?php if($siang == '100000'){echo "selected";}?> value="110000">Rp 110.000</option>
+                                                                    <option <?php if($siang == '125000'){echo "selected";}?> value="125000">Rp 125.000</option>
+                                                                </select>
+                                                            </div>
+                    
+                                                            <div class="mb-3">
+                                                                <label for="" class='form-label'>Harga Malam</label>
+                                                                <select name="malam" id="" class='form-select'>
+                                                                    <option <?php if($malam == '100000'){echo "selected";}?> value="100000" >Rp 100.000</option>
+                                                                    <option <?php if($malam == '130000'){echo "selected";}?> value="130000">Rp 130.000</option>
+                                                                    <option <?php if($malam == '145000'){echo "selected";}?>value="145000">Rp 145.000</option>
+                                                                </select>
+                                                            </div>
+                    
+                                                            <div class="mb-3">
+                                                                <label for="" class='form-label'>Status</label>
+                                                                <select name="status" id="" class='form-select'>
+                                                                    <option <?php if($status == 'Tersedia'){echo "selected";}?> value="Tersedia">Tersedia</option>
+                                                                    <option <?php if($status == 'Disewa'){echo "selected";}?> value="Disewa">Disewa</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                             <div class="modal-footer">
                                                                 <button type="submit" class="btn btn-primary"
                                                                     name="bUbah">Ubah</button>
@@ -472,18 +517,18 @@ if (isset($_POST['bhapus'])) {
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                                                Konfirmasi Hapus Data Karyawan</h1>
+                                                                Konfirmasi Hapus Data Lapangan</h1>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <form action="" method="POST">
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="id" id="id"
-                                                                    value="<?= $ambil['id'];  ?>">
+                                                                    value="<?= $row['id'];  ?>">
                                                                 <h5 class="text-center">Apakah anda yakin akan menghapus
                                                                     data ini ? <br>
-                                                                    <span class="text-danger"><?= $ambil['id'] ?> -
-                                                                        <?= $ambil['nama']  ?></span>
+                                                                    <span class="text-danger"><?= $row['id'] ?> -
+                                                                        <?= $row['nama']  ?></span>
                                                                 </h5>
                                                             </div>
                                                             <div class="modal-footer">
