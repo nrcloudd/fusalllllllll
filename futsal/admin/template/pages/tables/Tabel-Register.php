@@ -170,31 +170,31 @@ require ("koneksi.php");
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="admin\template/dashboard.html">
+            <a class="nav-link" href="../../dashboard.html">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/Tabel-Register.php">
+            <a class="nav-link" href="Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Register</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/Tabel-Transaksi.php">
+            <a class="nav-link" href="Tabel-Transaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Transaksi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/Tabel-Detailtransaksi.php">
+            <a class="nav-link" href="Tabel-Detailtransaksi.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Detail Transaksi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/tabel_lapangan.php">
+            <a class="nav-link" href="tabel_lapangan.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Lapangan</span>
             </a>
