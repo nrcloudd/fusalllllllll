@@ -55,33 +55,6 @@ if (isset($_POST['login'])) {
   // }
   // header("location:login.php");
 
-<<<<<<< Updated upstream
-
-
-
-  if (!empty(trim($email)) && !empty(trim($pass))) {
-    $query = "SELECT * FROM member WHERE email = '$email'";
-    $result = mysqli_query($koneksi, $query);
-    $num = mysqli_num_rows($result);
-
-    while ($row = mysqli_fetch_array($result)) {
-      $id = $row['id'];
-      $userName = $row['name'];
-      $userEmail = $row['email'];
-      $passVal = $row['password'];
-      $userTlp = $row['no_tlp'];
-
-    }
-
-    if ($num != 0) {
-      if ($userEmail == $email && $passVal == $pass) {
-        $_SESSION['id'] = $id;
-        $_SESSION['name'] = $userName;
-        $_SESSION['email'] = $UserEmail;
-        header('Location: home.php');
-      } else {
-        $error = 'user atau password salah!!';
-=======
   
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
@@ -116,18 +89,9 @@ if (isset($_POST['login'])) {
         }
     }else{
         $error = 'Data tidak boleh kosong!!';
->>>>>>> Stashed changes
         echo "<script>alert('$error')</script>";
         header('Location: login.php');
       }
-    } else {
-      $error = 'user tidak ditemukan!!';
-      echo "<script>alert('$error')</script>";
-      header('Location: login.php');
-    }
-  } else {
-    $error = 'Data tidak boleh kosong!!';
-    echo "<script>alert('$error')</script>";
   }
 
   if (isset($_POST['regis'])) {
@@ -161,7 +125,7 @@ if (isset($_POST['login'])) {
             </script>";
     }
   }
-}
+
 ?>
 
 <!DOCTYPE html>

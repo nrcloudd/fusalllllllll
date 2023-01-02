@@ -52,20 +52,44 @@ $sesLvl = $_SESSION['email'];
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="home.html" class="nav-link">Home</a>
+                        <a href="home.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="rent.php" class="nav-link">Rent</a>
                     </li>
                     <li class="nav-item">
-                        <a href="home.html" class="nav-link scrollto">Gallery</a>
+                        <a href="home.php#gallery" class="nav-link scrollto">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a href="home.html" class="nav-link scrollto">Contact</a>
+                        <a href=home.php#contact class="nav-link scrollto">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Login</a>
-                    </li>
+                    <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $sesName; ?></span>
+              <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="login.php" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+              </a>
+            </div>
+          </li>
                 </ul>
             </div>
         </div>
