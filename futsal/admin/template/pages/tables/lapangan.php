@@ -283,38 +283,45 @@ if (isset($_POST['bhapus'])) {
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../dashboard.html">
-                            <i class="ti-shield menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../tables/employe.php">
-                            <i class="ti-view-list-alt menu-icon"></i>
-                            <span class="menu-title">Karyawan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../tables/basic-table.php">
-                            <i class="ti-view-list-alt menu-icon"></i>
-                            <span class="menu-title">Member</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../tables-rent/tables-rent.php">
-                            <i class="ti-view-list-alt menu-icon"></i>
-                            <span class="menu-title">Transaksi</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../tables/lapangan.php">
-                            <i class="ti-view-list-alt menu-icon"></i>
-                            <span class="menu-title">Lapangan</span>
-                        </a>
-                    </li>
+           <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+        <li class="nav-item">
+        <a class="nav-link" href="../../dashboard.html">
+              <i class="ti-shield menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../tables/employe.php">
+                <i class="ti-view-list-alt menu-icon"></i>
+                <span class="menu-title">Data Karyawan</span>
+            </a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Tabel-Register.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Register</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Tabel-Transaksi.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Transaksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Tabel-Detailtransaksi.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Detail Transaksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../tables/lapangan.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Lapangan</span>
+            </a>
+          </li>
+          
                 </ul>
             </nav>
             <!-- partial -->
@@ -416,11 +423,11 @@ if (isset($_POST['bhapus'])) {
                                             $query = mysqli_query($koneksi, "SELECT * FROM field ");
                                            while( $row = mysqli_fetch_array($query)) {
                                             $id=$row['id'];
-                                            $nama = $row['nama'];
-                                            $type = $row['tipe'];
-                                            $siang = $row['priceSiang'];
-                                            $malam = $row['priceMalam'];
-                                            $status = $row['sts'];
+                                            $nama = $row['name'];
+                                            $type = $row['type'];
+                                            $siang = $row['price-siang'];
+                                            $malam = $row['price-malam'];
+                                            $status = $row['Status'];
                                         
                                             ?>
                                             <tr>
