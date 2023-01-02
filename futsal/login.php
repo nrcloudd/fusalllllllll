@@ -1,25 +1,61 @@
 <?php
 require('koneksi.php');
-?>
-<?php
+session_start();
+
+if (isset($_POST['register'])) {
+  $userName = $_POST['username'];
+  $userMail = $_POST['email'];
+  $userTlp = $_POST['notelp'];
+  $userPass = $_POST['password'];
+  // $check = $_POST['checkbox'];
+
+
+  // if ($check == 1) {
+  //   $cookie_name = "cookie_email";
+  //   $cookie_value = $email;
+  //   $cookie_time = time() + (60 * 60 * 24 * 30);
+  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+  //   $cookie_name = "cookie_password";
+  //   $cookie_value = md5($password);
+  //   $cookie_time = time() + (60 * 60 * 24 * 30);
+  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+  //   header("location:login.php");
+  // }
+
+  $query = "INSERT INTO member VALUES (null,'$userName', '$userMail','$userPass','$userTlp')";
+  $result = mysqli_query($koneksi, $query);
+  if ($result) {
+    echo "<script> alert('selamat kamu berhasil')</script>";
+    header('Location: home.html');
+    ob_end_flush();
+  } else {
+    echo "<script> alert('kamu gagal')</script>";
+    header('Location: login.php');
+    ob_end_flush();
+  }
+}
+
 if (isset($_POST['login'])) {
     $email = $_POST['Email'];
     $pass = $_POST['Password'];
-    $check = $_POST['checkbox'];
+    // $check = $_POST['checkbox'];
 
         
-    if ($checkbox == 1) {
-      $cookie_name = "cookie_email";
-      $cookie_value = $email;
-      $cookie_time = time() + (60 * 60 * 24 * 30);
-      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    // if ($checkbox == 1) {
+    //   $cookie_name = "cookie_email";
+    //   $cookie_value = $email;
+    //   $cookie_time = time() + (60 * 60 * 24 * 30);
+    //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
 
-      $cookie_name = "cookie_password";
-      $cookie_value = md5($password);
-      $cookie_time = time() + (60 * 60 * 24 * 30);
-      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-    }
-    header("location:login.php");
+    //   $cookie_name = "cookie_password";
+    //   $cookie_value = md5($password);
+    //   $cookie_time = time() + (60 * 60 * 24 * 30);
+    //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    // }
+    // header("location:login.php");
+
+
   
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
@@ -31,8 +67,8 @@ if (isset($_POST['login'])) {
             $id = $row['id'];
             $userName = $row['name'];
             $userEmail = $row['email'];
-            $userTlp = $row['no_tlp'];
             $passVal = $row['password'];
+            $userTlp = $row['no_tlp'];
 
         }
 
@@ -202,63 +238,33 @@ if (isset($_POST['login'])) {
         <button class="signUpBtn">Register</button>
         <button class="loginBtn">Log in</button>
       </div>
-      <form class="signUp" action="" method="get">
+      <form class="signUp" action="" method="POST">
         <div class="formGroup">
           <input type="text" name="username" id="userName" placeholder="User Name" autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="email" name="Email" placeholder="Email ID" name="email" required autocomplete="off">
+          <input type="email" name="email" placeholder="Email ID" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="text" name="Notelp" id="notelp" placeholder="No.Telp" required autocomplete="off">
+          <input type="text" name="notelp" id="notelp" placeholder="No.Telp" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">
         </div>
-        <div class="checkBox">
+        <!-- <div class="checkBox">
           <input type="checkbox" name="checkbox" id="checkbox">
           <span class="text">I agree with term & conditions</span>
-        </div>
+        </div> -->
         <div class="formGroup">
-          <a type="button" class="btn2" name="register" href="login.php">Register</a>
+          <button type="submit" class="btn2" name="register">Register</a>
         </div>
 
       
       </form>
 
-<?php
-if( isset($_POST['register']) ){
-    $userName = $_POST['username'];
-    $userMail = $_POST['Email'];
-    $userTlp = $_POST['Notelp'];
-    $userPass = $_POST['Password'];
-    $check = $_POST['checkbox'];
-
-        
-    if ($checkbox == 1) {
-      $cookie_name = "cookie_email";
-      $cookie_value = $email;
-      $cookie_time = time() + (60 * 60 * 24 * 30);
-      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-
-      $cookie_name = "cookie_password";
-      $cookie_value = md5($password);
-      $cookie_time = time() + (60 * 60 * 24 * 30);
-      setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-    }
-    header("location:login.php");
-  
-
-
-    $query = "INSERT INTO member VALUES ('', '$userName', '$userMail','$userTlp', '$userPass')";
-    $result = mysqli_query($koneksi, $query);
-    header('Location: login.php');
-}
-?>
-
       <!------ Login Form -------- -->
 
-      <form class="login" action="" method="get">
+      <form class="login" action="" method="POST">
 
         <div class="formGroup">
           <input type="email"  placeholder="Email ID" name="Email" required autocomplete="off">
@@ -272,7 +278,7 @@ if( isset($_POST['register']) ){
           <span class="text">Keep me signed in on this device</span>
         </div>
         <div class="formGroup">
-          <a type="button" class="btn2" href="home.html">Login</a>
+          <button type="submit" class="btn2" name="login">Login</button>
         </div>
         
       </form>

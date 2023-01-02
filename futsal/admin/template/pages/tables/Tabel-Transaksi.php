@@ -391,32 +391,20 @@ if (isset($_POST['bhapus'])) {
                 <p class="card-description">
                  
                 </p>
-                <div class="table-responsive">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Nama Field</th>
-                        <th>Time</th>
-                        <th>Exp</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="karyawan">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Nama Field</th>
-                                                <th>Time</th>
-                                                <th>Exp</th>
-                                                <th>Price</th>
+                                            <th>Lapangan </th>
+                                                <th>Nama Member</th>
+                                                <th>Jam Awal</th>
+                                                <th>Jam Akhir</th>
+                                                <th>Tanggal</th>
+                                                <th>Total Price</th>
+                                                <th>DP</th>
+                                                <th>Sisa</th>
+                                                <th>Bukti Bayar</th>
                                                 <th>Aksi</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
