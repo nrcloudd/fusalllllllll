@@ -286,7 +286,7 @@ if (isset($_POST['bhapus'])) {
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../dashboard.html">
+                        <a class="nav-link" href="../../dashboard.php">
                             <i class="ti-shield menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -313,6 +313,12 @@ if (isset($_POST['bhapus'])) {
                         <a class="nav-link" href="../tables/lapangan.php">
                             <i class="ti-view-list-alt menu-icon"></i>
                             <span class="menu-title">Lapangan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tables/employe.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Karyawan</span>
                         </a>
                     </li>
                 </ul>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 30, 2022 at 04:23 AM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 02 Jan 2023 pada 05.44
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,51 +34,50 @@ CREATE TABLE `admin` (
   `level` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama`, `email`, `level`) VALUES
+(1, 'Davin', 'daveseijuro07@gmail.com', 1),
+(3, 'Ferdy', 'E31211910@student.polije.ac.id', 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `field`
+-- Struktur dari tabel `field`
 --
 
 CREATE TABLE `field` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `price-siang` int(50) NOT NULL,
-  `price-malam` int(50) NOT NULL,
-  `Status` enum('Tersedia','Disewa') NOT NULL
+  `nama` varchar(50) NOT NULL,
+  `tipe` varchar(50) NOT NULL,
+  `priceSiang` int(50) NOT NULL,
+  `priceMalam` int(50) NOT NULL,
+  `sts` enum('Tersedia','Disewa') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `field`
+-- Dumping data untuk tabel `field`
 --
 
-INSERT INTO `field` (`id`, `name`, `type`, `price-siang`, `price-malam`, `Status`) VALUES
-(1, 'Lap 1', 'rumput', 125000, 145000, 'Tersedia');
+INSERT INTO `field` (`id`, `nama`, `tipe`, `priceSiang`, `priceMalam`, `sts`) VALUES
+(1, 'Lapangan 3', 'reguler', 80000, 100000, 'Tersedia'),
+(2, 'Lapangan 2', 'Reguler', 80000, 100000, 'Tersedia'),
+(3, 'Lapangan 4', 'reguler', 80000, 100000, 'Tersedia'),
+(4, 'Lapangan 5', 'reguler', 80000, 100000, 'Tersedia'),
+(5, 'Lapangan 6', 'reguler', 80000, 100000, 'Tersedia'),
+(6, 'Lapangan 7', 'reguler', 80000, 100000, 'Tersedia'),
+(7, 'Lapangan 8', 'reguler', 80000, 100000, 'Tersedia'),
+(11, 'Lapangan 12', 'reguler', 80000, 100000, 'Tersedia'),
+(12, 'Lapangan 13', 'reguler', 80000, 100000, 'Disewa'),
+(1002, 'Lapangan 22', 'Reguler', 80000, 100000, 'Disewa'),
+(1003, 'Lapangan 16', 'rumput', 125000, 145000, 'Tersedia');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `level`
---
-
-CREATE TABLE `level` (
-  `id_level` int(11) NOT NULL,
-  `keterangan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `level`
---
-
-INSERT INTO `level` (`id_level`, `keterangan`) VALUES
-(1, 'admin'),
-(2, 'user');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `member`
+-- Struktur dari tabel `member`
 --
 
 CREATE TABLE `member` (
@@ -92,26 +91,7 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
---
-
-CREATE TABLE `status` (
-  `id_status` int(11) NOT NULL,
-  `keterangan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `status`
---
-
-INSERT INTO `status` (`id_status`, `keterangan`) VALUES
-(1, 'Tersedia'),
-(2, 'Tidak Tersedia');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -125,7 +105,7 @@ CREATE TABLE `transaksi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi detail`
+-- Struktur dari tabel `transaksi detail`
 --
 
 CREATE TABLE `transaksi detail` (
@@ -133,7 +113,8 @@ CREATE TABLE `transaksi detail` (
   `name` varchar(50) NOT NULL,
   `field_id` int(11) NOT NULL,
   `price` varchar(11) NOT NULL,
-  `time` time(6) NOT NULL
+  `time` time(6) NOT NULL,
+  `unique_code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,86 +122,62 @@ CREATE TABLE `transaksi detail` (
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `field`
+-- Indeks untuk tabel `field`
 --
 ALTER TABLE `field`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD UNIQUE KEY `name` (`nama`);
 
 --
--- Indexes for table `level`
---
-ALTER TABLE `level`
-  ADD PRIMARY KEY (`id_level`);
-
---
--- Indexes for table `member`
+-- Indeks untuk tabel `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`id_status`);
-
---
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `field_name` (`field_name`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `level`
---
-ALTER TABLE `level`
-  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `member`
+-- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `status`
---
-ALTER TABLE `status`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `transaksi`
+-- Ketidakleluasaan untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`field_name`) REFERENCES `field` (`name`);
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`field_name`) REFERENCES `field` (`nama`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
