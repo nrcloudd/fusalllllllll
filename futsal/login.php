@@ -72,7 +72,7 @@ if (isset($_POST['login'])) {
 
   <!-- jQuery CDN Link -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <title>Transparent form</title>
+  <title>Login & Register</title>
   <style>
     * {
       margin: 0;
@@ -81,9 +81,10 @@ if (isset($_POST['login'])) {
     }
 
     body {
-      background-image: url(img/bg2.jpg);
+      background-image: url(img/background1.webp);
       background-size: cover;
       background-attachment: fixed;
+
     }
 
     /* align items center vertically and horizontally  */
