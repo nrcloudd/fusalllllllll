@@ -423,11 +423,11 @@ if (isset($_POST['bhapus'])) {
                                             $query = mysqli_query($koneksi, "SELECT * FROM field ");
                                            while( $row = mysqli_fetch_array($query)) {
                                             $id=$row['id'];
-                                            $nama = $row['name'];
-                                            $type = $row['type'];
+                                            $nama = $row['nama'];
+                                            $type = $row['tipe'];
                                             $siang = $row['priceSiang'];
                                             $malam = $row['priceMalam'];
-                                            $status = $row['Status'];
+                                            $status = $row['Sts'];
                                         
                                             ?>
                                             <tr>
