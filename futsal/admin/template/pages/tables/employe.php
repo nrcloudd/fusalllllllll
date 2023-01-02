@@ -31,9 +31,10 @@ if (isset($_POST['bsimpan'])) {
 
     $nama_lengkap = $_POST['nama'];
     $email = $_POST['email'];
+    $pass = $_POST['pass'];
     $level = $_POST['level'];
 
-    $queryy = "INSERT INTO admin (nama,email,level) VALUES ('$nama_lengkap','$email','$level')";
+    $queryy = "INSERT INTO admin VALUES ('$nama_lengkap','$email','$pass','$level')";
 
     $result = mysqli_query($koneksi, $queryy);
     $success = "Data Berhasil Ditambahkan";
@@ -50,7 +51,7 @@ if (isset($_POST['bsimpan'])) {
     } else {
         echo "<script>
         Swal.fire({
-            icon: 'success',
+            icon: 'error',
             title: ' $eror',
                     }).then((result) => {
             window.location.href = 'employe.php';
@@ -64,6 +65,7 @@ if (isset($_POST['bUbah'])) {
     $ubah = mysqli_query($koneksi, "UPDATE admin SET 
         nama = '$_POST[nama]',
         email = '$_POST[email]',
+        pass = '$_POST[pass]',
         level = '$_POST[level]'
         WHERE id = '$_POST[id]'
     ");
@@ -86,8 +88,8 @@ if (isset($_POST['bUbah'])) {
     } else {
         echo "<script>
         Swal.fire({
-            icon: 'success',
-            title: ' $eror',
+            icon: 'error',
+            title: ' $error',
                     }).then((result) => {
             window.location.href = 'employe.php';
         })
@@ -118,7 +120,7 @@ if (isset($_POST['bhapus'])) {
     } else {
         echo "<script>
         Swal.fire({
-            icon: 'success',
+            icon: 'error',
             title: ' $eror',
                     }).then((result) => {
             window.location.href = 'employe.php';
@@ -363,6 +365,14 @@ if (isset($_POST['bhapus'])) {
 
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlTextarea1"
+                                                                class="form-label">Password</label>
+                                                            <input type="password" class="form-control"
+                                                                id="exampleFormControlInput1"
+                                                                placeholder="Masukkan Password" name="pass" required>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlTextarea1"
                                                                 class="form-label">Level</label>
                                                             <input type="number" class="form-control"
                                                                 id="exampleFormControlInput1"
@@ -389,6 +399,7 @@ if (isset($_POST['bhapus'])) {
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Level</th>
+                                                <th>Password</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -406,6 +417,7 @@ if (isset($_POST['bhapus'])) {
                                                 <td><?php echo $ambil['nama'] ?></td>
                                                 <td><?php echo $ambil['email'] ?></td>
                                                 <td><?php echo $ambil['level'] ?></td>
+                                                <td><?php echo $ambil['pass'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"
@@ -452,6 +464,16 @@ if (isset($_POST['bhapus'])) {
                                                                 <div class="mb-3">
                                                                     <label for="exampleFormControlTextarea1"
                                                                         class="form-label">Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                        id="exampleFormControlInput1"
+                                                                        placeholder="Masukkan Password" name="pass"
+                                                                        value="<?= $ambil['pass']; ?>" required>
+                                                                </div>
+
+
+                                                                <div class="mb-3">
+                                                                    <label for="exampleFormControlTextarea1"
+                                                                        class="form-label">Level</label>
                                                                     <input type="number" class="form-control"
                                                                         id="exampleFormControlInput1"
                                                                         placeholder="Masukkan level" name="level"
