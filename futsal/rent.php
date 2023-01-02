@@ -17,9 +17,9 @@ if (isset($_POST['bsimpan'])) {
     $malam = $_POST['harga'];
     $bukti = $_POST['bukti_bayar'];
 
-    $queryy = "INSERT INTO transaksi VALUES (null,'$name','$sesID','$jam','$tanggal','$malam','$bukti')";
+    $query = "INSERT INTO transaksi VALUES (null,'$name','$sesID','$jam','$tanggal','$malam','$bukti')";
 
-    $result = mysqli_query($koneksi, $queryy);
+    $result = mysqli_query($koneksi, $query);
 
     $success = "Data Berhasil Ditambahkan";
     $error = "Data Gagal Ditambahkan";
@@ -254,7 +254,15 @@ if (isset($_POST['bsimpan'])) {
 
     <script type="text/javascript">
         $(function () {
-            $('#datepicker').datepicker();
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      var options = {
+        format: 'yyyy/mm/dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+            $('#datepicker').datepicker(options);
         });
     </script>
 
