@@ -395,15 +395,17 @@ if (isset($_POST['bhapus'])) {
                                     <table class="table table-hover" id="karyawan">
                                         <thead>
                                             <tr>
-                                            <th>Lapangan </th>
-                                                <th>Nama Member</th>
-                                                <th>Jam Awal</th>
-                                                <th>Jam Akhir</th>
+                                            <th>NO </th>
+                                                <th>ID</th>
+                                                <th>Lapangan</th>
+                                                <th>Member</th>
+                                                <th>Jam-Awal</th>
+                                                <th>Jam-Akhir</th>
                                                 <th>Tanggal</th>
-                                                <th>Total Price</th>
-                                                <th>DP</th>
+                                                <th>Total-Price</th>
+                                                <th>Dp</th>
                                                 <th>Sisa</th>
-                                                <th>Bukti Bayar</th>
+                                                <th>Bukti_Bayar</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -417,10 +419,16 @@ if (isset($_POST['bhapus'])) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
+                                                <td><?php echo $ambil['id'] ?></td>
                                                 <td><?php echo $ambil['field_name'] ?></td>
-                                                <td><?php echo $ambil['time'] ?></td>
-                                                <td><?php echo $ambil['exp'] ?></td>
-                                                <td><?php echo $ambil['price'] ?></td>
+                                                <td><?php echo $ambil['member'] ?></td>
+                                                <td><?php echo $ambil['jam-awal'] ?></td>
+                                                <td><?php echo $ambil['jam-akhir'] ?></td>
+                                                <td><?php echo $ambil['tanggal'] ?></td>
+                                                <td><?php echo $ambil['total-price'] ?></td>
+                                                <td><?php echo $ambil['dp'] ?></td>
+                                                <td><?php echo $ambil['sisa'] ?></td>
+                                                <td><?php echo $ambil['bukti_bayar'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"

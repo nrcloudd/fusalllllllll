@@ -409,9 +409,8 @@ if (isset($_POST['bhapus'])) {
                                             <td>Kode</td>
                                             <td>Nama</td>
                                             <td>Type</td>
-                                            <td>Harga Siang</td>
                                             <td>Harga Malam</td>
-                                            <td>Status</td>
+                                            <td>Gambar</td>
                                             <td>Kontrol</td>
                                         </tr>
                                         </thead>
@@ -424,9 +423,8 @@ if (isset($_POST['bhapus'])) {
                                             $id=$row['id'];
                                             $nama = $row['nama'];
                                             $type = $row['tipe'];
-                                            $siang = $row['priceSiang'];
                                             $malam = $row['priceMalam'];
-                                            $status = $row['sts'];
+                                            $status = $row['gambar'];
                                         
                                             ?>
                                             <tr>
@@ -434,7 +432,6 @@ if (isset($_POST['bhapus'])) {
                                         <td><?php echo $id; ?></td>
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $type; ?></td>
-                                        <td><?php echo $siang; ?></td>
                                         <td><?php echo $malam; ?></td>
                                         <td><?php echo $status; ?></td>
                                                 <td>
