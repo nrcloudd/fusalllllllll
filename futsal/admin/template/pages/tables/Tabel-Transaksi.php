@@ -98,7 +98,7 @@ if (isset($_POST['bUbah'])) {
 
 if (isset($_POST['bhapus'])) {
 
-    $hapus = mysqli_query($koneksi, "DELETE FROM admin
+    $hapus = mysqli_query($koneksi, "DELETE FROM transaksi
                 WHERE id = '$_POST[id]'
             ");
 
@@ -112,7 +112,7 @@ if (isset($_POST['bhapus'])) {
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'transaksi.php';
         })
               </script>";
     } else {
@@ -121,7 +121,7 @@ if (isset($_POST['bhapus'])) {
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'transaksi.php';
         })
               </script>";
     }
@@ -522,7 +522,7 @@ if (isset($_POST['bhapus'])) {
                                                                 <h5 class="text-center">Apakah anda yakin akan menghapus
                                                                     data ini ? <br>
                                                                     <span class="text-danger"><?= $ambil['id'] ?> -
-                                                                        <?= $ambil['nama']  ?></span>
+                                                                        <?= $ambil['field_name']  ?></span>
                                                                 </h5>
                                                             </div>
                                                             <div class="modal-footer">
