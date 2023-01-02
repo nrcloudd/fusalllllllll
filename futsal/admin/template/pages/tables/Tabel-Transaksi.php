@@ -323,7 +323,71 @@ if (isset($_POST['bhapus'])) {
           <div class="grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
+              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
                 <h4 class="card-title">Tabel Transaksi</h4>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#modalTambah">
+                                        Tambah data
+                                    </button>
+<!-- Modal -->
+<div class="modal fade" id="modalTambah" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Transaksi</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="" class='form-label'>ID</label>
+                        <input type="text" placeholder="Masukkan ID Transaksi" name="id" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Nama Lapangan</label>
+                        <input type="text" placeholder="Masukkan Nama Lapangan" name="nama" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Waktu</label>
+                        <input type="text" placeholder="Masukkan waktu mulai" name="nama" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Expired</label>
+                        <input type="text" placeholder="Masukkan waktu selesai" name="nama" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Harga</label>
+                        <input type="text" placeholder="Masukkan Harga" name="nama" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Status</label>
+                        <select name="malam" id="" class='form-select'>
+                            <option value="Aktif">Aktif</option>
+                            <option value="Non Aktif">Non Aktif</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class='form-label'>Aksi</label>
+                        <select name="malam" id="" class='form-select'>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class ='modal-footer'>
+                    <button type="submit" class="btn btn-primary" name="bsimpan">Simpan</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                 <p class="card-description">
                  
                 </p>
