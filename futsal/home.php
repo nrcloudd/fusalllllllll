@@ -1,3 +1,16 @@
+<?php
+require("koneksi.php");
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    $_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
+    header('Location: login.php');
+}
+$sesID = $_SESSION['id'];
+$sesName = $_SESSION['name'];
+$sesLvl = $_SESSION['email'];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -43,8 +56,32 @@
           <li class="nav-item">
             <a href="#contact" class="nav-link scrollto" style="">Contact</a>
           </li>
-          <li class="nav-item">
-            <a href="login.php" class="nav-link" style="">Login</a>
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $sesName; ?></span>
+              <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Settings
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="login.php" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+              </a>
+            </div>
           </li>
         </ul>
       </div>
@@ -53,39 +90,39 @@
 
   <section id="home" class="" style="">
     <div class="content">
-        <h1 class="text-capitalize mb-3 mb-md-5 font-weight-bold text-center pt-5"></h1>
-        <div class="row px-4 py-4">
-          <div class="col-xl-6 col-lg-12 my-5 pb-5" style="">
-            <div class="row justify-content-around">
-              <div class="col-md-6">
-                <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap" style="border-radius: 7%"> 
-              </div>
-              <div class="col-md-6 col-lg-5">
-                <h2>
-                  Booking lapangan disini.
-                </h2>
-                <p>Cari jadwal dan lapangan yang anda butuhkan dengan cara online.</p>
-                <a class="btn btn-light" href="rent.php">Cari lapangan</a>
-              </div>
+      <h1 class="text-capitalize mb-3 mb-md-5 font-weight-bold text-center pt-5"></h1>
+      <div class="row px-4 py-4">
+        <div class="col-xl-6 col-lg-12 my-5 pb-5" style="">
+          <div class="row justify-content-around">
+            <div class="col-md-6">
+              <img class="card-img-top" src="img/G1.jpeg" alt="Card image cap" style="border-radius: 7%">
+            </div>
+            <div class="col-md-6 col-lg-5">
+              <h2>
+                Booking lapangan disini.
+              </h2>
+              <p>Cari jadwal dan lapangan yang anda butuhkan dengan cara online.</p>
+              <a class="btn btn-light" href="rent.php">Cari lapangan</a>
             </div>
           </div>
-          <div class="col-xl-6 col-lg-12 my-5 pb-5">
-            <div class="row justify-content-around">
-              <div class="col-md-6">
-                <img class="card-img-top" src="img/Sepatu2.png" alt="Card image cap" style="border-radius: 7%"> 
-              </div>
-              <div class="col-md-6 col-lg-5">
-                <h2>
-                  Kelengkapan
-                </h2>
-                <p>Terdapat toko perlengkapan tepat berada di sebelah kasir.</p>
-              </div>
+        </div>
+        <div class="col-xl-6 col-lg-12 my-5 pb-5">
+          <div class="row justify-content-around">
+            <div class="col-md-6">
+              <img class="card-img-top" src="img/Sepatu2.png" alt="Card image cap" style="border-radius: 7%">
+            </div>
+            <div class="col-md-6 col-lg-5">
+              <h2>
+                Kelengkapan
+              </h2>
+              <p>Terdapat toko perlengkapan tepat berada di sebelah kasir.</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </section>
-  
+
   <section id="gallery" class="w-100 justify-content-center align-items-center" style="background-color: #A19882">
     <div class="container">
       <header class="my-5">
@@ -131,9 +168,9 @@
     <div class="container">
       <div class="content text-center my-5">
         <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.326611304893!2d113.72402611404246!3d-8.169812794119679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695cfe9894601%3A0xc9639ab1c93a874a!2sZona%20Futsal!5e0!3m2!1sid!2sid!4v1671513668154!5m2!1sid!2sid"
-      width="100%" height="50%" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.326611304893!2d113.72402611404246!3d-8.169812794119679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695cfe9894601%3A0xc9639ab1c93a874a!2sZona%20Futsal!5e0!3m2!1sid!2sid!4v1671513668154!5m2!1sid!2sid"
+          width="100%" height="50%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>

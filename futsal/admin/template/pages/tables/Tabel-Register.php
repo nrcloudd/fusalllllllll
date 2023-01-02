@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,109 +23,109 @@
 </head>
 
 <body>
-<?php 
-include 'connect.php';
+    <?php
+    include 'connect.php';
 
-if (isset($_POST['bsimpan'])) {
+    if (isset($_POST['bsimpan'])) {
 
-    $nama_lengkap = $_POST['nama'];
-    $email = $_POST['email'];
-    $level = $_POST['level'];
+        $nama_lengkap = $_POST['nama'];
+        $email = $_POST['email'];
 
-    $queryy = "INSERT INTO admin (nama,email,level) VALUES ('$nama_lengkap','$email','$level')";
+        $queryy = "INSERT INTO member (nama,email) VALUES ('$nama_lengkap','$email')";
 
-    $result = mysqli_query($koneksi, $queryy);
-    $success = "Data Berhasil Ditambahkan";
-    $error = "Data Gagal Ditambahkan";
-    if ($result) {
-        echo "<script>
+        $result = mysqli_query($koneksi, $queryy);
+        $success = "Data Berhasil Ditambahkan";
+        $error = "Data Gagal Ditambahkan";
+        if ($result) {
+            echo "<script>
             Swal.fire({
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'Tabel-Register.php';
         })
               </script>";
-    } else {
-        echo "<script>
+        } else {
+            echo "<script>
         Swal.fire({
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'Tabel-Register.php';
         })
               </script>";
+        }
     }
-}
 
-if (isset($_POST['bUbah'])) {
+    if (isset($_POST['bUbah'])) {
 
-    $ubah = mysqli_query($koneksi, "UPDATE admin SET 
-        nama = '$_POST[nama]',
+        $ubah = mysqli_query($koneksi, "UPDATE member SET 
+        name = '$_POST[nama]',
         email = '$_POST[email]',
-        level = '$_POST[level]'
+        password = '$_POST[password]',
+        no_tlp = '$_POST[notlp]'
         WHERE id = '$_POST[id]'
     ");
-    // header('location: member.php');
+        // header('location: member.php');
+    
 
-
-    // header('location: member.php');
-
-    $success = "Data Berhasil Diubah";
-    $error = "Data Gagal Diubah";
-    if ($ubah) {
-        echo "<script>
+        // header('location: member.php');
+    
+        $success = "Data Berhasil Diubah";
+        $error = "Data Gagal Diubah";
+        if ($ubah) {
+            echo "<script>
             Swal.fire({
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'Tabel-Register.php';
         })
               </script>";
-    } else {
-        echo "<script>
+        } else {
+            echo "<script>
         Swal.fire({
-            icon: 'success',
+            icon: 'error',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'Tabel-Register.php';
         })
               </script>";
+        }
     }
-}
 
 
-if (isset($_POST['bhapus'])) {
+    if (isset($_POST['bhapus'])) {
 
-    $hapus = mysqli_query($koneksi, "DELETE FROM admin
+        $hapus = mysqli_query($koneksi, "DELETE FROM member
                 WHERE id = '$_POST[id]'
             ");
 
-    // header('location: member.php');
-
-    $success = "Data Berhasil Dihapus";
-    $error = "Data Gagal Dihapus";
-    if ($hapus) {
-        echo "<script>
+        // header('location: member.php');
+    
+        $success = "Data Berhasil Dihapus";
+        $error = "Data Gagal Dihapus";
+        if ($hapus) {
+            echo "<script>
             Swal.fire({
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'Tabel-Register.php';
         })
               </script>";
-    } else {
-        echo "<script>
+        } else {
+            echo "<script>
         Swal.fire({
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'Tabel-Register.php';
         })
               </script>";
+        }
     }
-}
-?>
+    ?>
 
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
@@ -278,69 +277,54 @@ if (isset($_POST['bhapus'])) {
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../../dashboard.php">
-              <i class="ti-shield menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          <li class="nav-item">
-            <a class="nav-link" href="Tabel-Register.php">
-              <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Data Register</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Tabel-Transaksi.php">
-              <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Data Transaksi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Tabel-Detailtransaksi.php">
-              <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Data Detail Transaksi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../tables/lapangan.php">
-              <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Data Lapangan</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="employe.php">
-              <i class="ti-view-list-alt menu-icon"></i>
-              <span class="menu-title">Data Karyawan</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Tabel Register</h4>
-                <p class="card-description">
-                 
-                </p>
-                <div class="table-responsive">
-                    <h4 class="card-title">Data Register</h4>
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>No.Telp</th>
-                        <th>Password</th>
-                        <th>Level</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../dashboard.php">
+                            <i class="ti-shield menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tabel-Register.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Data Register</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tabel-Transaksi.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Data Transaksi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tabel-Detailtransaksi.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Data Detail Transaksi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tables/lapangan.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Data Lapangan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employe.php">
+                            <i class="ti-view-list-alt menu-icon"></i>
+                            <span class="menu-title">Data Karyawan</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Tabel Register</h4>
+                                <p class="card-description">
+
+                                </p>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="karyawan">
                                         <thead>
@@ -350,140 +334,144 @@ if (isset($_POST['bhapus'])) {
                                                 <th>Email</th>
                                                 <th>No Telepon</th>
                                                 <th>Password</th>
-                                                <th>Level</th>
                                                 <th>Aksi</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                            $no =  1;
+                                            <?php
+                                            $no = 1;
                                             require 'connect.php';
                                             $query = mysqli_query($koneksi, "SELECT * FROM member ");
-                                           while( $ambil = mysqli_fetch_array($query)) {
-                                        
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $ambil['name'] ?></td>
-                                                <td><?php echo $ambil['email'] ?></td>
-                                                <td><?php echo $ambil['no_tlp'] ?></td>
-                                                <td><?php echo $ambil['password'] ?></td>
-                                                <td><?php echo $ambil['level'] ?></td>
-                                                <td>
-                                                    <a href="#" class="btn btn-warning rounded-circle"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#modalUbah<?= $no ?>">Edit</a>
-                                                    <a href="#" class="btn btn-danger rounded-circle"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#modalHapus<?= $no ?>">Hapus</a>
-                                                </td>
-                                            </tr>
-                                            <div class="modal fade" id="modalUbah<?= $no ?>" data-bs-backdrop="static"
-                                                data-bs-keyboard="false" tabindex="-1"
-                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Form
-                                                                Data Member</h1>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                            while ($ambil = mysqli_fetch_array($query)) {
+
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $no++ ?></td>
+                                                    <td>
+                                                        <?php echo $ambil['name'] ?>
+                                                    </td>
+                                                    <td><?php echo $ambil['email'] ?></td>
+                                                    <td>
+                                                        <?php echo $ambil['no_tlp'] ?>
+                                                    </td>
+                                                    <td><?php echo $ambil['password'] ?></td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-warning rounded-circle"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalUbah<?= $no ?>">Edit</a>
+                                                        <a href="#" class="btn btn-danger rounded-circle"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalHapus<?= $no ?>">Hapus</a>
+                                                    </td>
+                                                </tr>
+                                                <div class="modal fade" id="modalUbah<?= $no ?>" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form
+                                                                    Data Member</h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <form action="" method="POST">
+
+                                                                <div class="modal-body">
+                                                                    <input type="hidden" name="id" id="id"
+                                                                        value="<?= $ambil['id']; ?>">
+                                                                    <div class="mb-3">
+                                                                        <label for="exampleFormControlInput1"
+                                                                            class="form-label">Nama</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="exampleFormControlInput1"
+                                                                            placeholder="Masukkan Nama" name="nama"
+                                                                            value="<?= $ambil['name'] ?>" required>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="exampleFormControlTextarea1"
+                                                                            class="form-label">Email</label>
+                                                                        <input type="email" class="form-control"
+                                                                            id="exampleFormControlInput1"
+                                                                            placeholder="Masukkan Email" name="email"
+                                                                            value="<?= $ambil['email']; ?>" required>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="exampleFormControlTextarea1"
+                                                                            class="form-label">No Telp</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="exampleFormControlInput1"
+                                                                            placeholder="Masukkan No Telepon" name="notlp"
+                                                                            value="<?= $ambil['no_tlp']; ?>" required>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="exampleFormControlInput1"
+                                                                            class="form-label">Password</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="exampleFormControlInput1"
+                                                                            placeholder="Masukkan password" name="password"
+                                                                            value="<?= $ambil['password'] ?>" required>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-primary"
+                                                                        name="bUbah">Ubah</button>
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                        <form action="" method="POST">
-
-                                                            <div class="modal-body">
-                                                                <input type="hidden" name="id" id="id"
-                                                                    value="<?= $ambil['id'];  ?>">
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label">Nama</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan Nama" name="nama"
-                                                                        value="<?= $ambil['name'] ?>" required>
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlTextarea1"
-                                                                        class="form-label">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan Email" name="email"
-                                                                        value="<?= $ambil['email']; ?>" required>
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlTextarea1"
-                                                                        class="form-label">No Telp</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan No Telepon" name="notlp"
-                                                                        value="<?= $ambil['no_tlp']; ?>" required>
-                                                                </div>
-
-                                                                <div class="mb-3">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label">Password</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Masukkan password" name="password"
-                                                                        value="<?= $ambil['password'] ?>" required>
-                                                                </div>
-                                                                
-                                                                
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-primary"
-                                                                    name="bUbah">Ubah</button>
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-bs-dismiss="modal">Batal</button>
-                                                            </div>
-                                                        </form>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- akhir modal ubah -->
-                                            <div class="modal fade" id="modalHapus<?= $no ?>" data-bs-backdrop="static"
-                                                data-bs-keyboard="false" tabindex="-1"
-                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                                                Konfirmasi Hapus Data Karyawan</h1>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <!-- akhir modal ubah -->
+                                                <div class="modal fade" id="modalHapus<?= $no ?>" data-bs-backdrop="static"
+                                                    data-bs-keyboard="false" tabindex="-1"
+                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                                    Konfirmasi Hapus Data Karyawan</h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <form action="" method="POST">
+                                                                <div class="modal-body">
+                                                                    <input type="hidden" name="id" id="id"
+                                                                        value="<?= $ambil['id']; ?>">
+                                                                    <h5 class="text-center">Apakah anda yakin akan menghapus
+                                                                        data ini ? <br>
+                                                                        <span class="text-danger">
+                                                                            <?= $ambil['id'] ?> -
+                                                                            <?= $ambil['name'] ?>
+                                                                        </span>
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-primary"
+                                                                        name="bhapus">Hapus</button>
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                        <form action="" method="POST">
-                                                            <div class="modal-body">
-                                                                <input type="hidden" name="id" id="id"
-                                                                    value="<?= $ambil['id'];  ?>">
-                                                                <h5 class="text-center">Apakah anda yakin akan menghapus
-                                                                    data ini ? <br>
-                                                                    <span class="text-danger"><?= $ambil['id'] ?> -
-                                                                        <?= $ambil['nama']  ?></span>
-                                                                </h5>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-primary"
-                                                                    name="bhapus">Hapus</button>
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-bs-dismiss="modal">Batal</button>
-                                                            </div>
-                                                        </form>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <?php } ?>
+                                                <?php } ?>
                                         </tbody>
 
                                     </table>
                                     <script>
-                                    $(document).ready(function() {
-                                        $('#karyawan').DataTable();
-                                    });
+                                        $(document).ready(function () {
+                                            $('#karyawan').DataTable();
+                                        });
                                     </script>
                                 </div>
 

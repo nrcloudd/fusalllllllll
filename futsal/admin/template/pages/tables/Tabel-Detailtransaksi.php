@@ -328,32 +328,15 @@ if (isset($_POST['bhapus'])) {
                 <p class="card-description">
                  
                 </p>
-                <div class="table-responsive">
-                    <h4 class="card-title">Data Transaksi</h4>
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Nama Field</th>
-                        <th>Time</th>
-                        <th>Exp</th>
-                        <th>Price</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody> 
-                        </div>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="karyawan">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Nama </th>
-                                                <th>Field_id</th>
-                                                <th>Price</th>
-                                                <th>Time</th>
-                                                <th>Aksi</th>
-
+                                                <th>Lapangan </th>
+                                                <th>Member</th>
+                                                <th>Tanggal</th>
+                                                <th>Total Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
