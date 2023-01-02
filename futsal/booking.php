@@ -72,19 +72,16 @@ date_default_timezone_set('Asia/Jakarta');
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="home.html" class="nav-link" style="">Home</a>
+            <a href="home.php" class="nav-link" style="">Home</a>
           </li>
           <li class="nav-item">
             <a href="rent.php" class="nav-link" style="">Rent</a>
           </li>
           <li class="nav-item">
-            <a href="#gallery" class="nav-link" style="">Gallery</a>
+            <a href="home.php#gallery" class="nav-link" style="">Gallery</a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link scrollto" style="">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a href="login.php" class="nav-link" style="">Login</a>
+            <a href="home.php#contact" class="nav-link scrollto" style="">Contact</a>
           </li>
         </ul>
       </div>

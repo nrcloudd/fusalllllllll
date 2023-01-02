@@ -43,7 +43,7 @@ $sesLvl = $_SESSION['email'];
 <body style="">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #A19882">
         <div class="container">
-            <a href="#first" class="navbar-brand">Zona</a>
+            <a href="#first" class="navbar-brand">Zona Futsal</a>
             <button type="button" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse"
                 aria-controls="navbarNav" aria-expanded="false" aria-lable="Toggle Navbar">
                 <span class="navbar-toggler-icon"></span>
