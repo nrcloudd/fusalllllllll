@@ -1,3 +1,65 @@
+<?php
+require ("connect.php");
+session_start();
+
+if (isset($_POST['login'])) {
+    $email = $_POST['txt_email'];
+    $pass = $_POST['txt_pass'];
+
+    $emailCheck = mysqli_real_escape_string($koneksi, $email);
+    $passCheck  = mysqli_real_escape_string($koneksi, $pass);
+    
+    if (!empty(trim($email)) && !empty(trim($pass))) {
+        $query      = "SELECT * FROM admin WHERE email = '$email'";
+        $result     = mysqli_query($koneksi, $query);
+        $num        = mysqli_num_rows($result);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row['id'];
+            $userName = $row['nama'];
+            $userVal = $row['email'];
+            $passVal = $row['pass'];
+            $level = $row['level'];
+        }
+
+        if ($num != 0) {
+            if ($userVal==$email && $passVal==$pass) {
+                // header('Location: index.php?user_fullname=' . urlencode($userName));
+                header('Location: dashboard.php');
+                if($level==1){
+                    session_start();
+                    $_SESSION['id'] = $id;
+                    $_SESSION['user_funame'] = $userName;
+                    $_SESSION['level'] = $level;
+                    header('location:admin/indexadmin.php');
+                }elseif($level==2){
+                    session_start();
+                    $_SESSION['id'] = $id;
+                    $_SESSION['user_fullname'] = $userName;
+                    $_SESSION['level'] = $level;
+                    header('location:index.php');
+                }
+            }else{
+                    $error = 'user atau password salah!!';
+                    echo "<script>alert('$error')</script>";
+                    header('Location: login.php');
+                }
+            }else{
+                    $error = 'user tidak ditemukan!!';
+                    echo "<script>alert('$error')</script>";
+                    header('Location: login.php');
+                }
+            }else{
+                $error = 'Data tidak boleh kosong!!';
+                echo "<script>alert('$error')</script>";
+                }
+            }
+            
+?>
+
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>

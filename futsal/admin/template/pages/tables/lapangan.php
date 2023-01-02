@@ -349,8 +349,8 @@ if (isset($_POST['bhapus'])) {
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form action="" method="POST">
-                                                <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="modal-body">
                     <div class="mb-3">
                         <label for="" class='form-label'>Kode</label>
                         <input type="text" placeholder="Masukkan Kode Lapangan" name="id" class="form-control" required>

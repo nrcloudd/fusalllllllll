@@ -328,12 +328,12 @@ if (isset($_POST['bhapus'])) {
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
                                     <h4 class="card-title">Karyawan</h4>
+                                    <!-- Modal -->
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#modalTambah">
                                         Tambah data
                                     </button>
 
-                                    <!-- Modal -->
                                     <div class="modal fade" id="modalTambah" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
