@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jan 2023 pada 08.17
+-- Waktu pembuatan: 02 Jan 2023 pada 09.37
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -82,8 +82,16 @@ INSERT INTO `field` (`id`, `nama`, `tipe`, `priceSiang`, `priceMalam`, `sts`) VA
 
 CREATE TABLE `level_detail` (
   `id` int(11) NOT NULL,
-  `level` int(11) NOT NULL
+  `level` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `level_detail`
+--
+
+INSERT INTO `level_detail` (`id`, `level`) VALUES
+(1, 'admin'),
+(2, 'user');
 
 -- --------------------------------------------------------
 
@@ -179,7 +187,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `level_detail`
 --
 ALTER TABLE `level_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `member`
