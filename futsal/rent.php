@@ -32,7 +32,7 @@ require('koneksi.php');
 </head>
 
 <body style="">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #0F0E0E">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #A19882">
         <div class="container">
             <a href="#first" class="navbar-brand">Zona</a>
             <button type="button" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse"
