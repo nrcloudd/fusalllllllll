@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jan 2023 pada 05.44
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.0.12
+-- Waktu pembuatan: 02 Jan 2023 pada 08.17
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -77,6 +77,17 @@ INSERT INTO `field` (`id`, `nama`, `tipe`, `priceSiang`, `priceMalam`, `sts`) VA
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `level_detail`
+--
+
+CREATE TABLE `level_detail` (
+  `id` int(11) NOT NULL,
+  `level` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `member`
 --
 
@@ -85,7 +96,8 @@ CREATE TABLE `member` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `no_tlp` int(15) NOT NULL
+  `no_tlp` int(15) NOT NULL,
+  `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -135,6 +147,12 @@ ALTER TABLE `field`
   ADD UNIQUE KEY `name` (`nama`);
 
 --
+-- Indeks untuk tabel `level_detail`
+--
+ALTER TABLE `level_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `member`
 --
 ALTER TABLE `member`
@@ -156,6 +174,12 @@ ALTER TABLE `transaksi`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `level_detail`
+--
+ALTER TABLE `level_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `member`
