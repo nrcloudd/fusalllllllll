@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jan 2023 pada 09.37
+-- Waktu pembuatan: 02 Jan 2023 pada 15.26
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -31,6 +31,7 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `level` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,9 +39,9 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id`, `nama`, `email`, `level`) VALUES
-(1, 'Davin', 'daveseijuro07@gmail.com', 1),
-(3, 'Ferdy', 'E31211910@student.polije.ac.id', 1);
+INSERT INTO `admin` (`id`, `nama`, `email`, `password`, `level`) VALUES
+(1, 'Davin', 'daveseijuro07@gmail.com', '123', 1),
+(3, 'Ferdy', 'E31211910@student.polije.ac.id', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,7 @@ INSERT INTO `field` (`id`, `nama`, `tipe`, `priceSiang`, `priceMalam`, `sts`) VA
 (5, 'Lapangan 6', 'reguler', 80000, 100000, 'Tersedia'),
 (6, 'Lapangan 7', 'reguler', 80000, 100000, 'Tersedia'),
 (7, 'Lapangan 8', 'reguler', 80000, 100000, 'Tersedia'),
-(11, 'Lapangan 12', 'reguler', 80000, 100000, 'Tersedia'),
+(11, 'Lapangan 12', 'Reguler', 80000, 100000, 'Disewa'),
 (12, 'Lapangan 13', 'reguler', 80000, 100000, 'Disewa'),
 (1002, 'Lapangan 22', 'Reguler', 80000, 100000, 'Disewa'),
 (1003, 'Lapangan 16', 'rumput', 125000, 145000, 'Tersedia');
@@ -107,6 +108,15 @@ CREATE TABLE `member` (
   `no_tlp` int(15) NOT NULL,
   `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `member`
+--
+
+INSERT INTO `member` (`id`, `name`, `email`, `password`, `no_tlp`, `level`) VALUES
+(1, 'desi', 'desi@desi.com', '1234', 8979, 2),
+(2, 'desi', 'desi@gmail.com', '1233', 8978, 2),
+(3, 'user', 'user@user.com', '123', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -193,7 +203,7 @@ ALTER TABLE `level_detail`
 -- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
