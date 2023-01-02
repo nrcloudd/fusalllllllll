@@ -167,6 +167,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="pages/tables/employe.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data karyawan</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="pages/tables/Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Register</span>
@@ -251,65 +257,21 @@
                         Today
                       </button>
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                        <a class="dropdown-item" href="#">January - March</a>
-                        <a class="dropdown-item" href="#">March - June</a>
-                        <a class="dropdown-item" href="#">June - August</a>
-                        <a class="dropdown-item" href="#">August - November</a>
+                        <a class="dropdown-item" href="#">Januari</a>
+                        <a class="dropdown-item" href="#">Februari</a>
+                        <a class="dropdown-item" href="#">Maret</a>
+                        <a class="dropdown-item" href="#">April</a>
+                        <a class="dropdown-item" href="#">Mei</a>
+                        <a class="dropdown-item" href="#">Juni</a>
+                        <a class="dropdown-item" href="#">Juli</a>
+                        <a class="dropdown-item" href="#">Agustus</a>
+                        <a class="dropdown-item" href="#">September</a>
+                        <a class="dropdown-item" href="#">Oktober</a>
+                        <a class="dropdown-item" href="#">November</a>
+                        <a class="dropdown-item" href="#">Desember</a>
                       </div>
                     </div>
 
-                    <script>
-                      var ctx = document.getElementById("myChart").getContext('2d');
-                      var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                          labels: ["Senin", "elasa", "Ekonomi", "Pertanian"],
-                          datasets: [{
-                            label: '',
-                            data: [
-                            <?php 
-                            $jumlah_teknik = mysqli_query($koneksi,"select * from mahasiswa where fakultas='teknik'");
-                            echo mysqli_num_rows($jumlah_teknik);
-                            ?>, 
-                            <?php 
-                            $jumlah_ekonomi = mysqli_query($koneksi,"select * from mahasiswa where fakultas='ekonomi'");
-                            echo mysqli_num_rows($jumlah_ekonomi);
-                            ?>, 
-                            <?php 
-                            $jumlah_fisip = mysqli_query($koneksi,"select * from mahasiswa where fakultas='fisip'");
-                            echo mysqli_num_rows($jumlah_fisip);
-                            ?>, 
-                            <?php 
-                            $jumlah_pertanian = mysqli_query($koneksi,"select * from mahasiswa where fakultas='pertanian'");
-                            echo mysqli_num_rows($jumlah_pertanian);
-                            ?>
-                            ],
-                            backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)'
-                            ],
-                            borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)'
-                            ],
-                            borderWidth: 1
-                          }]
-                        },
-                        options: {
-                          scales: {
-                            yAxes: [{
-                              ticks: {
-                                beginAtZero:true
-                              }
-                            }]
-                          }
-                        }
-                      });
-                    </script>
 
                     <button class="btn btn-lg btn-outline-light text-primary rounded-0 border-0 d-none d-md-block" type="button"> View all </button>
                   </div>
