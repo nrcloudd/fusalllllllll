@@ -425,8 +425,8 @@ if (isset($_POST['bhapus'])) {
                                             $id=$row['id'];
                                             $nama = $row['name'];
                                             $type = $row['type'];
-                                            $siang = $row['price-siang'];
-                                            $malam = $row['price-malam'];
+                                            $siang = $row['priceSiang'];
+                                            $malam = $row['priceMalam'];
                                             $status = $row['Status'];
                                         
                                             ?>
