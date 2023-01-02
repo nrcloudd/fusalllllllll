@@ -1,88 +1,12 @@
 <?php
+session_start(); 
 require('koneksi.php');
+
 session_start();
 
-if (isset($_POST['register'])) {
-  $userName = $_POST['username'];
-  $userMail = $_POST['email'];
-  $userTlp = $_POST['no_tlp'];
-  $userPass = $_POST['password'];
-  // $check = $_POST['checkbox'];
-
-
-  // if ($check == 1) {
-  //   $cookie_name = "cookie_email";
-  //   $cookie_value = $email;
-  //   $cookie_time = time() + (60 * 60 * 24 * 30);
-  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-
-  //   $cookie_name = "cookie_password";
-  //   $cookie_value = md5($password);
-  //   $cookie_time = time() + (60 * 60 * 24 * 30);
-  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-  //   header("location:login.php");
-  // }
-
-  $query = "INSERT INTO member VALUES (null,'$userName', '$userMail','$userPass','$userTlp')";
-  $result = mysqli_query($koneksi, $query);
-  if ($result) {
-    echo "<script> alert('selamat kamu berhasil')</script>";
-    header('Location: home.php');
-    ob_end_flush();
-  } else {
-    echo "<script> alert('kamu gagal')</script>";
-    header('Location: login.php');
-    ob_end_flush();
-  }
-}
-
 if (isset($_POST['login'])) {
-  $email = $_POST['Email'];
-  $pass = $_POST['Password'];
-  // $check = $_POST['checkbox'];
-
-
-  // if ($checkbox == 1) {
-  //   $cookie_name = "cookie_email";
-  //   $cookie_value = $email;
-  //   $cookie_time = time() + (60 * 60 * 24 * 30);
-  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-
-  //   $cookie_name = "cookie_password";
-  //   $cookie_value = md5($password);
-  //   $cookie_time = time() + (60 * 60 * 24 * 30);
-  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-  // }
-  // header("location:login.php");
-
-<<<<<<< Updated upstream
-
-
-
-  if (!empty(trim($email)) && !empty(trim($pass))) {
-    $query = "SELECT * FROM member WHERE email = '$email'";
-    $result = mysqli_query($koneksi, $query);
-    $num = mysqli_num_rows($result);
-
-    while ($row = mysqli_fetch_array($result)) {
-      $id = $row['id'];
-      $userName = $row['name'];
-      $userEmail = $row['email'];
-      $passVal = $row['password'];
-      $userTlp = $row['no_tlp'];
-
-    }
-
-    if ($num != 0) {
-      if ($userEmail == $email && $passVal == $pass) {
-        $_SESSION['id'] = $id;
-        $_SESSION['name'] = $userName;
-        $_SESSION['email'] = $UserEmail;
-        header('Location: home.php');
-      } else {
-        $error = 'user atau password salah!!';
-=======
-  
+    $email = $_POST['Email'];
+    $pass = $_POST['Password'];
     
     if (!empty(trim($email)) && !empty(trim($pass))) {
         $query      = "SELECT * FROM member WHERE email = '$email'";
@@ -92,78 +16,33 @@ if (isset($_POST['login'])) {
         while ($row = mysqli_fetch_array($result)) {
             $id = $row['id'];
             $userName = $row['name'];
-            $userEmail = $row['email'];
+            $userVal = $row['email'];
             $passVal = $row['password'];
-            $userTlp = $row['no_tlp'];
-
+            $userName = $row['no_tlp'];
         }
 
         if ($num != 0) {
-            if ($userEmail==$email && $passVal==$pass) {
+            if ($userVal==$email && $passVal==$pass) {
                 $_SESSION['id'] = $id;
                 $_SESSION['name'] = $userName;
-                $_SESSION['email'] = $UserEmail;
-                header('Location: home.php');
+                $_SESSION['email'] = $userVal;
+                header('Location: home.html');
             }else{
                 $error = 'user atau password salah!!';
                 echo "<script>alert('$error')</script>";
-                header('Location: login.php');
+                header('Location: login222.php');
             }
         }else{
             $error = 'user tidak ditemukan!!';
             echo "<script>alert('$error')</script>";
-            header('Location: login.php');
+            header('Location: login222.php');
         }
     }else{
         $error = 'Data tidak boleh kosong!!';
->>>>>>> Stashed changes
         echo "<script>alert('$error')</script>";
-        header('Location: login.php');
-      }
-    } else {
-      $error = 'user tidak ditemukan!!';
-      echo "<script>alert('$error')</script>";
-      header('Location: login.php');
     }
-  } else {
-    $error = 'Data tidak boleh kosong!!';
-    echo "<script>alert('$error')</script>";
-  }
-
-  if (isset($_POST['regis'])) {
-    $nama = $_POST['username'];
-    $email = $_POST['Email'];
-    $tlp = $_POST['Notelp'];
-    $pass = $_POST['Password'];
-
-    $queryy = "INSERT INTO member VALUES ('','$nama','$email','$tlp','$pass','$level')";
-
-    $result = mysqli_query($koneksi, $queryy);
-    $success = "Data Berhasil Ditambahkan";
-    $error = "Data Gagal Ditambahkan";
-    if ($result) {
-      echo "<script>
-          Swal.fire({
-          icon: 'success',
-          title: ' $success',
-                  }).then((result) => {
-          window.location.href = 'employe.php';
-      })
-            </script>";
-    } else {
-      echo "<script>
-      Swal.fire({
-          icon: 'error',
-          title: ' $eror',
-                  }).then((result) => {
-          window.location.href = 'employe.php';
-      })
-            </script>";
-    }
-  }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -178,7 +57,7 @@ if (isset($_POST['login'])) {
 
   <!-- jQuery CDN Link -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <title>Login & Register</title>
+  <title>Transparent form</title>
   <style>
     * {
       margin: 0;
@@ -187,10 +66,9 @@ if (isset($_POST['login'])) {
     }
 
     body {
-      background-image: url(img/background1.webp);
+      background-image: url(img/bg2.jpg);
       background-size: cover;
       background-attachment: fixed;
-
     }
 
     /* align items center vertically and horizontally  */
@@ -301,47 +179,146 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
+<?php
+require('koneksi.php');
+if( isset($_POST['register']) ){
+  $userName = $_POST['userName'];
+  $userMail = $_POST['email'];
+  $userTlp = $_POST['Notelp'];
+  $userPass = $_POST['Password'];
+  // $check = $_POST['checkbox'];
+
+      
+  // if ($check == 1) {
+  //   $cookie_name = "cookie_email";
+  //   $cookie_value = $email;
+  //   $cookie_time = time() + (60 * 60 * 24 * 30);
+  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+  //   $cookie_name = "cookie_password";
+  //   $cookie_value = md5($password);
+  //   $cookie_time = time() + (60 * 60 * 24 * 30);
+  //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+  //   header("location:login.php");
+  // }
+
+  $query = "INSERT INTO member VALUES (null,'$userName', '$userMail','$userPass','$userTlp')";
+  $result = mysqli_query($koneksi, $query);
+  if ($result){
+    echo "<script> alert('selamat kamu berhasil')</script>";
+    header('Location: home.html');
+    ob_end_flush();
+  }else{
+    echo "<script> alert('kamu gagal')</script>";
+    header('Location: login.php');
+    ob_end_flush();
+  }
+}
+// if (isset($_POST['login'])) {
+    // $email = $_POST['Email'];
+    // $pass = $_POST['Password'];
+    // $checkbox = $_POST['checkbox'];
+
+        
+    // if ($checkbox == 1) {
+    //   $cookie_name = "cookie_email";
+    //   $cookie_value = $email;
+    //   $cookie_time = time() + (60 * 60 * 24 * 30);
+    //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+
+    //   $cookie_name = "cookie_password";
+    //   $cookie_value = md5($password);
+    //   $cookie_time = time() + (60 * 60 * 24 * 30);
+    //   setcookie($cookie_name, $cookie_value, $cookie_time, "/");
+    // }
+    // header("location:login.php");
+  
+    
+    // if (!empty(trim($email)) && !empty(trim($pass))) {
+    //     $query      = "SELECT * FROM member WHERE email = '$email'";
+    //     $result     = mysqli_query($koneksi, $query);
+    //     $num        = mysqli_num_rows($result);
+
+    //     while ($row = mysqli_fetch_array($result)) {
+    //         $id = $row['id'];
+    //         $userName = $row['name'];
+    //         $userEmail = $row['email'];
+    //         $passVal = $row['password'];
+    //         $userTlp = $row['no_tlp'];
+
+    //     }
+
+    //     if ($num != 0) {
+    //         if ($userEmail==$email && $passVal==$pass) {
+    //             $_SESSION['id'] = $id;
+    //             $_SESSION['name'] = $userName;
+    //             $_SESSION['email'] = $userEmail;
+    //             header('Location: home.html');
+    //         }else{
+    //             $error = 'user atau password salah!!';
+    //             echo "<script>alert('$error')</script>";
+    //             header('Location: login.php');
+    //         }
+    //     }else{
+    //         $error = 'user tidak ditemukan!!';
+    //         echo "<script>alert('$error')</script>";
+    //         header('Location: login.php');
+    //     }
+    // }else{
+    //     $error = 'Data tidak boleh kosong!!';
+    //     echo "<script>alert('$error')</script>";
+    // }
+// }
+?>
 
   <div class="container">
     <div class="form">
       <div class="btn">
-        <button class="signUpBtn" name="regis">Register</button>
+        <button class="signUpBtn">Register</button>
         <button class="loginBtn">Log in</button>
       </div>
       <form class="signUp" action="" method="POST">
         <div class="formGroup">
-          <input type="text" name="username" id="userName" placeholder="User Name" autocomplete="off">
+          <input type="text" name="userName" id="userName" placeholder="User Name" required autocomplete="off">
         </div>
         <div class="formGroup">
           <input type="email" name="email" placeholder="Email ID" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="text" name="notelp" id="notelp" placeholder="No.Telp" required autocomplete="off">
+          <input type="text" name="Notelp" id="Notelp" placeholder="NoTelp" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
         </div>
         <!-- <div class="checkBox">
           <input type="checkbox" name="checkbox" id="checkbox">
           <span class="text">I agree with term & conditions</span>
         </div> -->
         <div class="formGroup">
-          <button type="submit" class="btn2" name="register">Register</a>
+          <button type="submit" class="btn2" name="register">Register</button>
         </div>
+
       
       </form>
+
+
+
 
       <!------ Login Form -------- -->
 
       <form class="login" action="" method="POST">
 
         <div class="formGroup">
-          <input type="email"  placeholder="Email ID" name="Email" required autocomplete="off">
+          <input type="Email"  placeholder="Email ID" name="Email" required autocomplete="off">
         </div>
         <div class="formGroup">
-          <input type="password" name="Password" id="password" placeholder="Password" required autocomplete="off">
+          <input type="Password" name="Password" id="password" placeholder="Password" required autocomplete="off">
 
         </div>
+        <!-- <div class="checkBox">
+          <input type="checkbox" name="checkbox" id="checkbox">
+          <span class="text">Keep me signed in on this device</span>
+        </div> -->
         <div class="formGroup">
           <button type="submit" class="btn2" name="login">Login</button>
         </div>
@@ -353,4 +330,5 @@ if (isset($_POST['login'])) {
   
   <script src="login.js"></script>
 </body>
+
 </html>
