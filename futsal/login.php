@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['register'])) {
   $userName = $_POST['username'];
   $userMail = $_POST['email'];
-  $userTlp = $_POST['notelp'];
+  $userTlp = $_POST['no_tlp'];
   $userPass = $_POST['password'];
   // $check = $_POST['checkbox'];
 
