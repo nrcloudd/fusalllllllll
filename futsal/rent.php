@@ -1,5 +1,14 @@
 <?php
 require('koneksi.php');
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    $_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
+    header('Location: login.php');
+}
+$sesID = $_SESSION['id'];
+$sesName = $_SESSION['name'];
+$sesLvl = $_SESSION['email'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +41,7 @@ require('koneksi.php');
 </head>
 
 <body style="">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #0F0E0E">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="background-color: #A19882">
         <div class="container">
             <a href="#first" class="navbar-brand">Zona</a>
             <button type="button" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse"
@@ -79,15 +88,14 @@ require('koneksi.php');
         <?php while($perproduk = $ambil->fetch_assoc()){ ?>
                 <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative">
-                        <!-- <img class="card-img-top" src="../uploaded_img/<?= $perproduk['gambar']; ?>" alt="Card image cap"> -->
+                        <img class="card-img-top" src="img/<?= $perproduk['gambar']; ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $perproduk['nama']; ?></p></h5>
                             <p class="card-text">
-                                <li><span>Siang Rp. </span><?php echo " " . number_format($perproduk['priceSiang'],0,',','.'); ?><span></span></li>
-                                <li><span>Malam Rp. </span><?php echo " " . number_format($perproduk['priceMalam'],0,',','.'); ?><span></span></li>
+                                <span>Harga: Rp. </span><?php echo " " . number_format($perproduk['priceMalam'],0,',','.'); ?><span></span>
                                 <p class="card-text"><?= $perproduk['tipe'];?>
                                 </p>
-                            <a class="btn button-6">Lihat Selengkapnya</a>
+                            <a class="btn button-6" href="booking.php?id=<?php echo $perproduk['id']?>">Lihat Selengkapnya</a>
                         </div>
                     </div>
                 </div>
