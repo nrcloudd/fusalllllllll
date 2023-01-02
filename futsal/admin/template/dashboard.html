@@ -15,7 +15,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="admin\template\images/logo.png" />
+  <link rel="shortcut icon" href="admin\template\pages\icons/logo1.png" />
 </head>
 <body>
   
@@ -143,8 +143,8 @@
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
+              <a class="dropdown-item"href="logout.php">
+                <i class="ti-power-off text-primary" ></i>
                 Logout
               </a>
             </div>
@@ -199,7 +199,7 @@
             <div class="col-md-12 grid-margin">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <h4 class="font-weight-bold mb-0">RoyalUI Dashboard</h4>
+                  <h4 class="font-weight-bold mb-0">ZonaFutsal Dashboard</h4>
                 </div>
                 <div>
                     <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
@@ -239,8 +239,8 @@
             <div class="col-md-7 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Sales details</p>
-                  <p class="text-muted font-weight-light">Received overcame oh sensible so at an. Formed do change merely to county it. Am separate contempt domestic to to oh. On relation my so addition branched.</p>
+                  <p class="card-title">Transaksi details</p>
+                  <p class="text-muted font-weight-light">Jumlah penyewaan lapangan di ZonaFutsal pada setiap harinya dalam sebulan.</p>
                   <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
                   <canvas id="sales-chart"></canvas>
                 </div>
@@ -257,6 +257,60 @@
                         <a class="dropdown-item" href="#">August - November</a>
                       </div>
                     </div>
+
+                    <script>
+                      var ctx = document.getElementById("myChart").getContext('2d');
+                      var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                          labels: ["Senin", "elasa", "Ekonomi", "Pertanian"],
+                          datasets: [{
+                            label: '',
+                            data: [
+                            <?php 
+                            $jumlah_teknik = mysqli_query($koneksi,"select * from mahasiswa where fakultas='teknik'");
+                            echo mysqli_num_rows($jumlah_teknik);
+                            ?>, 
+                            <?php 
+                            $jumlah_ekonomi = mysqli_query($koneksi,"select * from mahasiswa where fakultas='ekonomi'");
+                            echo mysqli_num_rows($jumlah_ekonomi);
+                            ?>, 
+                            <?php 
+                            $jumlah_fisip = mysqli_query($koneksi,"select * from mahasiswa where fakultas='fisip'");
+                            echo mysqli_num_rows($jumlah_fisip);
+                            ?>, 
+                            <?php 
+                            $jumlah_pertanian = mysqli_query($koneksi,"select * from mahasiswa where fakultas='pertanian'");
+                            echo mysqli_num_rows($jumlah_pertanian);
+                            ?>
+                            ],
+                            backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)'
+                            ],
+                            borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          scales: {
+                            yAxes: [{
+                              ticks: {
+                                beginAtZero:true
+                              }
+                            }]
+                          }
+                        }
+                      });
+                    </script>
+
                     <button class="btn btn-lg btn-outline-light text-primary rounded-0 border-0 d-none d-md-block" type="button"> View all </button>
                   </div>
                 </div>
@@ -408,6 +462,25 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
+        <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal"href="index.php">Cancel</button>
+                <a class="btn btn-primary" href="logout.php">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
