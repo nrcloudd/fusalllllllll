@@ -214,11 +214,9 @@ if (isset($_POST['bsimpan'])) {
                                                     </select>
                                                 </div>
                                                 <div class="input-group date mb-3" id="datepicker">
-                                                    <input type="text" class="form-control" placeholder="Tanggal" name="tanggal">
+                                                    <input type="date" class="form-control" placeholder="Tanggal" name="tanggal">
                                                     <span class="input-group-append">
-                                                        <span class="input-group-text bg-white">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </span>
+
                                                     </span>
                                                 </div>
                                                 <div class="pb-3">
@@ -262,7 +260,7 @@ if (isset($_POST['bsimpan'])) {
         todayHighlight: true,
         autoclose: true,
       };
-            $('#datepicker').datepicker(options);
+            $('#datepicker').datepicker(options); 
         });
     </script>
 
