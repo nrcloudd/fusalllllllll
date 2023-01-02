@@ -194,7 +194,7 @@ require ("koneksi.php");
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="tabel_lapangan.php">
+            <a class="nav-link" href="lapangan.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Lapangan</span>
             </a>
