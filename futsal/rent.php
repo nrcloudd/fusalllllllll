@@ -79,15 +79,14 @@ require('koneksi.php');
         <?php while($perproduk = $ambil->fetch_assoc()){ ?>
                 <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative">
-                        <!-- <img class="card-img-top" src="../uploaded_img/<?= $perproduk['gambar']; ?>" alt="Card image cap"> -->
+                        <img class="card-img-top" src="img/<?= $perproduk['gambar']; ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $perproduk['nama']; ?></p></h5>
                             <p class="card-text">
-                                <li><span>Siang Rp. </span><?php echo " " . number_format($perproduk['priceSiang'],0,',','.'); ?><span></span></li>
-                                <li><span>Malam Rp. </span><?php echo " " . number_format($perproduk['priceMalam'],0,',','.'); ?><span></span></li>
+                                <span>Harga: Rp. </span><?php echo " " . number_format($perproduk['priceMalam'],0,',','.'); ?><span></span>
                                 <p class="card-text"><?= $perproduk['tipe'];?>
                                 </p>
-                            <a class="btn button-6">Lihat Selengkapnya</a>
+                            <a class="btn button-6" href="booking.php?id=<?php echo $perproduk['id']?>">Lihat Selengkapnya</a>
                         </div>
                     </div>
                 </div>
