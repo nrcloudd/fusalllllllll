@@ -284,13 +284,6 @@ if (isset($_POST['bhapus'])) {
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../tables/employe.php">
-                <i class="ti-view-list-alt menu-icon"></i>
-                <span class="menu-title">Data Karyawan</span>
-            </a>
-        </li>
           <li class="nav-item">
             <a class="nav-link" href="Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
