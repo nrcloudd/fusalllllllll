@@ -31,9 +31,10 @@ if (isset($_POST['bsimpan'])) {
 
     $nama_lengkap = $_POST['nama'];
     $email = $_POST['email'];
+    $pass = $_POST['pass'];
     $level = $_POST['level'];
 
-    $queryy = "INSERT INTO admin (nama,email,level) VALUES ('$nama_lengkap','$email','$level')";
+    $queryy = "INSERT INTO admin VALUES ('$nama_lengkap','$email','$pass','$level')";
 
     $result = mysqli_query($koneksi, $queryy);
     $success = "Data Berhasil Ditambahkan";
@@ -50,7 +51,7 @@ if (isset($_POST['bsimpan'])) {
     } else {
         echo "<script>
         Swal.fire({
-            icon: 'success',
+            icon: 'error',
             title: ' $eror',
                     }).then((result) => {
             window.location.href = 'employe.php';
@@ -64,6 +65,7 @@ if (isset($_POST['bUbah'])) {
     $ubah = mysqli_query($koneksi, "UPDATE admin SET 
         nama = '$_POST[nama]',
         email = '$_POST[email]',
+        pass = '$_POST[pass]',
         level = '$_POST[level]'
         WHERE id = '$_POST[id]'
     ");
@@ -86,8 +88,8 @@ if (isset($_POST['bUbah'])) {
     } else {
         echo "<script>
         Swal.fire({
-            icon: 'success',
-            title: ' $eror',
+            icon: 'error',
+            title: ' $error',
                     }).then((result) => {
             window.location.href = 'employe.php';
         })
@@ -118,7 +120,7 @@ if (isset($_POST['bhapus'])) {
     } else {
         echo "<script>
         Swal.fire({
-            icon: 'success',
+            icon: 'error',
             title: ' $eror',
                     }).then((result) => {
             window.location.href = 'employe.php';
@@ -277,20 +279,14 @@ if (isset($_POST['bhapus'])) {
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-        <li class="nav-item">
-        <a class="nav-link" href="../../dashboard.html">
+          <li class="nav-item">
+            <a class="nav-link" href="../../dashboard.php">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../tables/employe.php">
-                <i class="ti-view-list-alt menu-icon"></i>
-                <span class="menu-title">Data Karyawan</span>
-            </a>
-        </li>
           <li class="nav-item">
             <a class="nav-link" href="Tabel-Register.php">
               <i class="ti-view-list-alt menu-icon"></i>
@@ -310,14 +306,19 @@ if (isset($_POST['bhapus'])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../tables/lapangan.php">
+            <a class="nav-link" href="lapangan.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Lapangan</span>
             </a>
           </li>
-          
-                </ul>
-            </nav>
+          <li class="nav-item">
+            <a class="nav-link" href="employe.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Karyawan</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -327,12 +328,12 @@ if (isset($_POST['bhapus'])) {
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
                                     <h4 class="card-title">Karyawan</h4>
+                                    <!-- Modal -->
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#modalTambah">
                                         Tambah data
                                     </button>
 
-                                    <!-- Modal -->
                                     <div class="modal fade" id="modalTambah" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
@@ -364,6 +365,14 @@ if (isset($_POST['bhapus'])) {
 
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlTextarea1"
+                                                                class="form-label">Password</label>
+                                                            <input type="password" class="form-control"
+                                                                id="exampleFormControlInput1"
+                                                                placeholder="Masukkan Password" name="pass" required>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlTextarea1"
                                                                 class="form-label">Level</label>
                                                             <input type="number" class="form-control"
                                                                 id="exampleFormControlInput1"
@@ -390,6 +399,7 @@ if (isset($_POST['bhapus'])) {
                                                 <th>Nama</th>
                                                 <th>Email</th>
                                                 <th>Level</th>
+                                                <th>Password</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -407,6 +417,7 @@ if (isset($_POST['bhapus'])) {
                                                 <td><?php echo $ambil['nama'] ?></td>
                                                 <td><?php echo $ambil['email'] ?></td>
                                                 <td><?php echo $ambil['level'] ?></td>
+                                                <td><?php echo $ambil['pass'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"
@@ -453,6 +464,16 @@ if (isset($_POST['bhapus'])) {
                                                                 <div class="mb-3">
                                                                     <label for="exampleFormControlTextarea1"
                                                                         class="form-label">Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                        id="exampleFormControlInput1"
+                                                                        placeholder="Masukkan Password" name="pass"
+                                                                        value="<?= $ambil['pass']; ?>" required>
+                                                                </div>
+
+
+                                                                <div class="mb-3">
+                                                                    <label for="exampleFormControlTextarea1"
+                                                                        class="form-label">Level</label>
                                                                     <input type="number" class="form-control"
                                                                         id="exampleFormControlInput1"
                                                                         placeholder="Masukkan level" name="level"

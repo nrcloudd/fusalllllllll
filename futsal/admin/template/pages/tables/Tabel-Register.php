@@ -279,8 +279,8 @@ if (isset($_POST['bhapus'])) {
             <!-- partial:../../partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-        <li class="nav-item">
-        <a class="nav-link" href="../../dashboard.html">
+          <li class="nav-item">
+            <a class="nav-link" href="../../dashboard.php">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -315,23 +315,39 @@ if (isset($_POST['bhapus'])) {
               <span class="menu-title">Data Lapangan</span>
             </a>
           </li>
-          
-                </ul>
-            </nav>
-            <!-- partial -->
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
-                                    <h4 class="card-title">Data Register</h4>
-                                    
-
-                                    
-
-                                </div>
+          <li class="nav-item">
+            <a class="nav-link" href="employe.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Karyawan</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Tabel Register</h4>
+                <p class="card-description">
+                 
+                </p>
+                <div class="table-responsive">
+                    <h4 class="card-title">Data Register</h4>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>No.Telp</th>
+                        <th>Password</th>
+                        <th>Level</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="karyawan">
                                         <thead>

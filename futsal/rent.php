@@ -1,3 +1,6 @@
+<?php
+require('koneksi.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,6 +28,7 @@
             background-size: cover;
         }
     </style>
+    
 </head>
 
 <body style="">
@@ -61,41 +65,33 @@
     <div class="container pt-5 pb-5">
         <section id="rent" class="w-100 d-flex justify-content-center align-items-center" style="">
             <div class="content text-center">
-                <div class="container">
-                    <h1 class="text-capitalize mb-3 mb-md-5 font-weight-bold text-center pt-5">Field Schedule
+                <div class="container pt-5">
+                    <h1 class="text-capitalize mb-3 mb-md-5 font-weight-bold text-center pt-5">Pilih Lapangan
                     </h1>
-                    <div class="input-group mb-4">
-                        <i class="bi bi-calendar-date input-group-text"></i>
-                        <input type="text" class="datepicker_input form-control" placeholder="Select a date" required
-                            aria-label="Date">
-                    </div>
-                    <button type="submit" class="btn btn-light">Search</button>
                 </div>
             </div>
         </section>
     </div>
     <section id="rent" class="w-100 d-flex justify-content-center align-items-center" style="">
-        <div class="container">
-            <div class="row" style="position: relative;">
+    <div class="container">
+    <div class="row" style="position: relative;">
+        <?php $ambil = $koneksi->query("SELECT * FROM field") ; ?>
+        <?php while($perproduk = $ambil->fetch_assoc()){ ?>
                 <div class="col-12 col-md-6 col-lg-4 pb-4">
                     <div class="card position-relative">
-                        <img class="card-img-top" src="../uploaded_img/<?= $fetch_products['gambar']; ?>" alt="Card image cap">
+                        <!-- <img class="card-img-top" src="../uploaded_img/<?= $perproduk['gambar']; ?>" alt="Card image cap"> -->
                         <div class="card-body">
-                            <h5 class="card-title"><?= $fetch_products['nama']; ?></p></h5>
+                            <h5 class="card-title"><?= $perproduk['nama']; ?></p></h5>
                             <p class="card-text">
-                                <li><span>Rp. </span><?php echo " " . number_format($fetch_products['price-siang'],0,',','.'); ?><span></span></li>
-                                <li><span>Rp. </span><?php echo " " . number_format($fetch_products['price-malam'],0,',','.'); ?><span></span></li>
-                                <p class="card-text"><?= $fetch_products['type'];?>
+                                <li><span>Siang Rp. </span><?php echo " " . number_format($perproduk['priceSiang'],0,',','.'); ?><span></span></li>
+                                <li><span>Malam Rp. </span><?php echo " " . number_format($perproduk['priceMalam'],0,',','.'); ?><span></span></li>
+                                <p class="card-text"><?= $perproduk['tipe'];?>
                                 </p>
                             <a class="btn button-6">Lihat Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4 pb-4">
-                    <div class="card position-relative no-border" style="background-color: #434242; border:none;">
-
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>
