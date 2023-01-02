@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jan 2023 pada 16.52
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.1.12
+-- Host: localhost:3306
+-- Generation Time: Jan 02, 2023 at 07:34 PM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -33,10 +33,10 @@ CREATE TABLE `admin` (
   `email` varchar(50) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `level` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `nama`, `email`, `pass`, `level`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `admin` (`id`, `nama`, `email`, `pass`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `field`
+-- Table structure for table `field`
 --
 
 CREATE TABLE `field` (
@@ -54,10 +54,10 @@ CREATE TABLE `field` (
   `tipe` varchar(50) NOT NULL,
   `priceMalam` int(50) NOT NULL,
   `gambar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `field`
+-- Dumping data for table `field`
 --
 
 INSERT INTO `field` (`id`, `nama`, `tipe`, `priceMalam`, `gambar`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `field` (`id`, `nama`, `tipe`, `priceMalam`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -81,111 +81,70 @@ CREATE TABLE `member` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `no_tlp` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `member`
+-- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id`, `name`, `email`, `password`, `no_tlp`) VALUES
-(1, 'ferdy', 'ferdygtg@gmail.com', '222', 11111),
-(2, 'davin', 'davin@gmail.com', '1234', 8999999),
-(3, 'daffa', 'dzaghazy08@gmail.com', '123123', 777777777),
-(4, 'desi', 'dasidesi@gmail.com', '0000', 9999);
+(2, 'davin', 'davin@gmail.com', '1234', 8999999);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
   `id` int(11) NOT NULL,
   `field_name` varchar(50) NOT NULL,
   `member` int(11) NOT NULL,
-  `jam-awal` int(11) NOT NULL,
-  `jam-akhir` int(11) NOT NULL,
+  `jam` int(11) NOT NULL,
   `tanggal` date NOT NULL,
-  `total-price` int(11) NOT NULL,
-  `dp` int(11) NOT NULL,
-  `sisa` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
   `bukti_bayar` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `transaksi`
---
-
-INSERT INTO `transaksi` (`id`, `field_name`, `member`, `jam-awal`, `jam-akhir`, `tanggal`, `total-price`, `dp`, `sisa`, `bukti_bayar`) VALUES
-(1, 'Lapangan 2', 1, 7, 8, '2023-01-03', 100000, 40000, 60000, 'dp'),
-(2, 'Lapangan 4', 4, 22, 23, '2023-01-04', 100000, 0, 0, 'lunas'),
-(5, 'Lapangan 3', 3, 15, 20, '2023-01-05', 500000, 400000, 100000, 'dp');
-
---
--- Trigger `transaksi`
---
-DELIMITER $$
-CREATE TRIGGER `Delete_Data_Transaksi` AFTER DELETE ON `transaksi` FOR EACH ROW INSERT INTO `transaksi_detail`
-   ( id,
-     field_name,
-     member,
-   tanggal,
-   `total-price`)
-   VALUES
-   ( OLD.id,
-     OLD.field_name,
-     OLD.member,
-   OLD.tanggal,
-   OLD.	`total-price`)
-$$
-DELIMITER ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi_detail`
+-- Table structure for table `transaksi_detail`
 --
 
 CREATE TABLE `transaksi_detail` (
   `id` int(11) NOT NULL,
-  `field_name` varchar(50) NOT NULL,
+  `field_name` int(11) NOT NULL,
   `member` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `total-price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `transaksi_detail`
---
-
-INSERT INTO `transaksi_detail` (`id`, `field_name`, `member`, `tanggal`, `total-price`) VALUES
-(3, 'Lapangan 6', 2, '2023-01-03', 200000);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `field`
+-- Indexes for table `field`
 --
 ALTER TABLE `field`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`nama`);
 
 --
--- Indeks untuk tabel `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id`),
@@ -193,33 +152,33 @@ ALTER TABLE `transaksi`
   ADD KEY `member` (`member`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `member`
+-- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `transaksi`
+-- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `transaksi`
+-- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`field_name`) REFERENCES `field` (`nama`),
