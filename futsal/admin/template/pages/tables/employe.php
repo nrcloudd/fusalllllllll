@@ -280,7 +280,7 @@ if (isset($_POST['bhapus'])) {
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.php">
+                        <a class="nav-link" href="../../dashboard.html">
                             <i class="ti-shield menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
