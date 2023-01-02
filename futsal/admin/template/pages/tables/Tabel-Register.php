@@ -169,8 +169,8 @@ require ("koneksi.php");
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="../../dashboard.html">
+          <li class="nav-item">
+            <a class="nav-link" href="../../dashboard.php">
               <i class="ti-shield menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -197,6 +197,12 @@ require ("koneksi.php");
             <a class="nav-link" href="lapangan.php">
               <i class="ti-view-list-alt menu-icon"></i>
               <span class="menu-title">Data Lapangan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="employe.php">
+              <i class="ti-view-list-alt menu-icon"></i>
+              <span class="menu-title">Data Karyawan</span>
             </a>
           </li>
         </ul>
