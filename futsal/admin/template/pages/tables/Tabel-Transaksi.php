@@ -61,7 +61,7 @@ if (isset($_POST['bsimpan'])) {
 
 if (isset($_POST['bUbah'])) {
 
-    $ubah = mysqli_query($koneksi, "UPDATE admin SET 
+    $ubah = mysqli_query($koneksi, "UPDATE transaksi SET 
         nama = '$_POST[nama]',
         email = '$_POST[email]',
         level = '$_POST[level]'
@@ -80,7 +80,7 @@ if (isset($_POST['bUbah'])) {
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'transaksi.php';
         })
               </script>";
     } else {
@@ -89,7 +89,7 @@ if (isset($_POST['bUbah'])) {
             icon: 'success',
             title: ' $eror',
                     }).then((result) => {
-            window.location.href = 'employe.php';
+            window.location.href = 'transaksi.php';
         })
               </script>";
     }
@@ -112,7 +112,7 @@ if (isset($_POST['bhapus'])) {
             icon: 'success',
             title: ' $success',
                     }).then((result) => {
-            window.location.href = 'transaksi.php';
+            window.location.href = 'Tabel-Transaksi.php';
         })
               </script>";
     } else {
@@ -399,12 +399,9 @@ if (isset($_POST['bhapus'])) {
                                                 <th>ID</th>
                                                 <th>Lapangan</th>
                                                 <th>Member</th>
-                                                <th>Jam-Awal</th>
-                                                <th>Jam-Akhir</th>
+                                                <th>Jam</th>
                                                 <th>Tanggal</th>
-                                                <th>Total-Price</th>
-                                                <th>Dp</th>
-                                                <th>Sisa</th>
+                                                <th>Harga</th>
                                                 <th>Bukti_Bayar</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -415,19 +412,16 @@ if (isset($_POST['bhapus'])) {
                                             require 'connect.php';
                                             $query = mysqli_query($koneksi, "SELECT * FROM Transaksi ");
                                            while( $ambil = mysqli_fetch_array($query)) {
-                                        
+                                            
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $ambil['id'] ?></td>
                                                 <td><?php echo $ambil['field_name'] ?></td>
                                                 <td><?php echo $ambil['member'] ?></td>
-                                                <td><?php echo $ambil['jam-awal'] ?></td>
-                                                <td><?php echo $ambil['jam-akhir'] ?></td>
+                                                <td><?php echo $ambil['jam'] ?></td>
                                                 <td><?php echo $ambil['tanggal'] ?></td>
-                                                <td><?php echo $ambil['total-price'] ?></td>
-                                                <td><?php echo $ambil['dp'] ?></td>
-                                                <td><?php echo $ambil['sisa'] ?></td>
+                                                <td><?php echo $ambil['harga'] ?></td>
                                                 <td><?php echo $ambil['bukti_bayar'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"

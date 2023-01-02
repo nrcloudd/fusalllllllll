@@ -337,7 +337,7 @@ if (isset($_POST['bhapus'])) {
                                                 <th>Lapangan </th>
                                                 <th>Member</th>
                                                 <th>Tanggal</th>
-                                                <th>Total Price</th>
+                                                <th>Harga</th>
                                                 <th>Kontrol</th>
                                             </tr>
                                         </thead>
@@ -355,7 +355,7 @@ if (isset($_POST['bhapus'])) {
                                                 <td><?php echo $ambil['field_name'] ?></td>
                                                 <td><?php echo $ambil['member'] ?></td>
                                                 <td><?php echo $ambil['tanggal'] ?></td>
-                                                <td><?php echo $ambil['total-price'] ?></td>
+                                                <td><?php echo $ambil['harga'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"
