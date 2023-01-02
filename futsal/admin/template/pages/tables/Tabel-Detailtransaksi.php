@@ -332,27 +332,30 @@ if (isset($_POST['bhapus'])) {
                                     <table class="table table-hover" id="karyawan">
                                         <thead>
                                             <tr>
+                                                <th>NO</th>
                                                 <th>ID</th>
                                                 <th>Lapangan </th>
                                                 <th>Member</th>
                                                 <th>Tanggal</th>
                                                 <th>Total Price</th>
+                                                <th>Kontrol</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
                                             $no =  1;
                                             require 'connect.php';
-                                            $query = mysqli_query($koneksi, "SELECT * FROM Transaksi detail ");
+                                            $query = mysqli_query($koneksi, "SELECT * FROM Transaksi_detail ");
                                            while( $ambil = mysqli_fetch_array($query)) {
                                         
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><?php echo $ambil['name'] ?></td>
-                                                <td><?php echo $ambil['field_id'] ?></td>
-                                                <td><?php echo $ambil['price'] ?></td>
-                                                <td><?php echo $ambil['time'] ?></td>
+                                                <td><?php echo $ambil['id'] ?></td>
+                                                <td><?php echo $ambil['field_name'] ?></td>
+                                                <td><?php echo $ambil['member'] ?></td>
+                                                <td><?php echo $ambil['tanggal'] ?></td>
+                                                <td><?php echo $ambil['total-price'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"

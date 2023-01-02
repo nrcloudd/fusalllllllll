@@ -417,7 +417,7 @@ if (isset($_POST['bhapus'])) {
                                                 <td><?php echo $ambil['nama'] ?></td>
                                                 <td><?php echo $ambil['email'] ?></td>
                                                 <td><?php echo $ambil['level'] ?></td>
-                                                <td><?php echo $ambil['password'] ?></td>
+                                                <td><?php echo $ambil['pass'] ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-warning rounded-circle"
                                                         data-bs-toggle="modal"
