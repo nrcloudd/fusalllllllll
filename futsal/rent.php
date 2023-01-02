@@ -18,7 +18,7 @@
     <!-- Vanilla Datepicker JS -->
     <script src='https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js'></script>
 
-    <title>Me</title>
+    <title>ZonaFutsal</title>
     <style>
         .banner-image {
             background-image: url(img/bg2.jpg);
