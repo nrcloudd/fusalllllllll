@@ -1,5 +1,12 @@
 <?php
 require('koneksi.php');
+$id_lapangan = $_GET['id'];
+$ambil = $koneksi->query("SELECT * FROM field WHERE id=$id_lapangan");
+$detail = $ambil->fetch_assoc();
+
+// echo "<pre>";
+// print_r($detail);
+// echo "</pre>";
 if (isset($_POST['register'])) {
   $id = $_POST['id'];
   $nama = $_POST['field'];
@@ -86,79 +93,103 @@ date_default_timezone_set('Asia/Jakarta');
                 <form>
                   <div class="row">
                     <div class="col pb-3">
-                      <input type="text" class="form-control" placeholder="First name">
+                      <input type="text" class="form-control" placeholder="Nama">
                     </div>
                     <div class="col pb-3">
                       <input type="text" class="form-control" placeholder="No.Telp">
                     </div>
                   </div>
                   <div class="form-group pb-3">
-                    <input class="form-control" id="date" name="date" placeholder="Pilih Tanggal" type="text" />
+                    <input class="form-control" id="date" name="date" placeholder="Pilih Tanggal" type="text">
                   </div>
+                  <?php
+                  if (isset($_POST['hitung'])) {
+                    $v = $_POST['bil1'];
+                    $v2 = $_POST['bil2'];
+                    $operasi = $_POST['operasi'];
+                    switch ($operasi) {
+                      case 'kurang':
+                        $hasil = $v2 - $v;
+                        break;
+                    }
+                  }
+                  ?>
                   <div class="form-group pb-3">
-                    <select class="form-select">
+                    <select class="form-select" name="bil1">
                       <option selected>Jam Mulai</option>
-                      <option value="1">07.00</option>
-                      <option value="2">08.00</option>
-                      <option value="3">09.00</option>
-                      <option value="4">10.00</option>
-                      <option value="5">11.00</option>
-                      <option value="6">12.00</option>
-                      <option value="7">13.00</option>
-                      <option value="8">14.00</option>
-                      <option value="9">15.00</option>
-                      <option value="10">16.00</option>
-                      <option value="11">17.00</option>
-                      <option value="12">18.00</option>
-                      <option value="13">19.00</option>
-                      <option value="14">20.00</option>
-                      <option value="15">21.00</option>
-                      <option value="16">22.00</option>
-                      <option value="17">23.00</option>
+                      <option value = 7 >07.00</option>
+                      <option <?php echo @$_GET['bil1'] === '8' ? 'selected' : '' ?> value = 8 >08.00</option>
+                      <option value="9">09.00</option>
+                      <option value="10">10.00</option>
+                      <option value="11">11.00</option>
+                      <option value="12">12.00</option>
+                      <option value="13">13.00</option>
+                      <option value="14">14.00</option>
+                      <option value="15">15.00</option>
+                      <option value="16">16.00</option>
+                      <option value="17">17.00</option>
+                      <option value="18">18.00</option>
+                      <option value="19">19.00</option>
+                      <option value="20">20.00</option>
+                      <option value="21">21.00</option>
+                      <option value="22">22.00</option>
+                      <option value="23">23.00</option>
                     </select>
                   </div>
                   <div class="form-group pb-3">
-                    <select class="form-select">
-                      <option selected>Jam Akhir</option>
-                      <option value="1">07.00</option>
-                      <option value="2">08.00</option>
-                      <option value="3">09.00</option>
-                      <option value="4">10.00</option>
-                      <option value="5">11.00</option>
-                      <option value="6">12.00</option>
-                      <option value="7">13.00</option>
-                      <option value="8">14.00</option>
-                      <option value="9">15.00</option>
-                      <option value="10">16.00</option>
-                      <option value="11">17.00</option>
-                      <option value="12">18.00</option>
-                      <option value="13">19.00</option>
-                      <option value="14">20.00</option>
-                      <option value="15">21.00</option>
-                      <option value="16">22.00</option>
-                      <option value="17">23.00</option>
+                    <select class="form-select" name="bil2">
+                    <option selected>Jam Akhir</option>
+                      <!-- <option value="">07.00</option> -->
+                      <option value = 8>08.00</option>
+                      <option <?php echo @$_GET['bil2'] === '9' ? 'selected' : '' ?> value = 9 >09.00</option>
+                      <option value="10">10.00</option>
+                      <option value="11">11.00</option>
+                      <option value="12">12.00</option>
+                      <option value="13">13.00</option>
+                      <option value="14">14.00</option>
+                      <option value="15">15.00</option>
+                      <option value="16">16.00</option>
+                      <option value="17">17.00</option>
+                      <option value="18">18.00</option>
+                      <option value="19">19.00</option>
+                      <option value="20">20.00</option>
+                      <option value="21">21.00</option>
+                      <option value="22">22.00</option>
+                      <option value="23">23.00</option>
                     </select>
                   </div>
-                  
+                  <div class="form-group pb-3">
+                  <?php if(isset($_POST['hitung'])){ ?>
+			            <input type="number" value="<?php echo $hasil; ?>">
+		              <?php }else{ ?>
+			            <input type="number" value="0">
+		              <?php } ?>
+                   <input class="form-control" id="tharga" name="tharga" placeholder="" type="number" value="<?php echo $hasil;?>" readonly>
+                  </div>
+                  <div class="form-group pb-3">
+                    <input class="form-control" id="dp" name="dp" placeholder="Uang Muka" type="number" min="1">
+                  </div>
+                  <div class="form-group pb-3">
+                    <input class="form-control" id="sisa" name="sisa" placeholder="" type="number" readonly>
+                  </div>
                 </form>
-                <a href="" class="btn">Check</a>
+
+                <button type="submit" class="btn btn-dark" name="hitung">Check</button>
+                
               </div>
             </div>
             <div class="col-4">
               <div class="card px-4 py-4">
-                <!-- <img class="card-img-top" src="../uploaded_img/<?= $fetch_products['gambar']; ?>" alt="Card image cap"> -->
-                <p>Nama Lapangan</p>
+                
+                <p><?php echo $detail['nama']?></p>
+                <img class="card-img-top pb-2" src="img/<?= $detail['gambar']; ?>" alt="Card image cap">
                 <p class="card-text">
-                  <li><span>Rp. </span>
-                    <?php echo " " . number_format($fetch_products['priceSiang'], 0, ',', '.'); ?><span></span>
-                  </li>
-                  <li><span>Rp. </span>
-                    <?php echo " " . number_format($fetch_products['priceMalam'], 0, ',', '.'); ?><span></span>
-                  </li>
+                  <span>
+                    Harga: Rp.<?php echo " " . number_format($detail['priceMalam'], 0, ',', '.'); ?><span></span>
                 <p class="card-text">
-                  <?= $fetch_products['tipe']; ?>
+                  Tipe: <?= $detail['tipe']; ?>
                 </p>
-                <p>waktu</p>
+                <p></p>
                 <a href="" class="btn">Konfimasi Pembayaran</a>
               </div>
             </div>
