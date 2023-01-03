@@ -424,9 +424,6 @@ if (isset($_POST['bhapus'])) {
                                                 <td><?php echo $ambil['harga'] ?></td>
                                                 <td><?php echo $ambil['bukti_bayar'] ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-warning rounded-circle"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#modalUbah<?= $no ?>">Edit</a>
                                                     <a href="#" class="btn btn-danger rounded-circle"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#modalHapus<?= $no ?>">Hapus</a>

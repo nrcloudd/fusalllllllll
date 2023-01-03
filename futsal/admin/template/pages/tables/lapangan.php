@@ -31,11 +31,10 @@ if (isset($_POST['bsimpan'])) {
     $kode = $_POST['id'];
     $name = $_POST['nama'];
     $tipe = $_POST['tipe'];
-    $siang = $_POST['siang'];
     $malam = $_POST['malam'];
     $status = $_POST['status'];
 
-    $queryy = "INSERT INTO field VALUES ('$kode','$name','$tipe','$siang','$malam','$status')";
+    $queryy = "INSERT INTO field VALUES ('$kode','$name','$tipe','$malam','$status')";
 
     $result = mysqli_query($koneksi, $queryy);
     $success = "Data Berhasil Ditambahkan";
@@ -331,7 +330,7 @@ if (isset($_POST['bhapus'])) {
                             <div class="card-body">
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                                    <h4 class="card-title">Karyawan</h4>
+                                    <h4 class="card-title">Lapangan</h4>
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#modalTambah">
                                         Tambah data
@@ -345,7 +344,7 @@ if (isset($_POST['bhapus'])) {
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data
-                                                        Karyawan</h1>
+                                                        Lapangan</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
@@ -368,15 +367,7 @@ if (isset($_POST['bhapus'])) {
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="" class='form-label'>Harga Siang</label>
-                        <select name="siang" id="" class='form-select'>
-                            <option value="80000" selected>Rp 80.000</option>
-                            <option value="110000">Rp 110.000</option>
-                            <option value="125000">Rp 125.000</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class='form-label'>Harga Malam</label>
+                        <label for="" class='form-label'>Harga</label>
                         <select name="malam" id="" class='form-select'>
                             <option value="100000" selected>Rp 100.000</option>
                             <option value="130000">Rp 130.000</option>
@@ -450,7 +441,7 @@ if (isset($_POST['bhapus'])) {
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Form
-                                                                Data Karyawan</h1>
+                                                                Data Lapangan</h1>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
@@ -476,17 +467,10 @@ if (isset($_POST['bhapus'])) {
                                                                 </select>
                                                             </div>
                     
-                                                            <div class="mb-3">
-                                                                <label for="" class='form-label'>Harga Siang</label>
-                                                                <select name="siang" id="" class='form-select'>
-                                                                    <option <?php if($siang == '80000'){echo "selected";}?> value="80000">Rp 80.000</option>
-                                                                    <option <?php if($siang == '100000'){echo "selected";}?> value="110000">Rp 110.000</option>
-                                                                    <option <?php if($siang == '125000'){echo "selected";}?> value="125000">Rp 125.000</option>
-                                                                </select>
-                                                            </div>
+                                                        
                     
                                                             <div class="mb-3">
-                                                                <label for="" class='form-label'>Harga Malam</label>
+                                                                <label for="" class='form-label'>Harga</label>
                                                                 <select name="malam" id="" class='form-select'>
                                                                     <option <?php if($malam == '100000'){echo "selected";}?> value="100000" >Rp 100.000</option>
                                                                     <option <?php if($malam == '130000'){echo "selected";}?> value="130000">Rp 130.000</option>
