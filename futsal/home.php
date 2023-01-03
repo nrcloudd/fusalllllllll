@@ -24,6 +24,14 @@ $sesLvl = $_SESSION['email'];
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
   <title>ZonaFutsal</title>
   <style>
     .banner-image {
@@ -44,6 +52,9 @@ $sesLvl = $_SESSION['email'];
       <div class="collapse navbar-collapse" style="" id="navbarNav">
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="admin/template/login.php" class="nav-link" style="">Dashboard</a>
+          </li>
           <li class="nav-item">
             <a href="#home" class="nav-link scrollto" style="">Home</a>
           </li>
@@ -77,7 +88,7 @@ $sesLvl = $_SESSION['email'];
                 Activity Log
               </a>
               <div class="dropdown-divider"></div>
-              <a href="login.php" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+              <a href="logout.php" class="dropdown-item">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 Logout
               </a>

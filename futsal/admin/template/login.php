@@ -1,4 +1,47 @@
+<?php
+require('connect.php');
+session_start();
 
+if (isset($_POST['login'])) {
+    $email = $_POST['Email'];
+    $pass = $_POST['Password'];
+    if (!empty(trim($email)) && !empty(trim($pass))) {
+        $query      = "SELECT * FROM admin WHERE email = '$email'";
+        $result     = mysqli_query($koneksi, $query);
+        $num        = mysqli_num_rows($result);
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row['id'];
+            $userName = $row['nama'];
+            $userEmail = $row['email'];
+            $passVal = $row['pass'];
+            $userLvl = $row['level'];
+
+        }
+
+        if ($num != 0) {
+            if ($userEmail==$email && $passVal==$pass) {
+                $_SESSION['id'] = $id;
+                $_SESSION['nama'] = $userName;
+                $_SESSION['email'] = $UserEmail;
+                header('Location: dashboard.php');
+            }else{
+                $error = 'user atau password salah!!';
+                echo "<script>alert('$error')</script>";
+                header('Location: login.php');
+            }
+        }else{
+            $error = 'user tidak ditemukan!!';
+            echo "<script>alert('$error')</script>";
+            header('Location: login.php');
+        }
+    }else{
+        $error = 'Data tidak boleh kosong!!';
+        echo "<script>alert('$error')</script>";
+        header('Location: login.php');
+      }
+  }
+  ?>
 
 <!doctype html>
 <html lang="en">
@@ -29,12 +72,12 @@
 		      		<span class="fa fa-user-o"></span>
 		      	</div>
 		      	<h3 class="text-center mb-4">Have an account?</h3>
-						<form action="#" class="login-form">
+						<form action="#" class="login-form" method="POST">
 		      		<div class="form-group">
-		      			<input type="text" class="form-control rounded-left" placeholder="Username" required>
+		      			<input type="text" class="form-control rounded-left" placeholder="Username" name="Email" required>
 		      		</div>
 	            <div class="form-group d-flex">
-	              <input type="password" class="form-control rounded-left" placeholder="Password" required>
+	              <input type="password" class="form-control rounded-left" placeholder="Password" name="Password" required>
 	            </div>
 	            <div class="form-group d-md-flex">
 	            	<div class="w-50">
@@ -48,7 +91,7 @@
 								</div>
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
+	            	<button type="submit" name="login" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
 	            </div>
 	          </form>
 	        </div>
