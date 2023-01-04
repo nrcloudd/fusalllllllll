@@ -27,7 +27,7 @@ if (isset($_POST['register'])) {
   $result = mysqli_query($koneksi, $query);
   if ($result) {
     echo "<script> alert('selamat kamu berhasil')</script>";
-    header('Location: home.php');
+    header('Location: index.php');
     ob_end_flush();
   } else {
     echo "<script> alert('kamu gagal')</script>";
@@ -76,7 +76,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['id'] = $id;
                 $_SESSION['name'] = $userName;
                 $_SESSION['email'] = $UserEmail;
-                header('Location: home.php');
+                header('Location: index.php');
             }else{
                 $error = 'user atau password salah!!';
                 echo "<script>alert('$error')</script>";

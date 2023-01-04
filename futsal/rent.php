@@ -82,16 +82,16 @@ if (isset($_POST['bsimpan'])) {
                 <div class="mx-auto"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="home.php" class="nav-link">Home</a>
+                        <a href="index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="rent.php" class="nav-link">Rent</a>
                     </li>
                     <li class="nav-item">
-                        <a href="home.php#gallery" class="nav-link scrollto">Gallery</a>
+                        <a href="index.php#gallery" class="nav-link scrollto">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a href=home.php#contact class="nav-link scrollto">Contact</a>
+                        <a href=index.php#contact class="nav-link scrollto">Contact</a>
                     </li>
                     <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
