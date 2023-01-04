@@ -39,7 +39,7 @@ if (isset($_POST['bsimpan'])) {
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8">.
     <meta name="viewport" content="device-width, intial-scale=1.0">
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <link href="css/responsive.css" rel="stylesheet" />
@@ -61,7 +61,7 @@ if (isset($_POST['bsimpan'])) {
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     <title>ZonaFutsal</title>
-    <style>
+    <style> 
         .banner-image {
             background-image: url(img/bg2.jpg);
             background-size: cover;
@@ -213,7 +213,7 @@ if (isset($_POST['bsimpan'])) {
                                                         <option value="23">23.00</option>
                                                     </select>
                                                 </div>
-                                                <div class="input-group date mb-3" id="datepicker">
+                                                <div class="input-group date mb-3">
                                                     <input type="date" class="form-control" placeholder="Tanggal" name="tanggal">
                                                     <span class="input-group-append">
 
