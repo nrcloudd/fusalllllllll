@@ -4,8 +4,8 @@ require("koneksi.php");
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    $_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
-    header('Location: login.php');
+  $_SESSION['msg'] = 'anda harus login untuk mengakses halaman ini';
+  header('Location: login.php');
 }
 $sesID = $_SESSION['id'];
 $sesName = $_SESSION['name'];
@@ -24,13 +24,13 @@ $sesLvl = $_SESSION['email'];
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
   <title>ZonaFutsal</title>
   <style>
@@ -52,7 +52,7 @@ $sesLvl = $_SESSION['email'];
       <div class="collapse navbar-collapse" style="" id="navbarNav">
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
-        <li class="nav-item">
+          <li class="nav-item">
             <a href="admin/template/login.php" class="nav-link" style="">Dashboard</a>
           </li>
           <li class="nav-item">
@@ -70,7 +70,9 @@ $sesLvl = $_SESSION['email'];
           <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $sesName; ?></span>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                <?php echo $sesName; ?>
+              </span>
               <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
             </a>
             <!-- Dropdown - User Information -->
