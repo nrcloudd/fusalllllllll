@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -21,6 +22,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
      * Home Routes
      */
     // Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/basic', [AdminController::class,'basic']);
+    Route::get('/employe', [AdminController::class,'employe']);
+    Route::get('/lapangan', [AdminController::class,'lapangan']);
+    Route::get('/detailTransaksi', [AdminController::class,'detailTransaksi']);
+    Route::get('/tableregister', [AdminController::class,'tableregister']);
+    Route::get('/transaksi', [AdminController::class,'transaksi']);
+    Route::get('/dashboard', [AdminController::class,'dashboard']);
     Route::get('/', [LoginController::class,'show']);
     Route::get('/home', [HomeController::class,'index']);
 
