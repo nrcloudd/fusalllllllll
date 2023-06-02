@@ -10,7 +10,7 @@
     <body>
         <h1>Contact App</h1>
         <div>
-            <a href='{{ route('contacts.index') }}'>All contacts</a>
+            <a href="{{ route('contacts.index') }}">All contacts</a>
         </div>
     </body>
 </html>
