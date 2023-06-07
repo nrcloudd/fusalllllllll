@@ -28,3 +28,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * @method "POST"
  */
 Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
+
+Route::apiResource('/posts', App\Http\Controllers\Api\PostController::class);

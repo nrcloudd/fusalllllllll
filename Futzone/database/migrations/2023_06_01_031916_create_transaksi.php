@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('jam');
             $table->date('tanggal');
             $table->integer('harga');
-            $table->string('randomNumber');
             $table->timestamps();
         });
     }
