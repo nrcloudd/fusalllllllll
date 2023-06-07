@@ -36,8 +36,10 @@ class EmployeeController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'title'     => 'required',
-            'content'   => 'required',
+            'namaAdmin'     => 'required',
+            'emailAdmin'   => 'required',
+            'passAdmin'   => 'required',
+            'levelAdmin'   => 'required',
         ]);
 
         //check if validation fails
@@ -51,7 +53,6 @@ class EmployeeController extends Controller
 
         //create post
         $post = Post::create([
-            'image'     => $image->hashName(),
             'title'     => $request->title,
             'content'   => $request->content,
         ]);

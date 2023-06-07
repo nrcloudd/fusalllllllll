@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->after('id')->foreignId('user_id')->nullable()->after('id')->Constrained()->CascadeOnUpdate()->CascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('namaField');
             $table->string('member');
             $table->string('jam');
