@@ -19,10 +19,10 @@ class MemberController extends Controller
     public function index()
     {
         //get posts
-        $posts = Post::latest()->paginate(5);
+        $members = Member::latest()->paginate(5);
 
         //return collection of posts as a resource
-        return new PostResource(true, 'List Data Posts', $posts);
+        return new PostResource(true, 'List Data Posts', $members);
     }
     
     /**
@@ -52,7 +52,7 @@ class MemberController extends Controller
         $image->storeAs('public/posts', $image->hashName());
 
         //create post
-        $post = Post::create([
+        $member = Member::create([
             'namaMember'   => $request->content,
             'emailMember'     => $request->content,
             'passMember'   => $request->content,
@@ -61,7 +61,7 @@ class MemberController extends Controller
         ]);
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Ditambahkan!', $post);
+        return new PostResource(true, 'Data Post Berhasil Ditambahkan!', $member);
     }
         
     /**
@@ -70,20 +70,20 @@ class MemberController extends Controller
      * @param  mixed $post
      * @return void
      */
-    public function show(Post $post)
+    public function show(Member $member)
     {
         //return single post as a resource
-        return new PostResource(true, 'Data Post Ditemukan!', $post);
+        return new PostResource(true, 'Data Post Ditemukan!', $member);
     }
     
     /**
      * update
      *
      * @param  mixed $request
-     * @param  mixed $post
+     * @param  mixed $member
      * @return void
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Member $member)
     {
         //define validation rules
         $validator = Validator::make($request->all(), [
@@ -105,10 +105,10 @@ class MemberController extends Controller
             $image->storeAs('public/posts', $image->hashName());
 
             //delete old image
-            Storage::delete('public/posts/'.$post->image);
+            Storage::delete('public/posts/'.$member->image);
 
             //update post with new image
-            $post->update([
+            $member->update([
                 'image'     => $image->hashName(),
                 'title'     => $request->title,
                 'content'   => $request->content,
@@ -117,29 +117,29 @@ class MemberController extends Controller
         } else {
 
             //update post without image
-            $post->update([
+            $member->update([
                 'title'     => $request->title,
                 'content'   => $request->content,
             ]);
         }
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Diubah!', $post);
+        return new PostResource(true, 'Data Post Berhasil Diubah!', $member);
     }
     
     /**
      * destroy
      *
-     * @param  mixed $post
+     * @param  mixed $member
      * @return void
      */
-    public function destroy(Post $post)
+    public function destroy(Post $member)
     {
         //delete image
-        Storage::delete('public/posts/'.$post->image);
+        Storage::delete('public/posts/'.$member->image);
 
         //delete post
-        $post->delete();
+        $member->delete();
 
         //return response
         return new PostResource(true, 'Data Post Berhasil Dihapus!', null);
