@@ -9,8 +9,12 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
+<<<<<<< HEAD
         "laravel/tinker": "^2.7",
         "tymon/jwt-auth": "^2.0"
+=======
+        "laravel/tinker": "^2.7"
+>>>>>>> parent of e299315 (register)
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

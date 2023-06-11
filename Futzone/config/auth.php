@@ -40,11 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+<<<<<<< HEAD
         'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
+=======
+>>>>>>> parent of e299315 (register)
     ],
 
     /*
