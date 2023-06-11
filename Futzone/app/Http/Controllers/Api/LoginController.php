@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -30,13 +31,14 @@ class LoginController extends Controller
         $credentials = $request->only('emailMember', 'passMember');
 
         //if auth failed
-        if(!$token = auth()->guard('api')->attempt($credentials)) {
+
+        if (!$token = Auth::guard('api')->claims(['email' => $credentials['email']])->attempt($credentials)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Email atau Password Anda salah'
+                'message' => 'Email or password is incorrect',
             ], 401);
         }
-
+        
         //if auth success
         return response()->json([
             'success' => true,

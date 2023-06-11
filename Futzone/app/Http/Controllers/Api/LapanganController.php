@@ -22,7 +22,7 @@ class LapanganController extends Controller
         $lapangans = Lapangan::latest()->paginate(5);
 
         //return collection of posts as a resource
-        return new PostResource(true, 'List Data Posts', $lapangans);
+        return new LapanganResource(true, 'List Data Posts', $lapangans);
     }
     
     /**
@@ -39,7 +39,7 @@ class LapanganController extends Controller
             'tipeLapangan'     => 'required',
             'priceSiang'     => 'required',
             'priceMalam'     => 'required',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required',
         ]);
 
         //check if validation fails
@@ -48,8 +48,8 @@ class LapanganController extends Controller
         }
 
         //upload image
-        $image = $request->file('image');
-        $image->storeAs('public/posts', $image->hashName());
+        //$image = $request->file('image');
+        //$image->storeAs('public/posts', $image->hashName());
 
         //create post
         $lapangan = Lapangan::create([
@@ -57,7 +57,8 @@ class LapanganController extends Controller
             'tipeLapangan'     => $request->content,
             'priceSiang'     => $request->content,
             'priceMalam'     => $request->content,
-            'image'     => $image->hashName(),
+            'image'     => $request->content,
+            //'image'     => $image->hashName(),
         ]);
 
         //return response
@@ -91,7 +92,8 @@ class LapanganController extends Controller
             'tipeLapangan'     => 'required',
             'priceSiang'     => 'required',
             'priceMalam'     => 'required',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required',
+            //'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //check if validation fails
@@ -115,7 +117,8 @@ class LapanganController extends Controller
                 'tipeLapangan'     => $request->content,
                 'priceSiang'     => $request->content,
                 'priceMalam'     => $request->content,
-                'image'     => $image->hashName(),
+                'image'     => $request->content,
+                //'image'     => $image->hashName(),
             ]);
 
         } else {

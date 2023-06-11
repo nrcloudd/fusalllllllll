@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\LapanganController;
 
 /**
  * route "/register"
@@ -29,8 +30,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  */
 Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
+Route::post('/lapangan/store', [LapanganController::class, 'store'])->name('lapangan');
 
 Route::apiResource('/lapangan', App\Http\Controllers\Api\LapanganController::class);
+
+Route::apiResource('/lapangan', App\Http\Controllers\Api\LapanganController::class);
+
 Route::apiResource('/posts', App\Http\Controllers\Api\PostController::class);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
