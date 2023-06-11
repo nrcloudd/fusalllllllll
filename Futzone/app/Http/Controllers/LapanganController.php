@@ -39,7 +39,8 @@ class LapanganController extends Controller
             'tipeLapangan'     => 'required',
             'priceSiang'     => 'required',
             'priceMalam'     => 'required',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required',
+            //'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //check if validation fails
@@ -57,7 +58,7 @@ class LapanganController extends Controller
             'tipeLapangan'     => $request->content,
             'priceSiang'     => $request->content,
             'priceMalam'     => $request->content,
-            'image'     => $image->hashName(),
+            'image'     => $request->content,
         ]);
 
         //return response
@@ -91,7 +92,8 @@ class LapanganController extends Controller
             'tipeLapangan'     => 'required',
             'priceSiang'     => 'required',
             'priceMalam'     => 'required',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required',
+            //'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //check if validation fails
@@ -115,7 +117,8 @@ class LapanganController extends Controller
                 'tipeLapangan'     => $request->content,
                 'priceSiang'     => $request->content,
                 'priceMalam'     => $request->content,
-                'image'     => $image->hashName(),
+                'image'     => $request->content,
+                //'image'     => $image->hashName(),
             ]);
 
         } else {
