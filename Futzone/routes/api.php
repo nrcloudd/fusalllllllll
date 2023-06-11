@@ -4,7 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Http\Controllers\AuthController;
+=======
+>>>>>>> parent of e299315 (register)
 =======
 >>>>>>> parent of e299315 (register)
 =======

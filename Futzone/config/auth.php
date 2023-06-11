@@ -42,11 +42,14 @@ return [
         ],
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
+=======
+>>>>>>> parent of e299315 (register)
 =======
 >>>>>>> parent of e299315 (register)
 =======

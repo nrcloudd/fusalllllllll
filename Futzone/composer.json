@@ -11,8 +11,12 @@
         "laravel/sanctum": "^3.0",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "laravel/tinker": "^2.7",
         "tymon/jwt-auth": "^2.0"
+=======
+        "laravel/tinker": "^2.7"
+>>>>>>> parent of e299315 (register)
 =======
         "laravel/tinker": "^2.7"
 >>>>>>> parent of e299315 (register)
