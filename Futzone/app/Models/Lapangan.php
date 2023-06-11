@@ -9,6 +9,7 @@ class Lapangan extends Model
 {
     use HasFactory;
 <<<<<<< HEAD
+<<<<<<< HEAD
     protected $fillable = [
         'namaLapangan',
         'tipeLapangan',
@@ -18,6 +19,8 @@ class Lapangan extends Model
 
     ];
 
+=======
+>>>>>>> parent of e299315 (register)
 }
 =======
 }

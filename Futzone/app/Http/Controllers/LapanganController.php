@@ -40,8 +40,12 @@ class LapanganController extends Controller
             'priceSiang'     => 'required',
             'priceMalam'     => 'required',
 <<<<<<< HEAD:Futzone/app/Http/Controllers/LapanganController.php
+<<<<<<< HEAD:Futzone/app/Http/Controllers/LapanganController.php
             'image'     => 'required',
             //'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+=======
+            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+>>>>>>> parent of e299315 (register):Futzone/app/Http/Controllers/Api/LapanganController.php
 =======
             'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 >>>>>>> parent of e299315 (register):Futzone/app/Http/Controllers/Api/LapanganController.php
@@ -63,7 +67,11 @@ class LapanganController extends Controller
             'priceSiang'     => $request->content,
             'priceMalam'     => $request->content,
 <<<<<<< HEAD:Futzone/app/Http/Controllers/LapanganController.php
+<<<<<<< HEAD:Futzone/app/Http/Controllers/LapanganController.php
             'image'     => $request->content,
+=======
+            'image'     => $image->hashName(),
+>>>>>>> parent of e299315 (register):Futzone/app/Http/Controllers/Api/LapanganController.php
 =======
             'image'     => $image->hashName(),
 >>>>>>> parent of e299315 (register):Futzone/app/Http/Controllers/Api/LapanganController.php
