@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Post;
+use App\Models\Lapangan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PostResource;
+use App\Http\Resources\LapanganResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class LapanganController extends Controller
-{
+{    
     /**
      * index
      *
@@ -24,7 +24,7 @@ class LapanganController extends Controller
         //return collection of posts as a resource
         return new PostResource(true, 'List Data Posts', $lapangans);
     }
-
+    
     /**
      * store
      *
@@ -35,11 +35,11 @@ class LapanganController extends Controller
     {
         //define validation rules
         $validator = Validator::make($request->all(), [
-            'namaField' => 'required',
-            'tipeField' => 'required',
-            'priceSiang' => 'required',
-            'priceMalam' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'namaLapangan'     => 'required',
+            'tipeLapangan'     => 'required',
+            'priceSiang'     => 'required',
+            'priceMalam'     => 'required',
+            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //check if validation fails
@@ -48,22 +48,22 @@ class LapanganController extends Controller
         }
 
         //upload image
-        $image = $request->file('gambar');
+        $image = $request->file('image');
         $image->storeAs('public/posts', $image->hashName());
 
         //create post
         $lapangan = Lapangan::create([
-            'manaField' => $request->content,
-            'tipeField' => $request->content,
-            'priceSiang' => $request->content,
-            'priceMalam' => $request->content,
-            'gambar' => $image->hashName(),
+            'namaLapangan'     => $request->content,
+            'tipeLapangan'     => $request->content,
+            'priceSiang'     => $request->content,
+            'priceMalam'     => $request->content,
+            'image'     => $image->hashName(),
         ]);
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Ditambahkan!', $lapangan);
+        return new LapanganResource(true, 'Data Post Berhasil Ditambahkan!', $lapangan);
     }
-
+        
     /**
      * show
      *
@@ -73,9 +73,9 @@ class LapanganController extends Controller
     public function show(Lapangan $lapangan)
     {
         //return single post as a resource
-        return new PostResource(true, 'Data Post Ditemukan!', $lapangan);
+        return new LapanganResource(true, 'Data Post Ditemukan!', $lapangan);
     }
-
+    
     /**
      * update
      *
@@ -87,11 +87,11 @@ class LapanganController extends Controller
     {
         //define validation rules
         $validator = Validator::make($request->all(), [
-            'namaField' => 'required',
-            'tipeField' => 'required',
-            'priceSiang' => 'required',
-            'priceMalam' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'namaLapangan'     => 'required',
+            'tipeLapangan'     => 'required',
+            'priceSiang'     => 'required',
+            'priceMalam'     => 'required',
+            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         //check if validation fails
@@ -100,49 +100,49 @@ class LapanganController extends Controller
         }
 
         //check if image is not empty
-        if ($request->hasFile('gambar')) {
+        if ($request->hasFile('image')) {
 
             //upload image
-            $image = $request->file('gambar');
+            $image = $request->file('image');
             $image->storeAs('public/posts', $image->hashName());
 
             //delete old image
-            Storage::delete('public/posts/' . $lapangan->image);
+            Storage::delete('public/posts/'.$lapangan->image);
 
             //update post with new image
             $lapangan->update([
-                'namaField' => 'required',
-                'tipeField' => 'required',
-                'priceSiang' => 'required',
-                'priceMalam' => 'required',
-                'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'namaLapangan'     => $request->content,
+                'tipeLapangan'     => $request->content,
+                'priceSiang'     => $request->content,
+                'priceMalam'     => $request->content,
+                'image'     => $image->hashName(),
             ]);
 
         } else {
 
             //update post without image
             $lapangan->update([
-                'namaField'   => 'required',
-            'tipeField'     => 'required',
-            'priceSiang'   => 'required',
-            'priceMalam'   => 'required',   
+                'namaLapangan'     => $request->content,
+                'tipeLapangan'     => $request->content,
+                'priceSiang'     => $request->content,
+                'priceMalam'     => $request->content,
             ]);
         }
 
         //return response
-        return new PostResource(true, 'Data Post Berhasil Diubah!', $lapangan);
+        return new LapaanganResource(true, 'Data Post Berhasil Diubah!', $lapangan);
     }
-
+    
     /**
      * destroy
      *
-     * @param  mixed $post
+     * @param  mixed $lapangan
      * @return void
      */
     public function destroy(Lapangan $lapangan)
     {
         //delete image
-        Storage::delete('public/posts/' . $lapangan->image);
+        Storage::delete('public/posts/'.$lapangan->image);
 
         //delete post
         $lapangan->delete();

@@ -8,12 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Lapangan extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'namaField',
-        'tipeField',
-        'priceSiang',
-        'priceMalam',
-        'image'
-
-    ];
 }

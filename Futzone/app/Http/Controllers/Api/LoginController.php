@@ -17,8 +17,8 @@ class LoginController extends Controller
     {
         //set validation
         $validator = Validator::make($request->all(), [
-            'email'     => 'required',
-            'password'  => 'required'
+            'emailMember'     => 'required',
+            'passMember'  => 'required'
         ]);
 
         //if validation fails
@@ -27,7 +27,7 @@ class LoginController extends Controller
         }
 
         //get credentials from request
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('emailMember', 'passMember');
 
         //if auth failed
         if(!$token = auth()->guard('api')->attempt($credentials)) {
