@@ -19,7 +19,7 @@ class TransaksiController extends Controller
     public function index()
     {
         //get posts
-        $posts = Post::latest()->paginate(5);
+        $posts = Transaksi::latest()->paginate(5);
 
         //return collection of posts as a resource
         return new PostResource(true, 'List Data Posts', $posts);
@@ -46,10 +46,10 @@ class TransaksiController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $nmMember = laravel::join('member', 'transaksi', '=', 'transaksi.namaMember')
-               ->get(['transaksi', 'member.namaMember']);
+        $nmMember = user::join('users', 'transaksi', '=', 'transaksi.namaMember')
+               ->get(['transaksi', 'users.namaMember']);
         
-        $nmField = laravel::join('lapangan', 'transaksi', '=', 'transaksi.namaField')
+        $nmField = user::join('lapangan', 'transaksi', '=', 'transaksi.namaField')
                ->get(['transaksi', 'lapangan.namaField']);
 
         //upload image
@@ -57,7 +57,7 @@ class TransaksiController extends Controller
         $image->storeAs('public/posts', $image->hashName());
 
         //create post
-        $post = Post::create([
+        $post = Transaksi::create([
             'namaMember'     => $nmMember->content,
             'namaField'   => $nmField->content,
             'tanggal'   => $request->content,
@@ -79,58 +79,7 @@ class TransaksiController extends Controller
         //return single post as a resource
         return new PostResource(true, 'Data Post Ditemukan!', $post);
     }
-    
-    /**
-     * update
-     *
-     * @param  mixed $request
-     * @param  mixed $post
-     * @return void
-     */
-    public function update(Request $request, Post $post)
-    {
-        //define validation rules
-        $validator = Validator::make($request->all(), [
-            'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'title'     => 'required',
-            'content'   => 'required',
-        ]);
-
-        //check if validation fails
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        //check if image is not empty
-        if ($request->hasFile('image')) {
-
-            //upload image
-            $image = $request->file('image');
-            $image->storeAs('public/posts', $image->hashName());
-
-            //delete old image
-            Storage::delete('public/posts/'.$post->image);
-
-            //update post with new image
-            $post->update([
-                'image'     => $image->hashName(),
-                'title'     => $request->title,
-                'content'   => $request->content,
-            ]);
-
-        } else {
-
-            //update post without image
-            $post->update([
-                'title'     => $request->title,
-                'content'   => $request->content,
-            ]);
-        }
-
-        //return response
-        return new PostResource(true, 'Data Post Berhasil Diubah!', $post);
-    }
-    
+        
     /**
      * destroy
      *

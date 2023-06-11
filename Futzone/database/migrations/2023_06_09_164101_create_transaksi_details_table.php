@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('transaksi_detail', function (Blueprint $table) {
             $table->id();
             $table->string('namaLapangan');
-            $table->string('id.User');
+            $table->string('namaUser');
             $table->date('tanggal');
             $table->integer('harga');
             $table->timestamps();
